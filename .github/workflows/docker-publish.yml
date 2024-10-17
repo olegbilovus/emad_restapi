@@ -49,4 +49,4 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: emad_restapi:${{ steps.get-branch-name.outputs.BRANCH_NAME }}
+          tags: ghcr.io/${{ github.repository }}:${{ steps.get-branch-name.outputs.BRANCH_NAME }}
