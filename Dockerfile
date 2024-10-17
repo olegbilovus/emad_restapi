@@ -1,9 +1,10 @@
 FROM python:3.12-slim AS install-dependencies
 
-RUN apt-get update
-RUN apt-get install -y --no-install-recommends build-essential gcc
+RUN apt-get update &&  \
+    apt-get install -y --no-install-recommends build-essential gcc && \
+    apt-get clean && \
+    python -m venv /opt/venv && \
 
-RUN python -m venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
 COPY requirements.txt .
