@@ -1,11 +1,21 @@
-FROM python:3.12
+FROM python:3.12-slim AS install-dependencies
 
-WORKDIR /code
+RUN apt-get update
+RUN apt-get install -y --no-install-recommends build-essential gcc
 
-COPY ./requirements.txt /code/requirements.txt
+RUN python -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
 
-RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
-COPY . /code/app
+FROM python:3.12-slim
 
-CMD ["fastapi", "run", "app/main.py", "--port", "80"]
+COPY --from=install-dependencies /opt/venv /opt/venv
+
+WORKDIR /app
+
+COPY ./app .
+
+ENV PATH="/opt/venv/bin:$PATH"
+CMD ["fastapi", "run", "main.py", "--port", "80"]
