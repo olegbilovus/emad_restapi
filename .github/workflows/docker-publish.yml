@@ -29,20 +29,10 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Get branch name
-        id: get-branch-name
-        run: |
-          if [ "${{ github.event_name }}" == "pull_request" ]; then
-            echo "BRANCH_NAME=${{ github.head_ref }}" >> $GITHUB_OUTPUT
-          else
-            echo "BRANCH_NAME=${GITHUB_REF##*/}" >> $GITHUB_OUTPUT
-          fi
-        shell: bash
-
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: ghcr.io/${{ github.repository }}:${{ steps.get-branch-name.outputs.BRANCH_NAME }}
+          tags: ghcr.io/${{ github.repository }}:latest
