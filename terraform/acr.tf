@@ -14,6 +14,17 @@ resource "azurerm_container_registry_task" "build-image" {
     os           = "Linux"
     architecture = "amd64"
   }
+  source_trigger {
+    name           = "buildoncommitmain"
+    source_type    = "Github"
+    events         = ["commit"]
+    repository_url = var.gh_repo
+    branch         = "main"
+    authentication {
+      token      = var.gh_access_token
+      token_type = "PAT"
+    }
+  }
   docker_step {
     dockerfile_path      = "Dockerfile"
     context_path         = var.gh_repo
