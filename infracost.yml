@@ -3,8 +3,6 @@ version: 0.1
 projects:
   - path: terraform
     name: main
-    terraform_var_files:
-      - terraform.tfvars
     skip_autodetect: true
     dependency_paths:
       - "**"
