@@ -21,3 +21,6 @@ variable "gh_access_token" {
   sensitive = true
 }
 
+variable "workload_profile_max" {
+  default = 1
+}
