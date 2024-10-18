@@ -7,7 +7,7 @@ resource "azurerm_container_registry" "this" {
 }
 
 # ACR Task to build and push the image to ACR
-resource "azurerm_container_registry_task" "build-image" {
+resource "azurerm_container_registry_task" "build_image" {
   name                  = "${var.name}buildimage"
   container_registry_id = azurerm_container_registry.this.id
   platform {
@@ -34,6 +34,6 @@ resource "azurerm_container_registry_task" "build-image" {
 }
 
 # Run the task, it will run only once even after doing another appy
-resource "azurerm_container_registry_task_schedule_run_now" "build-image" {
-  container_registry_task_id = azurerm_container_registry_task.build-image.id
+resource "azurerm_container_registry_task_schedule_run_now" "build_image" {
+  container_registry_task_id = azurerm_container_registry_task.build_image.id
 }
