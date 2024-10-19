@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import Annotated, List
+from typing import Annotated, List, Union
 
 from pydantic import BaseModel, Field, HttpUrl
 
@@ -41,4 +41,4 @@ class ImageURL(BaseModel):
 
 class ImagesResult(BaseModel):
     sentence_filter: RestrictionFilter
-    images: Annotated[List[ImageB64] | List[ImageURL], Field()]
+    images: Union[List[ImageB64] | List[ImageURL]]
