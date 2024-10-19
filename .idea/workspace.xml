@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6e25e480-9b62-4284-a8f6-704afbc49678" name="Changes" comment="refactoring">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/constants.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/constants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models.py" afterDir="false" />
+    <list default="true" id="6e25e480-9b62-4284-a8f6-704afbc49678" name="Changes" comment="refactoring and docs for endpoints">
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,7 +187,7 @@
       <workItem from="1729264148992" duration="644000" />
       <workItem from="1729265615148" duration="42000" />
       <workItem from="1729267292981" duration="42000" />
-      <workItem from="1729327941197" duration="11536000" />
+      <workItem from="1729327941197" duration="11988000" />
     </task>
     <task id="LOCAL-00001" summary="get and post for images">
       <option name="closed" value="true" />
@@ -312,7 +309,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729335314731</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="refactoring and docs for endpoints">
+      <option name="closed" value="true" />
+      <created>1729354260157</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1729354260157</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -332,7 +337,8 @@
     <MESSAGE value="removed pull request trigger" />
     <MESSAGE value="removed branch name to image tag" />
     <MESSAGE value="refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="refactoring" />
+    <MESSAGE value="refactoring and docs for endpoints" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring and docs for endpoints" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/restApi$main.coverage" NAME="main Coverage Results" MODIFIED="1729178875156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />

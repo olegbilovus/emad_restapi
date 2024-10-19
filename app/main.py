@@ -2,7 +2,7 @@ from typing import Annotated
 
 from fastapi import FastAPI, Query
 
-from app.constants import Tags
+from constants import Tags
 from control import check_restriction_filter
 from models import Sentence, ImagesResult
 
