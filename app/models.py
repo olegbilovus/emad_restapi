@@ -1,6 +1,7 @@
 from enum import Enum
+from typing import Annotated, List
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, HttpUrl
 
 from constants import MAX_IMAGES
 
@@ -18,7 +19,8 @@ class Language(str, Enum):
 class Sentence(BaseModel):
     text: str
     language: Language
-    max_images: int = MAX_IMAGES
+    max_images: Annotated[
+        int, Field(le=MAX_IMAGES, description="An upper bound for the number of images to return")] = MAX_IMAGES
     response_format: ImagesResponseFormat = ImagesResponseFormat.b64
 
 
@@ -27,11 +29,16 @@ class RestrictionFilter(BaseModel):
     violence: bool
 
 
-class Image(BaseModel):
-    data: str
+class ImageB64(BaseModel):
+    b64: str
+    filter: RestrictionFilter
+
+
+class ImageURL(BaseModel):
+    url: HttpUrl
     filter: RestrictionFilter
 
 
 class ImagesResult(BaseModel):
     sentence_filter: RestrictionFilter
-    images: list[Image]
+    images: Annotated[List[ImageB64] | List[ImageURL], Field()]
