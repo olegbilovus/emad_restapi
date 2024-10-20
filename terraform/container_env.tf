@@ -56,6 +56,8 @@ resource "azurerm_role_assignment" "acr_pull" {
   principal_id         = azurerm_user_assigned_identity.this.principal_id
 }
 
+
+
 resource "azurerm_container_app" "this" {
   name                         = var.name
   container_app_environment_id = azurerm_container_app_environment.this.id
@@ -82,6 +84,12 @@ resource "azurerm_container_app" "this" {
     identity_ids = [azurerm_user_assigned_identity.this.id]
   }
 
+  secret {
+    identity            = azurerm_user_assigned_identity.this.id
+    name                = "jwt-secret"
+    key_vault_secret_id = azurerm_key_vault_secret.apirest["jwt-secret"].id
+  }
+
   template {
     container {
       name   = var.name
@@ -92,13 +100,46 @@ resource "azurerm_container_app" "this" {
         name  = "MAX_IMAGES"
         value = 5
       }
+
+      env {
+        name        = "JWT_SECRET"
+        secret_name = "jwt-secret"
+      }
+
+      env {
+        name  = "ACCESS_TOKEN_EXPIRE_MINUTES"
+        value = var.ACCESS_TOKEN_EXPIRE_MINUTES
+      }
     }
     max_replicas = var.workload_profile_max
-    min_replicas = 0
+    min_replicas = 1
   }
 
   workload_profile_name = local.workload_profile_name
 
-  depends_on = [azurerm_role_assignment.acr_pull]
+  depends_on = [
+    azurerm_role_assignment.acr_pull,
+    azurerm_role_assignment.apirest_secrets
+  ]
 }
 
+# Patch Sticky sessions. This feature is still not available in the azurerm provider
+# https://github.com/hashicorp/terraform-provider-azurerm/issues/24757#issuecomment-2213170796
+resource "azapi_resource_action" "sticky_session" {
+  type        = "Microsoft.App/containerApps@2024-03-01"
+  resource_id = azurerm_container_app.this.id
+  method      = "PATCH"
+  body = {
+    properties = {
+      configuration = {
+        ingress = {
+          stickySessions = {
+            affinity = "sticky"
+          }
+        }
+      }
+    }
+  }
+
+  depends_on = [azurerm_container_app.this]
+}
