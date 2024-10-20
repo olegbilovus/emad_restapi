@@ -5,6 +5,10 @@
     <option name="ENV_FILES" value="" />
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
+    <envs>
+      <env name="JWT_SECRET" value="620e30633eb3497d56ebdc1a1bc34b01c1649c9364e4894dacdd2f5a4504b71f" />
+      <env name="ACCESS_TOKEN_EXPIRE_MINUTES" value="30" />
+    </envs>
     <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/Scripts/python.exe" />
     <option name="SDK_NAME" value="Python 3.12 (restApi)" />
     <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app" />
