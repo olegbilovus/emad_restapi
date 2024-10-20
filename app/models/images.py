@@ -3,7 +3,7 @@ from typing import Annotated, List, Union
 
 from pydantic import BaseModel, Field, HttpUrl
 
-from constants import MAX_IMAGES
+from app.models.constants import MAX_IMAGES
 
 
 class ImagesResponseFormat(str, Enum):

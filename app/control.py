@@ -1,4 +1,4 @@
-from models import RestrictionFilter
+from app.models.images import RestrictionFilter
 
 
 def check_restriction_filter(text: str) -> RestrictionFilter:
