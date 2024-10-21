@@ -25,11 +25,6 @@ variable "workload_profile_max" {
   default = 1
 }
 
-variable "my_ip" {
-  type      = string
-  sensitive = true
-}
-
 variable "JWT_SECRET" {
   type      = string
   sensitive = true

@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6e25e480-9b62-4284-a8f6-704afbc49678" name="Changes" comment="added user create, patch and delete. Added email field.">
+    <list default="true" id="6e25e480-9b62-4284-a8f6-704afbc49678" name="Changes" comment="fixed the imports order in main.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/auth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="fix-imports_order" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -67,6 +63,21 @@
               </option>
               <option name="timestamp" value="1729329274270" />
             </BranchCleanupEntry>
+            <BranchCleanupEntry>
+              <option name="deletions">
+                <list>
+                  <BranchDeletion>
+                    <option name="hash" value="68464feed838a59795c0728ce63c231ed7a5c7af" />
+                    <option name="name" value="fix-imports_order" />
+                  </BranchDeletion>
+                  <BranchDeletion>
+                    <option name="hash" value="5804d5b296e779bc4a82f3b79f18408014ed0131" />
+                    <option name="name" value="api-user" />
+                  </BranchDeletion>
+                </list>
+              </option>
+              <option name="timestamp" value="1729532301233" />
+            </BranchCleanupEntry>
           </list>
         </option>
       </BranchesCleanupHistory>
@@ -79,12 +90,16 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="api-user" />
-                    <option name="lastUsedInstant" value="1729528869" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1729532285" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1729187368" />
+                    <option name="branchName" value="fix-imports_order" />
+                    <option name="lastUsedInstant" value="1729532200" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="api-user" />
+                    <option name="lastUsedInstant" value="1729528869" />
                   </RecentBranch>
                 </list>
               </option>
@@ -126,7 +141,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "api-user",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/olgbl/Desktop/Unisa/EMAD/fastAPI/restApi/app",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -202,7 +217,7 @@
       <workItem from="1729267292981" duration="42000" />
       <workItem from="1729327941197" duration="13415000" />
       <workItem from="1729420766113" duration="9828000" />
-      <workItem from="1729528318341" duration="3719000" />
+      <workItem from="1729528318341" duration="4772000" />
     </task>
     <task id="LOCAL-00001" summary="get and post for images">
       <option name="closed" value="true" />
@@ -356,7 +371,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729532059748</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="fixed the imports order in main.py">
+      <option name="closed" value="true" />
+      <created>1729532242724</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1729532242724</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -380,7 +403,8 @@
     <MESSAGE value="bug fix" />
     <MESSAGE value="refactoring and added a basic concept of auth (need to add the db)" />
     <MESSAGE value="added user create, patch and delete. Added email field." />
-    <option name="LAST_COMMIT_MESSAGE" value="added user create, patch and delete. Added email field." />
+    <MESSAGE value="fixed the imports order in main.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixed the imports order in main.py" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/restApi$main.coverage" NAME="main Coverage Results" MODIFIED="1729178875156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
