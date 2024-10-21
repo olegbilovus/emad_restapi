@@ -1,9 +1,9 @@
-from pydantic import EmailStr
-
 from app.utility import check_env
 
 # Make sure it runs before importing the rest of the modules
 check_env()
+
+from pydantic import EmailStr
 
 from datetime import timedelta
 
