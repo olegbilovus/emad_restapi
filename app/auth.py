@@ -10,7 +10,7 @@ from jwt import InvalidTokenError
 from pydantic import BaseModel
 from starlette import status
 
-from app.models.user import UserInDB, User
+from app.models.user import UserInDB
 
 SECRET_KEY = os.getenv("JWT_SECRET")
 ALGORITHM = "HS256"
@@ -20,7 +20,7 @@ fake_users_db = {
     "johndoe": {
         "username": "johndoe",
         "hashed_password": "$2b$12$EixZaYVK1fsbw1ZfbX3OXePaWxn96p36WQoeG6Lruj3vjPGga31lW",  # password: secret
-        "disabled": False,
+        "email": "jonhdoe@example.com",
     }
 }
 
@@ -93,9 +93,3 @@ async def get_current_user(token: Annotated[str, Depends(oauth2_scheme)]):
     if user is None:
         raise credentials_exception
     return user
-
-
-async def get_current_active_user(current_user: Annotated[User, Depends(get_current_user)]):
-    if current_user.disabled:
-        raise HTTPException(status_code=400, detail="Inactive user")
-    return current_user
