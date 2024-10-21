@@ -1,9 +1,15 @@
-from pydantic import BaseModel
+from typing import Annotated
+
+from pydantic import BaseModel, EmailStr, Field
 
 
 class User(BaseModel):
     username: str
-    disabled: bool = False
+    email: EmailStr
+
+
+class UserCreate(User):
+    password: Annotated[str, Field(min_length=8)]
 
 
 class UserInDB(User):
