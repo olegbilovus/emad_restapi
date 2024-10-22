@@ -24,12 +24,3 @@ variable "gh_access_token" {
 variable "workload_profile_max" {
   default = 1
 }
-
-variable "JWT_SECRET" {
-  type      = string
-  sensitive = true
-}
-
-variable "ACCESS_TOKEN_EXPIRE_MINUTES" {
-  type = number
-}
