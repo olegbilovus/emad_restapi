@@ -4,5 +4,3 @@ services:
     container_name: emad_restapi
     ports:
       - "8080:80"
-    environment:
-      - MAX_IMAGES=5

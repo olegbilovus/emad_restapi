@@ -90,10 +90,6 @@ resource "azurerm_container_app" "this" {
       image  = "${azurerm_container_registry.this.login_server}/${azurerm_container_registry_task.build_image.docker_step[0].image_names[0]}"
       cpu    = 1
       memory = "2Gi"
-      env {
-        name  = "MAX_IMAGES"
-        value = 5
-      }
     }
     max_replicas = var.workload_profile_max
     min_replicas = 1
@@ -102,8 +98,7 @@ resource "azurerm_container_app" "this" {
   workload_profile_name = local.workload_profile_name
 
   depends_on = [
-    azurerm_role_assignment.acr_pull,
-    azurerm_role_assignment.apirest_secrets
+    azurerm_role_assignment.acr_pull
   ]
 }
 
