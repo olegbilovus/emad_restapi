@@ -84,12 +84,6 @@ resource "azurerm_container_app" "this" {
     identity_ids = [azurerm_user_assigned_identity.this.id]
   }
 
-  secret {
-    identity            = azurerm_user_assigned_identity.this.id
-    name                = "jwt-secret"
-    key_vault_secret_id = azurerm_key_vault_secret.apirest["jwt-secret"].id
-  }
-
   template {
     container {
       name   = var.name
@@ -99,16 +93,6 @@ resource "azurerm_container_app" "this" {
       env {
         name  = "MAX_IMAGES"
         value = 5
-      }
-
-      env {
-        name        = "JWT_SECRET"
-        secret_name = "jwt-secret"
-      }
-
-      env {
-        name  = "ACCESS_TOKEN_EXPIRE_MINUTES"
-        value = var.ACCESS_TOKEN_EXPIRE_MINUTES
       }
     }
     max_replicas = var.workload_profile_max

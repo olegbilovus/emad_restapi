@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6e25e480-9b62-4284-a8f6-704afbc49678" name="Changes" comment="fixed the imports order in main.py">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="6e25e480-9b62-4284-a8f6-704afbc49678" name="Changes" comment="removed unused services from IaC" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="fix-imports_order" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -78,6 +76,17 @@
               </option>
               <option name="timestamp" value="1729532301233" />
             </BranchCleanupEntry>
+            <BranchCleanupEntry>
+              <option name="deletions">
+                <list>
+                  <BranchDeletion>
+                    <option name="hash" value="51e63ad618ec2db800306dfe44f547db35323916" />
+                    <option name="name" value="terraform-dynamicly_get_ip" />
+                  </BranchDeletion>
+                </list>
+              </option>
+              <option name="timestamp" value="1729534037759" />
+            </BranchCleanupEntry>
           </list>
         </option>
       </BranchesCleanupHistory>
@@ -90,16 +99,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
+                    <option name="branchName" value="api-remove_users" />
+                    <option name="lastUsedInstant" value="1729601934" />
+                  </RecentBranch>
+                  <RecentBranch>
                     <option name="branchName" value="main" />
                     <option name="lastUsedInstant" value="1729532285" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="fix-imports_order" />
-                    <option name="lastUsedInstant" value="1729532200" />
-                  </RecentBranch>
-                  <RecentBranch>
-                    <option name="branchName" value="api-user" />
-                    <option name="lastUsedInstant" value="1729528869" />
                   </RecentBranch>
                 </list>
               </option>
@@ -141,7 +146,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "api-remove__users",
     "last_opened_file_path": "C:/Users/olgbl/Desktop/Unisa/EMAD/fastAPI/restApi/app",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -379,7 +384,31 @@
       <option name="project" value="LOCAL" />
       <updated>1729532242724</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="removed user and auth">
+      <option name="closed" value="true" />
+      <created>1729602909098</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1729602909098</updated>
+    </task>
+    <task id="LOCAL-00022" summary="removed env settings and not used dependencies">
+      <option name="closed" value="true" />
+      <created>1729604134937</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1729604134937</updated>
+    </task>
+    <task id="LOCAL-00023" summary="removed unused services from IaC">
+      <option name="closed" value="true" />
+      <created>1729604157745</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1729604157745</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -404,10 +433,13 @@
     <MESSAGE value="refactoring and added a basic concept of auth (need to add the db)" />
     <MESSAGE value="added user create, patch and delete. Added email field." />
     <MESSAGE value="fixed the imports order in main.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed the imports order in main.py" />
+    <MESSAGE value="removed user and auth" />
+    <MESSAGE value="removed env settings and not used dependencies" />
+    <MESSAGE value="removed unused services from IaC" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed unused services from IaC" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/restApi$main.coverage" NAME="main Coverage Results" MODIFIED="1729178875156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
-    <SUITE FILE_PATH="coverage/restApi$restApi.coverage" NAME="restApi Coverage Results" MODIFIED="1729531640723" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/restApi$restApi.coverage" NAME="restApi Coverage Results" MODIFIED="1729602207555" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
   </component>
 </project>
