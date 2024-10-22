@@ -6,6 +6,3 @@ services:
       - "8080:80"
     environment:
       - MAX_IMAGES=5
-      # To be changed. Run `openssl rand -hex 32` to generate a random secret
-      - JWT_SECRET=620e30633eb3497d56ebdc1a1bc34b01c1649c9364e4894dacdd2f5a4504b71f
-      - ACCESS_TOKEN_EXPIRE_MINUTES=30
