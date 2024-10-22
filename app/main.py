@@ -1,8 +1,3 @@
-from app.utility import check_env
-
-# Make sure it runs before importing the rest of the modules
-check_env()
-
 from typing import Annotated
 
 from fastapi import FastAPI, Query
