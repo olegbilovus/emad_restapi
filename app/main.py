@@ -15,8 +15,6 @@ async def get_images(sentence: Annotated[Sentence, Query()]) -> ImagesResult:
     Get already existing images for a sentence
     - **text**: the sentence for which to get images
     - **language**: the language of the sentence
-    - **max_images**: the maximum number of images to return
-    - **response_format**: the format of the images to return
     """
     sentence_filter = check_restriction_filter(sentence.text)
     images = []

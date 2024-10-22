@@ -3,8 +3,6 @@ from typing import Annotated, List
 
 from pydantic import BaseModel, Field, HttpUrl
 
-from app.models.constants import MAX_IMAGES
-
 
 class Language(str, Enum):
     en = "en"
@@ -14,8 +12,6 @@ class Language(str, Enum):
 class Sentence(BaseModel):
     text: str
     language: Language
-    max_images: Annotated[
-        int, Field(le=MAX_IMAGES, description="An upper bound for the number of images to return")] = MAX_IMAGES
 
 
 class RestrictionFilter(BaseModel):
