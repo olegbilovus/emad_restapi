@@ -12,8 +12,11 @@ variable "location" {
 }
 
 variable "gh_repo" {
-  type      = string
-  sensitive = true
+  type = string
+}
+
+variable "gh_minio_repo" {
+  type = string
 }
 
 variable "gh_access_token" {

@@ -6,9 +6,18 @@ resource "azurerm_container_registry" "this" {
   admin_enabled       = true
 }
 
-# ACR Task to build and push the image to ACR
+locals {
+  repos = {
+    (var.gh_repo)       = replace(split("/", var.gh_repo)[4], "_", ""),
+    (var.gh_minio_repo) = replace(split("/", var.gh_minio_repo)[4], "_", "")
+  }
+}
+
+# ACR Task to build and push the images to ACR
 resource "azurerm_container_registry_task" "build_image" {
-  name                  = "${var.name}buildimage"
+  for_each = local.repos
+
+  name                  = "${each.value}buildimage"
   container_registry_id = azurerm_container_registry.this.id
   platform {
     os           = "Linux"
@@ -18,7 +27,7 @@ resource "azurerm_container_registry_task" "build_image" {
     name           = "buildoncommitmain"
     source_type    = "Github"
     events         = ["commit"]
-    repository_url = var.gh_repo
+    repository_url = each.key
     branch         = "main"
     authentication {
       token      = var.gh_access_token
@@ -27,13 +36,15 @@ resource "azurerm_container_registry_task" "build_image" {
   }
   docker_step {
     dockerfile_path      = "Dockerfile"
-    context_path         = var.gh_repo
+    context_path         = each.key
     context_access_token = var.gh_access_token
-    image_names          = ["${var.name}:latest"]
+    image_names          = ["${each.value}:latest"]
   }
 }
 
-# Run the task, it will run only once even after doing another appy
+# Run the tasks to build the images, it will run only once even after doing another appy
 resource "azurerm_container_registry_task_schedule_run_now" "build_image" {
-  container_registry_task_id = azurerm_container_registry_task.build_image.id
+  for_each = azurerm_container_registry_task.build_image
+
+  container_registry_task_id = each.value.id
 }
