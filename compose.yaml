@@ -4,3 +4,13 @@ services:
     container_name: emad_restapi
     ports:
       - "8080:80"
+    environment:
+      - IMAGES_URL_ROOT=http://localhost:9000/pictograms/pictograms/
+    depends_on:
+      - minio_pictograms
+
+  minio_pictograms:
+    image: minio_pictograms
+    container_name: minio_pictograms
+    ports:
+      - "9000:9000"
