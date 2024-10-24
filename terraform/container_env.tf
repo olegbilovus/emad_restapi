@@ -43,21 +43,6 @@ resource "azurerm_container_app_environment" "this" {
   }
 }
 
-resource "azurerm_user_assigned_identity" "this" {
-  name                = var.name
-  location            = var.location
-  resource_group_name = azurerm_resource_group.this.name
-}
-
-# RBAC for ACR Pull
-resource "azurerm_role_assignment" "acr_pull" {
-  scope                = azurerm_container_registry.this.id
-  role_definition_name = "AcrPull"
-  principal_id         = azurerm_user_assigned_identity.this.principal_id
-}
-
-
-
 resource "azurerm_container_app" "this" {
   name                         = var.name
   container_app_environment_id = azurerm_container_app_environment.this.id
@@ -75,19 +60,19 @@ resource "azurerm_container_app" "this" {
   }
 
   registry {
-    identity = azurerm_user_assigned_identity.this.id
+    identity = azurerm_user_assigned_identity.this[var.gh_repo].id
     server   = azurerm_container_registry.this.login_server
   }
 
   identity {
     type         = "UserAssigned"
-    identity_ids = [azurerm_user_assigned_identity.this.id]
+    identity_ids = [azurerm_user_assigned_identity.this[var.gh_repo].id]
   }
 
   template {
     container {
       name   = var.name
-      image  = "${azurerm_container_registry.this.login_server}/${azurerm_container_registry_task.build_image.docker_step[0].image_names[0]}"
+      image  = "${azurerm_container_registry.this.login_server}/${azurerm_container_registry_task.build_image[var.gh_repo].docker_step[0].image_names[0]}"
       cpu    = 1
       memory = "2Gi"
     }
@@ -98,6 +83,7 @@ resource "azurerm_container_app" "this" {
   workload_profile_name = local.workload_profile_name
 
   depends_on = [
+    azurerm_container_registry_task_schedule_run_now.build_image,
     azurerm_role_assignment.acr_pull
   ]
 }
@@ -121,4 +107,59 @@ resource "azapi_resource_action" "sticky_session" {
   }
 
   depends_on = [azurerm_container_app.this]
+}
+
+locals {
+  gh_username = split("/", var.gh_minio_repo)[3]
+}
+
+resource "azurerm_container_app" "minio" {
+  name                         = local.repos[var.gh_minio_repo]
+  container_app_environment_id = azurerm_container_app_environment.this.id
+  resource_group_name          = azurerm_resource_group.this.name
+  revision_mode                = "Single"
+
+  ingress {
+    external_enabled           = true
+    allow_insecure_connections = true
+    target_port                = 9000
+    traffic_weight {
+      latest_revision = true
+      percentage      = 100
+    }
+  }
+
+  identity {
+    type         = "UserAssigned"
+    identity_ids = [azurerm_user_assigned_identity.this[var.gh_minio_repo].id]
+  }
+
+  registry {
+    server               = "ghcr.io"
+    username             = local.gh_username
+    password_secret_name = local.secK_gh_access_token
+  }
+
+  secret {
+    identity            = azurerm_user_assigned_identity.this[var.gh_minio_repo].id
+    name                = local.secK_gh_access_token
+    key_vault_secret_id = azurerm_key_vault_secret.this[local.secK_gh_access_token].id
+  }
+
+  template {
+    container {
+      name   = local.repos[var.gh_minio_repo]
+      image  = "ghcr.io/${local.gh_username}/${split("/", var.gh_minio_repo)[4]}:latest"
+      cpu    = 1
+      memory = "2Gi"
+    }
+    max_replicas = var.workload_profile_max
+    min_replicas = 1
+  }
+
+  workload_profile_name = local.workload_profile_name
+
+  depends_on = [
+    azurerm_role_assignment.minio_secrets
+  ]
 }

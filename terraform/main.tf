@@ -31,6 +31,10 @@ resource "random_string" "random_suffix" {
 
 locals {
   rnd_str = random_string.random_suffix.result
+  repos = {
+    (var.gh_repo)       = replace(split("/", var.gh_repo)[4], "_", ""),
+    (var.gh_minio_repo) = replace(split("/", var.gh_minio_repo)[4], "_", "")
+  }
 }
 
 resource "azurerm_resource_group" "this" {
