@@ -22,6 +22,7 @@ variable "gh_minio_repo" {
 variable "gh_access_token" {
   type      = string
   sensitive = true
+  default   = "At the time of writing, ghcr does not support fine-grained tokens. Only the classic ones"
 }
 
 variable "workload_profile_max" {

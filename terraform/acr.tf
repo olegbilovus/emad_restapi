@@ -6,11 +6,13 @@ resource "azurerm_container_registry" "this" {
   admin_enabled       = true
 }
 
-locals {
-  repos = {
-    (var.gh_repo)       = replace(split("/", var.gh_repo)[4], "_", ""),
-    (var.gh_minio_repo) = replace(split("/", var.gh_minio_repo)[4], "_", "")
-  }
+# RBAC for ACR Pull
+resource "azurerm_role_assignment" "acr_pull" {
+  for_each = azurerm_user_assigned_identity.this
+
+  scope                = azurerm_container_registry.this.id
+  role_definition_name = "AcrPull"
+  principal_id         = each.value.principal_id
 }
 
 # ACR Task to build and push the images to ACR
