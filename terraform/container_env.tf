@@ -43,76 +43,6 @@ resource "azurerm_container_app_environment" "this" {
   }
 }
 
-resource "azurerm_container_app" "this" {
-  name                         = var.name
-  container_app_environment_id = azurerm_container_app_environment.this.id
-  resource_group_name          = azurerm_resource_group.this.name
-  revision_mode                = "Single"
-
-  ingress {
-    external_enabled           = true
-    allow_insecure_connections = true
-    target_port                = 80
-    traffic_weight {
-      latest_revision = true
-      percentage      = 100
-    }
-  }
-
-  registry {
-    identity = azurerm_user_assigned_identity.this[var.gh_repo].id
-    server   = azurerm_container_registry.this.login_server
-  }
-
-  identity {
-    type         = "UserAssigned"
-    identity_ids = [azurerm_user_assigned_identity.this[var.gh_repo].id]
-  }
-
-  template {
-    container {
-      name   = var.name
-      image  = "${azurerm_container_registry.this.login_server}/${azurerm_container_registry_task.build_image[var.gh_repo].docker_step[0].image_names[0]}"
-      cpu    = 1
-      memory = "2Gi"
-    }
-    max_replicas = var.workload_profile_max
-    min_replicas = 1
-  }
-
-  workload_profile_name = local.workload_profile_name
-
-  depends_on = [
-    azurerm_container_registry_task_schedule_run_now.build_image,
-    azurerm_role_assignment.acr_pull
-  ]
-}
-
-# Patch Sticky sessions. This feature is still not available in the azurerm provider
-# https://github.com/hashicorp/terraform-provider-azurerm/issues/24757#issuecomment-2213170796
-resource "azapi_resource_action" "sticky_session" {
-  type        = "Microsoft.App/containerApps@2024-03-01"
-  resource_id = azurerm_container_app.this.id
-  method      = "PATCH"
-  body = {
-    properties = {
-      configuration = {
-        ingress = {
-          stickySessions = {
-            affinity = "sticky"
-          }
-        }
-      }
-    }
-  }
-
-  depends_on = [azurerm_container_app.this]
-}
-
-locals {
-  gh_username = split("/", var.gh_minio_repo)[3]
-}
-
 resource "azurerm_container_app" "minio" {
   name                         = local.repos[var.gh_minio_repo]
   container_app_environment_id = azurerm_container_app_environment.this.id
@@ -162,4 +92,79 @@ resource "azurerm_container_app" "minio" {
   depends_on = [
     azurerm_role_assignment.minio_secrets
   ]
+}
+
+resource "azurerm_container_app" "this" {
+  name                         = var.name
+  container_app_environment_id = azurerm_container_app_environment.this.id
+  resource_group_name          = azurerm_resource_group.this.name
+  revision_mode                = "Single"
+
+  ingress {
+    external_enabled           = true
+    allow_insecure_connections = false
+    target_port                = 80
+    traffic_weight {
+      latest_revision = true
+      percentage      = 100
+    }
+  }
+
+  registry {
+    identity = azurerm_user_assigned_identity.this[var.gh_repo].id
+    server   = azurerm_container_registry.this.login_server
+  }
+
+  identity {
+    type         = "UserAssigned"
+    identity_ids = [azurerm_user_assigned_identity.this[var.gh_repo].id]
+  }
+
+  template {
+    container {
+      name   = var.name
+      image  = "${azurerm_container_registry.this.login_server}/${azurerm_container_registry_task.build_image[var.gh_repo].docker_step[0].image_names[0]}"
+      cpu    = 1
+      memory = "2Gi"
+
+      env {
+        name  = "IMAGES_URL_ROOT"
+        value = "https://${azurerm_container_app.minio.ingress[0].fqdn}/pictograms/pictograms/"
+      }
+    }
+    max_replicas = var.workload_profile_max
+    min_replicas = 1
+  }
+
+  workload_profile_name = local.workload_profile_name
+
+  depends_on = [
+    azurerm_container_registry_task_schedule_run_now.build_image,
+    azurerm_role_assignment.acr_pull
+  ]
+}
+
+# Patch Sticky sessions. This feature is still not available in the azurerm provider
+# https://github.com/hashicorp/terraform-provider-azurerm/issues/24757#issuecomment-2213170796
+resource "azapi_resource_action" "sticky_session" {
+  type        = "Microsoft.App/containerApps@2024-03-01"
+  resource_id = azurerm_container_app.this.id
+  method      = "PATCH"
+  body = {
+    properties = {
+      configuration = {
+        ingress = {
+          stickySessions = {
+            affinity = "sticky"
+          }
+        }
+      }
+    }
+  }
+
+  depends_on = [azurerm_container_app.this]
+}
+
+locals {
+  gh_username = split("/", var.gh_minio_repo)[3]
 }
