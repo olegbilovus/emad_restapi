@@ -1,6 +1,23 @@
-RestAPI for the EMAD course.
+# RestAPI for the EMAD course.
 
 It includes:
-  - A docker image
-  - A CI to build and push the image on ghrc
-  - IaC with OpenTofu for Azure to build and run the infrastructure
+
+- A docker image
+- A CI to build and push the image on ghrc
+- IaC with OpenTofu for Azure to build and run the infrastructure
+
+## How to run the infrastructure in local
+
+Install Git and Docker
+
+Copy and paste the following commands in your terminal. 
+You may need to press enter to run the commands amd press again enter to run the `docker compose up` command.
+```bash
+git clone https://github.com/olegbilovus/emad_restapi.git
+git clone https://github.com/olegbilovus/minio_pictograms.git
+cd minio_pictograms
+docker build -t minio_pictograms .
+cd ../emad_restapi
+docker build -t emad_restapi .
+docker compose up
+```

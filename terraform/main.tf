@@ -8,6 +8,11 @@ terraform {
       source  = "Azure/azapi"
       version = "2.0.0-beta"
     }
+
+    github = {
+      source  = "integrations/github"
+      version = "6.3.1"
+    }
   }
 }
 
@@ -18,6 +23,11 @@ provider "azurerm" {
 }
 
 provider "azapi" {
+}
+
+provider "github" {
+  token = var.gh_access_token
+  owner = local.gh_username
 }
 
 resource "random_string" "random_suffix" {
