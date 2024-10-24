@@ -1,29 +1,29 @@
 from enum import Enum
-from typing import Annotated, List
+from typing import List
 
 from pydantic import BaseModel, Field, HttpUrl
 
 
 class Language(str, Enum):
-    en = "en"
     it = "it"
 
 
-class Sentence(BaseModel):
+class ContentClassification(BaseModel):
+    sex: bool = Field(True, description="Sexual content")
+    violence: bool = Field(True, description="Violent content")
+
+
+class Sentence(ContentClassification):
     text: str
     language: Language
 
 
-class RestrictionFilter(BaseModel):
-    sex: bool
-    violence: bool
-
-
-class ImageURL(BaseModel):
-    url: HttpUrl
-    filter: RestrictionFilter
+class Image(BaseModel):
+    id: int
+    content_classification: ContentClassification
 
 
 class ImagesResult(BaseModel):
-    sentence_filter: RestrictionFilter
-    images: List[ImageURL]
+    text_classification: ContentClassification
+    url_root: HttpUrl
+    images: List[Image]
