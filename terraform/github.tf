@@ -2,7 +2,7 @@ resource "github_repository" "backend_url" {
   name                 = "${var.name}-backend-url"
   visibility           = "public"
   auto_init            = true
-  vulnerability_alerts = false
+  vulnerability_alerts = true
 
   pages {
     source {

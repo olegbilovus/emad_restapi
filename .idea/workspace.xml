@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6e25e480-9b62-4284-a8f6-704afbc49678" name="Changes" comment="removed MAX_IMAGES from compose.yaml">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/terraform/container_env.tf" beforeDir="false" afterPath="$PROJECT_DIR$/terraform/container_env.tf" afterDir="false" />
-    </list>
+    <list default="true" id="6e25e480-9b62-4284-a8f6-704afbc49678" name="Changes" comment="removed MAX_IMAGES from compose.yaml" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
