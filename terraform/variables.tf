@@ -8,7 +8,7 @@ variable "name" {
 }
 
 variable "location" {
-  default = "francecentral"
+  default = "westeurope"
 }
 
 variable "gh_repo" {
