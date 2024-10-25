@@ -14,7 +14,7 @@ Copy and paste the following commands in your terminal.
 
 You may need to press enter to run the commands amd press again enter to run the `docker compose up` command.
 
-**Wait till the container *mongodb_setup* exists.**
+**Wait till the container *mongodb_setup* exits.**
 
 ```bash
 git clone https://github.com/olegbilovus/emad_restapi.git
