@@ -41,3 +41,27 @@ variable "scale" {
     error_message = "Invalid min or max"
   }
 }
+
+variable "mongodb_pb_key" {
+  type      = string
+  sensitive = true
+}
+
+variable "mongodb_pv_key" {
+  type      = string
+  sensitive = true
+}
+
+variable "mongodb_project_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "mongodb_user_admin" {
+  type = object({
+    username = string
+    password = string
+  })
+
+  sensitive = true
+}

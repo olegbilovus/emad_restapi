@@ -13,6 +13,11 @@ terraform {
       source  = "integrations/github"
       version = "6.3.1"
     }
+
+    mongodbatlas = {
+      source  = "mongodb/mongodbatlas"
+      version = "1.21.3"
+    }
   }
 }
 
@@ -28,6 +33,11 @@ provider "azapi" {
 provider "github" {
   token = var.gh_access_token
   owner = local.gh_username
+}
+
+provider "mongodbatlas" {
+  public_key  = var.mongodb_pb_key
+  private_key = var.mongodb_pv_key
 }
 
 resource "random_string" "random_suffix" {
