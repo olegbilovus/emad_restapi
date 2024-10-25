@@ -8,7 +8,7 @@ variable "name" {
 }
 
 variable "location" {
-  default = "francecentral"
+  default = "westeurope"
 }
 
 variable "gh_repo" {
@@ -22,9 +22,46 @@ variable "gh_minio_repo" {
 variable "gh_access_token" {
   type      = string
   sensitive = true
-  default   = "At the time of writing, ghcr does not support fine-grained tokens. Only the classic ones"
+  default   = "At the time of writing, ghcr does not support fine-grained tokens to. Only the classic ones"
 }
 
-variable "workload_profile_max" {
-  default = 1
+variable "scale" {
+  type = object({
+    min = number,
+    max = number
+  })
+
+  default = {
+    min = 1
+    max = 1
+  }
+
+  validation {
+    condition     = var.scale.min <= var.scale.max && var.scale.min >= 0
+    error_message = "Invalid min or max"
+  }
+}
+
+variable "mongodb_pb_key" {
+  type      = string
+  sensitive = true
+}
+
+variable "mongodb_pv_key" {
+  type      = string
+  sensitive = true
+}
+
+variable "mongodb_project_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "mongodb_user_admin" {
+  type = object({
+    username = string
+    password = string
+  })
+
+  sensitive = true
 }

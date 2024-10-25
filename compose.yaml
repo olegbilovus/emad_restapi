@@ -14,3 +14,29 @@ services:
     container_name: minio_pictograms
     ports:
       - "9000:9000"
+
+  mongodb:
+    image: mongo
+    hostname: mongodb
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=377eb8ec01c85fa727c10c478f60c13f
+      - MONGO_INITDB_ROOT_PASSWORD=25d055a16b3d1a40d7a90e46bee02ef3
+      - MONGO_INITDB_DATABASE=pictograms
+
+  mongodb_setup:
+    image: python:3.12-slim
+    container_name: mongodb_setup
+    depends_on:
+      - mongodb
+    restart: "no"
+    volumes:
+      - ./terraform/mongodb_data:/mongodb_data
+    environment:
+      - MONGODB_URI=mongodb://377eb8ec01c85fa727c10c478f60c13f:25d055a16b3d1a40d7a90e46bee02ef3@mongodb:27017
+      - FILE_PATH=/mongodb_data/it.json
+    entrypoint: ["/bin/bash", "-c", "apt update && apt install sudo dos2unix -y && dos2unix /mongodb_data/python_venv.sh && bash /mongodb_data/python_venv.sh /mongodb_data/create.py"]
+
+  

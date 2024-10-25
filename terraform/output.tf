@@ -13,3 +13,7 @@ output "MINIO-PICTOGRAMS_FQDN" {
 output "GH-PAGES_URL" {
   value = github_repository.backend_url.pages[0].html_url
 }
+
+output "MONGO_DB-CONN_STR" {
+  value = local.mongodb_url
+}
