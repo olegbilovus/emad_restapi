@@ -15,5 +15,5 @@ output "GH-PAGES_URL" {
 }
 
 output "MONGO_DB-CONN_STR" {
-  value = mongodbatlas_advanced_cluster.this.connection_strings[0].standard_srv
+  value = local.mongodb_url
 }

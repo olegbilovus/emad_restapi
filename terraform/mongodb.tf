@@ -18,7 +18,7 @@ resource "mongodbatlas_advanced_cluster" "this" {
 }
 
 locals {
-  mongodb_url = mongodbatlas_advanced_cluster.this.connection_strings[0].standard_srv
+  mongodb_url = split("//", split(",", mongodbatlas_advanced_cluster.this.connection_strings[0].standard)[0])[1]
 }
 
 resource "mongodbatlas_project_ip_access_list" "anyone" {
@@ -49,10 +49,8 @@ resource "mongodbatlas_database_user" "admin" {
     command     = "bash python_venv.sh create.py"
     working_dir = "./mongodb_data"
     environment = {
-      MONGODB_URL      = local.mongodb_url
-      MONGODB_USERNAME = nonsensitive(var.mongodb_user_admin.username)
-      MONGODB_PWD      = nonsensitive(var.mongodb_user_admin.password)
-      FILE_PATH        = "./it.json"
+      MONGODB_URI = nonsensitive("mongodb://${var.mongodb_user_admin.username}:${var.mongodb_user_admin.password}@${local.mongodb_url}?tls=true")
+      FILE_PATH   = "./it.json"
     }
   }
 

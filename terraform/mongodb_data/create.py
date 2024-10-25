@@ -3,10 +3,7 @@ import os
 
 import pymongo
 
-MONGODB_URL = os.environ.get('MONGODB_URL')
-MONGODB_USERNAME = os.environ.get('MONGODB_USERNAME')
-MONGODB_PWD = os.environ.get('MONGODB_PWD')
-MONGODB_URI = f"mongodb+srv://{MONGODB_USERNAME}:{MONGODB_PWD}@{MONGODB_URL.split('//')[1]}?retryWrites=true&w=majority"
+MONGODB_URI = os.environ.get('MONGODB_URI')
 
 FILE_PATH = os.environ.get('FILE_PATH')
 DATABASE_NAME = 'pictograms'
