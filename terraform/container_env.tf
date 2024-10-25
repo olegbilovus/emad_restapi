@@ -83,8 +83,8 @@ resource "azurerm_container_app" "minio" {
       cpu    = 1
       memory = "2Gi"
     }
-    max_replicas = var.workload_profile_max
-    min_replicas = 1
+    min_replicas = var.scale.min
+    max_replicas = var.scale.max
   }
 
   workload_profile_name = local.workload_profile_name
@@ -132,8 +132,8 @@ resource "azurerm_container_app" "this" {
         value = "https://${azurerm_container_app.minio.ingress[0].fqdn}/pictograms/pictograms/"
       }
     }
-    max_replicas = var.workload_profile_max
-    min_replicas = 1
+    min_replicas = var.scale.min
+    max_replicas = var.scale.max
   }
 
   workload_profile_name = local.workload_profile_name
