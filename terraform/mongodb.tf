@@ -17,6 +17,10 @@ resource "mongodbatlas_advanced_cluster" "this" {
   }
 }
 
+locals {
+  mongodb_url = mongodbatlas_advanced_cluster.this.connection_strings[0].standard_srv
+}
+
 resource "mongodbatlas_project_ip_access_list" "anyone" {
   project_id = var.mongodb_project_id
   cidr_block = "0.0.0.0/0"
@@ -40,15 +44,21 @@ resource "mongodbatlas_database_user" "admin" {
   }
 
   provisioner "local-exec" {
-    command     = "bash script.sh"
+    when = create
+
+    command     = "bash python_venv.sh create.py"
     working_dir = "./mongodb_data"
     environment = {
-      MONGODB_URL      = mongodbatlas_advanced_cluster.this.connection_strings[0].standard_srv
-      MONGODB_USERNAME = var.mongodb_user_admin.username
-      MONGODB_PWD      = var.mongodb_user_admin.password
+      MONGODB_URL      = local.mongodb_url
+      MONGODB_USERNAME = nonsensitive(var.mongodb_user_admin.username)
+      MONGODB_PWD      = nonsensitive(var.mongodb_user_admin.password)
+      FILE_PATH        = "./it.json"
     }
-
-    when = create
   }
+
+  depends_on = [
+    mongodbatlas_project_ip_access_list.anyone,
+    mongodbatlas_advanced_cluster.this
+  ]
 }
 

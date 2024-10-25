@@ -5,8 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6e25e480-9b62-4284-a8f6-704afbc49678" name="Changes" comment="removed MAX_IMAGES from compose.yaml">
+      <change afterPath="$PROJECT_DIR$/terraform/mongodb_data/create.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/terraform/mongodb_data/python_venv.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/terraform/mongodb.tf" beforeDir="false" afterPath="$PROJECT_DIR$/terraform/mongodb.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/terraform/mongodb_data/data.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/terraform/mongodb_data/script.sh" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,8 +172,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "terraform-inject__envs",
-    "last_opened_file_path": "C:/Users/olgbl/Desktop/Unisa/EMAD/fastAPI/restApi/app",
+    "git-widget-placeholder": "terraform-mongodb",
+    "last_opened_file_path": "C:/Users/olgbl/Desktop/Unisa/EMAD/fastAPI/restApi/terraform/mongodb_data",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -181,6 +185,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\olgbl\Desktop\Unisa\EMAD\fastAPI\restApi\terraform\mongodb_data" />
       <recent name="C:\Users\olgbl\Desktop\Unisa\EMAD\fastAPI\restApi\app" />
       <recent name="C:\Users\olgbl\Desktop\Unisa\EMAD\fastAPI\restApi" />
     </key>
@@ -249,6 +254,7 @@
       <workItem from="1729704382342" duration="596000" />
       <workItem from="1729798280781" duration="287000" />
       <workItem from="1729798583048" duration="4040000" />
+      <workItem from="1729859746011" duration="4497000" />
     </task>
     <task id="LOCAL-00001" summary="get and post for images">
       <option name="closed" value="true" />
