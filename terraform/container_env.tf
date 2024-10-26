@@ -43,6 +43,72 @@ resource "azurerm_container_app_environment" "this" {
   }
 }
 
+locals {
+  gh_username = split("/", var.gh_minio_repo)[3]
+}
+
+
+resource "azurerm_container_app" "core" {
+  name                         = local.repos[var.gh_core_repo]
+  container_app_environment_id = azurerm_container_app_environment.this.id
+  resource_group_name          = azurerm_resource_group.this.name
+  revision_mode                = "Single"
+
+  ingress {
+    external_enabled           = false
+    allow_insecure_connections = true
+    target_port                = 80
+    traffic_weight {
+      latest_revision = true
+      percentage      = 100
+    }
+  }
+
+  registry {
+    identity = azurerm_user_assigned_identity.this[var.gh_core_repo].id
+    server   = azurerm_container_registry.this.login_server
+  }
+
+  identity {
+    type         = "UserAssigned"
+    identity_ids = [azurerm_user_assigned_identity.this[var.gh_core_repo].id]
+  }
+
+  template {
+    container {
+      name   = local.repos[var.gh_core_repo]
+      image  = "${azurerm_container_registry.this.login_server}/${azurerm_container_registry_task.build_image[var.gh_core_repo].docker_step[0].image_names[0]}"
+      cpu    = 1
+      memory = "2Gi"
+
+      env {
+        name  = "MONGODB_URI"
+        value = "mongodb://${var.mongodb_user_core.username}:${var.mongodb_user_core.password}@${local.mongodb_url}?tls=true"
+      }
+      env {
+        name  = "MONGODB_DATABASE"
+        value = "pictograms"
+      }
+      env {
+        name  = "MONGODB_COLLECTION"
+        value = "pictograms"
+      }
+    }
+    min_replicas = var.scale.min
+    max_replicas = var.scale.max
+  }
+
+  workload_profile_name = local.workload_profile_name
+
+  depends_on = [
+    azurerm_container_registry_task_schedule_run_now.build_image,
+    azurerm_role_assignment.acr_pull,
+    mongodbatlas_database_user.core,
+    mongodbatlas_project_ip_access_list.anyone,
+    mongodbatlas_advanced_cluster.this
+  ]
+}
+
 resource "azurerm_container_app" "minio" {
   name                         = local.repos[var.gh_minio_repo]
   container_app_environment_id = azurerm_container_app_environment.this.id
@@ -63,6 +129,7 @@ resource "azurerm_container_app" "minio" {
     type         = "UserAssigned"
     identity_ids = [azurerm_user_assigned_identity.this[var.gh_minio_repo].id]
   }
+
 
   registry {
     server               = "ghcr.io"
@@ -131,6 +198,10 @@ resource "azurerm_container_app" "this" {
         name  = "IMAGES_URL_ROOT"
         value = "https://${azurerm_container_app.minio.ingress[0].fqdn}/pictograms/pictograms/"
       }
+      env {
+        name  = "CORE_URL"
+        value = "https://${azurerm_container_app.core.ingress[0].fqdn}"
+      }
     }
     min_replicas = var.scale.min
     max_replicas = var.scale.max
@@ -140,7 +211,7 @@ resource "azurerm_container_app" "this" {
 
   depends_on = [
     azurerm_container_registry_task_schedule_run_now.build_image,
-    azurerm_role_assignment.acr_pull
+    azurerm_role_assignment.acr_pull,
   ]
 }
 
@@ -163,8 +234,4 @@ resource "azapi_resource_action" "sticky_session" {
   }
 
   depends_on = [azurerm_container_app.this]
-}
-
-locals {
-  gh_username = split("/", var.gh_minio_repo)[3]
 }

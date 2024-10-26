@@ -19,6 +19,10 @@ variable "gh_minio_repo" {
   type = string
 }
 
+variable "gh_core_repo" {
+  type = string
+}
+
 variable "gh_access_token" {
   type      = string
   sensitive = true
@@ -58,6 +62,15 @@ variable "mongodb_project_id" {
 }
 
 variable "mongodb_user_admin" {
+  type = object({
+    username = string
+    password = string
+  })
+
+  sensitive = true
+}
+
+variable "mongodb_user_core" {
   type = object({
     username = string
     password = string

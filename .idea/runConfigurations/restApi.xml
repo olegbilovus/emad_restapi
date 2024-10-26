@@ -6,9 +6,8 @@
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
     <envs>
-      <env name="ACCESS_TOKEN_EXPIRE_MINUTES" value="30" />
-      <env name="JWT_SECRET" value="620e30633eb3497d56ebdc1a1bc34b01c1649c9364e4894dacdd2f5a4504b71f" />
-      <env name="IMAGES_URL_ROOT" value="http://localhost:9000/pictograms/pictograms/" />
+      <env name="IMAGES_URL_ROOT" value="http://localhost:9000/pictograms/pictograms" />
+      <env name="CORE_URL" value="http://localhost:8081" />
     </envs>
     <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/Scripts/python.exe" />
     <option name="SDK_NAME" value="Python 3.12 (restApi)" />
