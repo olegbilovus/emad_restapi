@@ -39,4 +39,18 @@ services:
       - FILE_PATH=/mongodb_data/it.json
     entrypoint: ["/bin/bash", "-c", "apt update && apt install sudo dos2unix -y && dos2unix /mongodb_data/python_venv.sh && bash /mongodb_data/python_venv.sh /mongodb_data/create.py"]
 
+  emad_images:
+    image: emad_images
+    container_name: emad_images
+    ports:
+      - "8081:80"
+    environment:
+      - MONGODB_URI=mongodb://377eb8ec01c85fa727c10c478f60c13f:25d055a16b3d1a40d7a90e46bee02ef3@mongodb:27017
+      - MONGODB_DATABASE=pictograms
+      - MONGODB_COLLECTION=pictograms
+    depends_on:
+      - mongodb_setup
+      - mongodb
+
+
   

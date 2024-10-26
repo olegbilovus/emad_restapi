@@ -8,7 +8,6 @@ MONGODB_URI = os.environ.get('MONGODB_URI')
 FILE_PATH = os.environ.get('FILE_PATH')
 DATABASE_NAME = 'pictograms'
 COLLECTION_NAME = 'pictograms'
-INDEX_NAME = 'keywords.keyword_1'
 
 db = pymongo.MongoClient(MONGODB_URI)[DATABASE_NAME]
 
@@ -23,5 +22,6 @@ if not skip_data_insertion:
         db[COLLECTION_NAME].insert_many(jsonData)
     print('Data inserted successfully')
 
-db[COLLECTION_NAME].create_index([('keywords.keyword', pymongo.ASCENDING)], name=INDEX_NAME)
-print('Index created successfully')
+db[COLLECTION_NAME].create_index([('keywords.keyword', pymongo.ASCENDING)], name='keywords.keyword_1')
+db[COLLECTION_NAME].create_index([('keywords.plural', pymongo.ASCENDING)], name='keywords.plural_1')
+print('Indexes created successfully')
