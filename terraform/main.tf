@@ -54,6 +54,7 @@ locals {
   repos = {
     (var.gh_repo)       = replace(split("/", var.gh_repo)[4], "_", ""),
     (var.gh_minio_repo) = replace(split("/", var.gh_minio_repo)[4], "_", "")
+    (var.gh_core_repo)  = replace(split("/", var.gh_core_repo)[4], "_", "")
   }
 }
 

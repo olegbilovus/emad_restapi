@@ -60,3 +60,25 @@ resource "mongodbatlas_database_user" "admin" {
   ]
 }
 
+resource "mongodbatlas_database_user" "core" {
+  username           = var.mongodb_user_core.username
+  password           = var.mongodb_user_core.password
+  project_id         = var.mongodb_project_id
+  auth_database_name = "admin"
+
+  roles {
+    role_name     = "read"
+    database_name = "pictograms"
+  }
+
+  scopes {
+    name = mongodbatlas_advanced_cluster.this.name
+    type = "CLUSTER"
+  }
+
+  depends_on = [
+    mongodbatlas_project_ip_access_list.anyone,
+    mongodbatlas_advanced_cluster.this
+  ]
+}
+

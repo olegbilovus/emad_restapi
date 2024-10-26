@@ -6,6 +6,7 @@ services:
       - "8080:80"
     environment:
       - IMAGES_URL_ROOT=http://localhost:9000/pictograms/pictograms/
+      - CORE_URL=http://emad_images/
     depends_on:
       - minio_pictograms
 
@@ -51,6 +52,3 @@ services:
     depends_on:
       - mongodb_setup
       - mongodb
-
-
-  

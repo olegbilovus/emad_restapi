@@ -19,7 +19,7 @@ async def get_images(sentence: Annotated[Sentence, Query()]) -> ImagesResult:
     - **text**: the sentence for which to get images
     - **language**: the language of the sentence
     """
-    core_response = requests.get(f"{settings.core_url}/v1/nlp/images/", params=sentence.model_dump()).json()
+    core_response = requests.get(f"{settings.core_url}/v1/nlp/images/", params=sentence.model_dump(), timeout=3).json()
     images = [Image(**image) for image in core_response]
 
     text_classification = ContentClassification(sex=False, violence=False)
