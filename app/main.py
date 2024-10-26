@@ -14,8 +14,8 @@ app = FastAPI(docs_url="/", title="AAC API", version="1.0.0")
 async def get_images(sentence: Annotated[Sentence, Query()]) -> ImagesResult:
     """
     Get already existing images for a sentence
-    - **sex**: display sexual content
-    - **violence**: display violent content
+    - **sex**: filter out sexual content
+    - **violence**: filter out violent content
     - **text**: the sentence for which to get images
     - **language**: the language of the sentence
     """
