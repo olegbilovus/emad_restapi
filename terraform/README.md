@@ -58,7 +58,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_gh_access_token"></a> [gh\_access\_token](#input\_gh\_access\_token) | n/a | `string` | `"At the time of writing, ghcr does not support fine-grained tokens to. Only the classic ones"` | no |
+| <a name="input_gh_access_token"></a> [gh\_access\_token](#input\_gh\_access\_token) | At the time of writing, ghcr does not support fine-grained tokens to. Only the classic ones | `string` | n/a | yes |
 | <a name="input_gh_core_repo"></a> [gh\_core\_repo](#input\_gh\_core\_repo) | n/a | `string` | n/a | yes |
 | <a name="input_gh_minio_repo"></a> [gh\_minio\_repo](#input\_gh\_minio\_repo) | n/a | `string` | n/a | yes |
 | <a name="input_gh_repo"></a> [gh\_repo](#input\_gh\_repo) | n/a | `string` | n/a | yes |
