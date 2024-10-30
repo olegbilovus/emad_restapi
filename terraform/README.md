@@ -15,7 +15,6 @@
 | <a name="provider_azapi"></a> [azapi](#provider\_azapi) | 2.0.1 |
 | <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 4.7.0 |
 | <a name="provider_github"></a> [github](#provider\_github) | 6.3.1 |
-| <a name="provider_http"></a> [http](#provider\_http) | n/a |
 | <a name="provider_mongodbatlas"></a> [mongodbatlas](#provider\_mongodbatlas) | 1.21.4 |
 | <a name="provider_random"></a> [random](#provider\_random) | n/a |
 
@@ -33,8 +32,10 @@ No modules.
 | [azurerm_container_app.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/container_app) | resource |
 | [azurerm_container_app_environment.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/container_app_environment) | resource |
 | [azurerm_container_registry.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/container_registry) | resource |
-| [azurerm_container_registry_task.build_image](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/container_registry_task) | resource |
-| [azurerm_container_registry_task_schedule_run_now.build_image](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/container_registry_task_schedule_run_now) | resource |
+| [azurerm_container_registry_task.core](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/container_registry_task) | resource |
+| [azurerm_container_registry_task.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/container_registry_task) | resource |
+| [azurerm_container_registry_task_schedule_run_now.core](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/container_registry_task_schedule_run_now) | resource |
+| [azurerm_container_registry_task_schedule_run_now.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/container_registry_task_schedule_run_now) | resource |
 | [azurerm_key_vault.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/key_vault) | resource |
 | [azurerm_key_vault_secret.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/key_vault_secret) | resource |
 | [azurerm_resource_group.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/resource_group) | resource |
@@ -52,7 +53,6 @@ No modules.
 | [mongodbatlas_project_ip_access_list.anyone](https://registry.terraform.io/providers/mongodb/mongodbatlas/1.21.4/docs/resources/project_ip_access_list) | resource |
 | [random_string.random_suffix](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
 | [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/data-sources/client_config) | data source |
-| [http_http.myip](https://registry.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) | data source |
 
 ## Inputs
 
