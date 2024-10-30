@@ -50,7 +50,7 @@ resource "mongodbatlas_database_user" "admin" {
     working_dir = "./mongodb_data"
     environment = {
       MONGODB_URI = nonsensitive("mongodb://${var.mongodb_user_admin.username}:${var.mongodb_user_admin.password}@${local.mongodb_url}?tls=true")
-      FILE_PATH   = "./it.json"
+      JSONS_DIR   = "jsons"
     }
   }
 
