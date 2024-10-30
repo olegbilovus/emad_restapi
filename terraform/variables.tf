@@ -24,9 +24,9 @@ variable "gh_core_repo" {
 }
 
 variable "gh_access_token" {
-  type      = string
-  sensitive = true
-  description   = "At the time of writing, ghcr does not support fine-grained tokens to. Only the classic ones"
+  type        = string
+  sensitive   = true
+  description = "At the time of writing, ghcr does not support fine-grained tokens to. Only the classic ones"
 }
 
 variable "scale" {

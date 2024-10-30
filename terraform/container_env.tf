@@ -49,7 +49,9 @@ locals {
 
 
 resource "azurerm_container_app" "core" {
-  name                         = local.repos[var.gh_core_repo]
+  for_each = azurerm_container_registry_task.core
+
+  name                         = "core${each.key}"
   container_app_environment_id = azurerm_container_app_environment.this.id
   resource_group_name          = azurerm_resource_group.this.name
   revision_mode                = "Single"
@@ -76,8 +78,8 @@ resource "azurerm_container_app" "core" {
 
   template {
     container {
-      name   = local.repos[var.gh_core_repo]
-      image  = "${azurerm_container_registry.this.login_server}/${azurerm_container_registry_task.build_image[var.gh_core_repo].docker_step[0].image_names[0]}"
+      name   = "core${each.key}"
+      image  = "${azurerm_container_registry.this.login_server}/${each.value.docker_step[0].image_names[0]}"
       cpu    = 1
       memory = "2Gi"
 
@@ -93,6 +95,14 @@ resource "azurerm_container_app" "core" {
         name  = "MONGODB_COLLECTION"
         value = "pictograms"
       }
+      env {
+        name  = "JSON_FILE"
+        value = "jsons/${each.key}.json"
+      }
+      env {
+        name  = "LANGUAGE"
+        value = each.key
+      }
     }
     min_replicas = var.scale.min
     max_replicas = var.scale.max
@@ -101,8 +111,9 @@ resource "azurerm_container_app" "core" {
   workload_profile_name = local.workload_profile_name
 
   depends_on = [
-    azurerm_container_registry_task_schedule_run_now.build_image,
+    azurerm_container_registry_task_schedule_run_now.core,
     azurerm_role_assignment.acr_pull,
+    mongodbatlas_database_user.admin,
     mongodbatlas_database_user.core,
     mongodbatlas_project_ip_access_list.anyone,
     mongodbatlas_advanced_cluster.this
@@ -190,7 +201,7 @@ resource "azurerm_container_app" "this" {
   template {
     container {
       name   = var.name
-      image  = "${azurerm_container_registry.this.login_server}/${azurerm_container_registry_task.build_image[var.gh_repo].docker_step[0].image_names[0]}"
+      image  = "${azurerm_container_registry.this.login_server}/${azurerm_container_registry_task.this.docker_step[0].image_names[0]}"
       cpu    = 1
       memory = "2Gi"
 
@@ -199,8 +210,12 @@ resource "azurerm_container_app" "this" {
         value = "https://${azurerm_container_app.minio.ingress[0].fqdn}/pictograms/pictograms/"
       }
       env {
-        name  = "CORE_URL"
-        value = "https://${azurerm_container_app.core.ingress[0].fqdn}"
+        name  = "CORE_URL_IT"
+        value = "https://${azurerm_container_app.core["it"].ingress[0].fqdn}"
+      }
+      env {
+        name  = "CORE_URL_EN"
+        value = "https://${azurerm_container_app.core["en"].ingress[0].fqdn}"
       }
     }
     min_replicas = var.scale.min
@@ -210,7 +225,7 @@ resource "azurerm_container_app" "this" {
   workload_profile_name = local.workload_profile_name
 
   depends_on = [
-    azurerm_container_registry_task_schedule_run_now.build_image,
+    azurerm_container_registry_task_schedule_run_now.this,
     azurerm_role_assignment.acr_pull,
   ]
 }

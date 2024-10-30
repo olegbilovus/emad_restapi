@@ -1,9 +1,5 @@
 data "azurerm_client_config" "current" {}
 
-data "http" "myip" {
-  url = "https://api.ipify.org/?format=text"
-}
-
 resource "azurerm_key_vault" "this" {
   name                       = "${var.name}-${local.rnd_str}-vault"
   location                   = var.location
@@ -16,9 +12,8 @@ resource "azurerm_key_vault" "this" {
 
   network_acls {
     bypass                     = "AzureServices"
-    default_action             = "Deny"
+    default_action             = "Allow"
     virtual_network_subnet_ids = [azurerm_subnet.container.id]
-    ip_rules                   = ["${chomp(data.http.myip.response_body)}/32"]
   }
 }
 
