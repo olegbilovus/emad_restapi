@@ -6,7 +6,8 @@ services:
       - "8080:80"
     environment:
       - IMAGES_URL_ROOT=http://localhost:9000/pictograms/pictograms/
-      - CORE_URL=http://emad_images/
+      - CORE_URL_IT=http://emad_images-it/
+      - CORE_URL_EN=http://emad_images-en/
     depends_on:
       - minio_pictograms
 
@@ -37,18 +38,35 @@ services:
       - ./terraform/mongodb_data:/mongodb_data
     environment:
       - MONGODB_URI=mongodb://377eb8ec01c85fa727c10c478f60c13f:25d055a16b3d1a40d7a90e46bee02ef3@mongodb:27017
-      - FILE_PATH=/mongodb_data/it.json
-    entrypoint: ["/bin/bash", "-c", "apt update && apt install sudo dos2unix -y && dos2unix /mongodb_data/python_venv.sh && bash /mongodb_data/python_venv.sh /mongodb_data/create.py"]
+      - JSONS_DIR=/mongodb_data/jsons
+    entrypoint: [ "/bin/bash", "-c", "apt update && apt install sudo dos2unix -y && dos2unix /mongodb_data/python_venv.sh && bash /mongodb_data/python_venv.sh /mongodb_data/create.py" ]
 
-  emad_images:
-    image: emad_images
-    container_name: emad_images
+  emad_images-it:
+    image: emad_images-it
+    container_name: emad_images-it
     ports:
       - "8081:80"
     environment:
       - MONGODB_URI=mongodb://377eb8ec01c85fa727c10c478f60c13f:25d055a16b3d1a40d7a90e46bee02ef3@mongodb:27017
       - MONGODB_DATABASE=pictograms
       - MONGODB_COLLECTION=pictograms
+      - JSON_FILE=jsons/it.json
+      - LANGUAGE=it
+    depends_on:
+      - mongodb_setup
+      - mongodb
+
+  emad_images-en:
+    image: emad_images-en
+    container_name: emad_images-en
+    ports:
+      - "8082:80"
+    environment:
+      - MONGODB_URI=mongodb://377eb8ec01c85fa727c10c478f60c13f:25d055a16b3d1a40d7a90e46bee02ef3@mongodb:27017
+      - MONGODB_DATABASE=pictograms
+      - MONGODB_COLLECTION=pictograms
+      - JSON_FILE=jsons/en.json
+      - LANGUAGE=en
     depends_on:
       - mongodb_setup
       - mongodb

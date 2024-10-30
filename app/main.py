@@ -3,7 +3,7 @@ from typing import Annotated
 import requests
 from fastapi import FastAPI, Query
 
-from app.config import settings
+from app.config import settings, CORE_URLS
 from app.constants import Tags
 from app.models.images import Sentence, ImagesResult, ContentClassification, Image
 
@@ -19,7 +19,8 @@ async def get_images(sentence: Annotated[Sentence, Query()]) -> ImagesResult:
     - **text**: the sentence for which to get images
     - **language**: the language of the sentence
     """
-    core_response = requests.get(f"{settings.core_url}/v1/nlp/images/", params=sentence.model_dump(), timeout=3).json()
+
+    core_response = requests.get(CORE_URLS[sentence.language.name], params=sentence.model_dump(), timeout=3).json()
     images = [Image(**image) for image in core_response]
 
     text_classification = ContentClassification(sex=False, violence=False)

@@ -6,6 +6,7 @@ from pydantic import BaseModel, Field, HttpUrl
 
 class Language(str, Enum):
     it = "it"
+    en = "en"
 
 
 class ContentClassification(BaseModel):
