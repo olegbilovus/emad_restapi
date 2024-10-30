@@ -3,20 +3,20 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_azapi"></a> [azapi](#requirement\_azapi) | 2.0.0-beta |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | 4.6.0 |
+| <a name="requirement_azapi"></a> [azapi](#requirement\_azapi) | 2.0.1 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | 4.7.0 |
 | <a name="requirement_github"></a> [github](#requirement\_github) | 6.3.1 |
-| <a name="requirement_mongodbatlas"></a> [mongodbatlas](#requirement\_mongodbatlas) | 1.21.3 |
+| <a name="requirement_mongodbatlas"></a> [mongodbatlas](#requirement\_mongodbatlas) | 1.21.4 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azapi"></a> [azapi](#provider\_azapi) | 2.0.0-beta |
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 4.6.0 |
+| <a name="provider_azapi"></a> [azapi](#provider\_azapi) | 2.0.1 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 4.7.0 |
 | <a name="provider_github"></a> [github](#provider\_github) | 6.3.1 |
 | <a name="provider_http"></a> [http](#provider\_http) | n/a |
-| <a name="provider_mongodbatlas"></a> [mongodbatlas](#provider\_mongodbatlas) | 1.21.3 |
+| <a name="provider_mongodbatlas"></a> [mongodbatlas](#provider\_mongodbatlas) | 1.21.4 |
 | <a name="provider_random"></a> [random](#provider\_random) | n/a |
 
 ## Modules
@@ -27,31 +27,31 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [azapi_resource_action.sticky_session](https://registry.terraform.io/providers/Azure/azapi/2.0.0-beta/docs/resources/resource_action) | resource |
-| [azurerm_container_app.core](https://registry.terraform.io/providers/hashicorp/azurerm/4.6.0/docs/resources/container_app) | resource |
-| [azurerm_container_app.minio](https://registry.terraform.io/providers/hashicorp/azurerm/4.6.0/docs/resources/container_app) | resource |
-| [azurerm_container_app.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.6.0/docs/resources/container_app) | resource |
-| [azurerm_container_app_environment.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.6.0/docs/resources/container_app_environment) | resource |
-| [azurerm_container_registry.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.6.0/docs/resources/container_registry) | resource |
-| [azurerm_container_registry_task.build_image](https://registry.terraform.io/providers/hashicorp/azurerm/4.6.0/docs/resources/container_registry_task) | resource |
-| [azurerm_container_registry_task_schedule_run_now.build_image](https://registry.terraform.io/providers/hashicorp/azurerm/4.6.0/docs/resources/container_registry_task_schedule_run_now) | resource |
-| [azurerm_key_vault.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.6.0/docs/resources/key_vault) | resource |
-| [azurerm_key_vault_secret.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.6.0/docs/resources/key_vault_secret) | resource |
-| [azurerm_resource_group.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.6.0/docs/resources/resource_group) | resource |
-| [azurerm_role_assignment.acr_pull](https://registry.terraform.io/providers/hashicorp/azurerm/4.6.0/docs/resources/role_assignment) | resource |
-| [azurerm_role_assignment.me](https://registry.terraform.io/providers/hashicorp/azurerm/4.6.0/docs/resources/role_assignment) | resource |
-| [azurerm_role_assignment.minio_secrets](https://registry.terraform.io/providers/hashicorp/azurerm/4.6.0/docs/resources/role_assignment) | resource |
-| [azurerm_subnet.container](https://registry.terraform.io/providers/hashicorp/azurerm/4.6.0/docs/resources/subnet) | resource |
-| [azurerm_user_assigned_identity.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.6.0/docs/resources/user_assigned_identity) | resource |
-| [azurerm_virtual_network.container_env](https://registry.terraform.io/providers/hashicorp/azurerm/4.6.0/docs/resources/virtual_network) | resource |
+| [azapi_resource_action.sticky_session](https://registry.terraform.io/providers/Azure/azapi/2.0.1/docs/resources/resource_action) | resource |
+| [azurerm_container_app.core](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/container_app) | resource |
+| [azurerm_container_app.minio](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/container_app) | resource |
+| [azurerm_container_app.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/container_app) | resource |
+| [azurerm_container_app_environment.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/container_app_environment) | resource |
+| [azurerm_container_registry.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/container_registry) | resource |
+| [azurerm_container_registry_task.build_image](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/container_registry_task) | resource |
+| [azurerm_container_registry_task_schedule_run_now.build_image](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/container_registry_task_schedule_run_now) | resource |
+| [azurerm_key_vault.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/key_vault) | resource |
+| [azurerm_key_vault_secret.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/key_vault_secret) | resource |
+| [azurerm_resource_group.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/resource_group) | resource |
+| [azurerm_role_assignment.acr_pull](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/role_assignment) | resource |
+| [azurerm_role_assignment.me](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/role_assignment) | resource |
+| [azurerm_role_assignment.minio_secrets](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/role_assignment) | resource |
+| [azurerm_subnet.container](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/subnet) | resource |
+| [azurerm_user_assigned_identity.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/user_assigned_identity) | resource |
+| [azurerm_virtual_network.container_env](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/virtual_network) | resource |
 | [github_repository.backend_url](https://registry.terraform.io/providers/integrations/github/6.3.1/docs/resources/repository) | resource |
 | [github_repository_file.backend_url](https://registry.terraform.io/providers/integrations/github/6.3.1/docs/resources/repository_file) | resource |
-| [mongodbatlas_advanced_cluster.this](https://registry.terraform.io/providers/mongodb/mongodbatlas/1.21.3/docs/resources/advanced_cluster) | resource |
-| [mongodbatlas_database_user.admin](https://registry.terraform.io/providers/mongodb/mongodbatlas/1.21.3/docs/resources/database_user) | resource |
-| [mongodbatlas_database_user.core](https://registry.terraform.io/providers/mongodb/mongodbatlas/1.21.3/docs/resources/database_user) | resource |
-| [mongodbatlas_project_ip_access_list.anyone](https://registry.terraform.io/providers/mongodb/mongodbatlas/1.21.3/docs/resources/project_ip_access_list) | resource |
+| [mongodbatlas_advanced_cluster.this](https://registry.terraform.io/providers/mongodb/mongodbatlas/1.21.4/docs/resources/advanced_cluster) | resource |
+| [mongodbatlas_database_user.admin](https://registry.terraform.io/providers/mongodb/mongodbatlas/1.21.4/docs/resources/database_user) | resource |
+| [mongodbatlas_database_user.core](https://registry.terraform.io/providers/mongodb/mongodbatlas/1.21.4/docs/resources/database_user) | resource |
+| [mongodbatlas_project_ip_access_list.anyone](https://registry.terraform.io/providers/mongodb/mongodbatlas/1.21.4/docs/resources/project_ip_access_list) | resource |
 | [random_string.random_suffix](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
-| [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/4.6.0/docs/data-sources/client_config) | data source |
+| [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/data-sources/client_config) | data source |
 | [http_http.myip](https://registry.terraform.io/providers/hashicorp/http/latest/docs/data-sources/http) | data source |
 
 ## Inputs
