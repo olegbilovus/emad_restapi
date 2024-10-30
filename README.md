@@ -23,7 +23,8 @@ git clone https://github.com/olegbilovus/emad_images.git
 cd minio_pictograms
 docker build -t minio_pictograms .
 cd ../emad_images
-docker build -t emad_images .
+docker build -t emad_images-en --build-arg SPACY_MODEL="en_core_web_lg" .
+docker build -t emad_images-it --build-arg SPACY_MODEL="it_core_news_lg" .
 cd ../emad_restapi
 docker build -t emad_restapi .
 docker compose up
