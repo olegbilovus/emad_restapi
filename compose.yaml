@@ -31,7 +31,7 @@ services:
       - MONGO_INITDB_DATABASE=pictograms
 
   mongodb_setup:
-    image: python:3.12-slim
+    image: python:3.13-slim
     container_name: mongodb_setup
     depends_on:
       - mongodb
