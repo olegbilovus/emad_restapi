@@ -225,6 +225,10 @@ resource "azurerm_container_app" "this" {
         name  = "DALLE3_APIKEY"
         value = azurerm_cognitive_account.openai.primary_access_key
       }
+      env {
+        name  = "CLIENT_APIKEY"
+        value = var.client_apikey
+      }
     }
     min_replicas = var.scale.min
     max_replicas = var.scale.max

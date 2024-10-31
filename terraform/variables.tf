@@ -82,3 +82,8 @@ variable "mongodb_user_core" {
 variable "dalle3_location" {
   default = "swedencentral"
 }
+
+variable "client_apikey" {
+  type      = string
+  sensitive = true
+}
