@@ -2,9 +2,10 @@
 
 It includes:
 
-- A docker image
-- A CI to build and push the image on ghrc
-- IaC with Terraform for Azure to build and run the infrastructure
+- A docker image.
+- A CI to build and push the image on ghrc.
+- IaC with Terraform to build and run the infrastructure on cloud. 
+  - A view of the used providers and resources can be found [here](./terraform/README.md)
 
 ## How to run the infrastructure in local
 

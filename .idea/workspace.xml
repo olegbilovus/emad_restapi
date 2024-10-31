@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83b467c2-f69f-47d3-a286-dfcbc4875cbd" name="Changes" comment="added client apikey env to compose">
-      <change beforePath="$PROJECT_DIR$/terraform/container_env.tf" beforeDir="false" afterPath="$PROJECT_DIR$/terraform/container_env.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/terraform/dalle3.tf" beforeDir="false" afterPath="$PROJECT_DIR$/terraform/dalle3.tf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/terraform/mongodb.tf" beforeDir="false" afterPath="$PROJECT_DIR$/terraform/mongodb.tf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,7 +25,8 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "git-widget-placeholder": "terraform-dalle3"
+    "git-widget-placeholder": "terraform-dalle3",
+    "node.js.selected.package.tslint": "(autodetect)"
   }
 }]]></component>
   <component name="RunManager" selected="FastAPI.restApi">
