@@ -2,7 +2,10 @@ from typing import Annotated
 
 import requests
 from fastapi import FastAPI, Query
+from fastapi.openapi.models import APIKey
+from fastapi.params import Depends
 
+from app.auth import get_api_key_client
 from app.config import settings, CORE_URLS
 from app.constants import Tags
 from app.models.genai import Dalle3Image
@@ -36,7 +39,7 @@ async def get_images(sentence: Annotated[Sentence, Query()]) -> ImagesResult:
 
 if settings.dalle3.valid:
     @app.get("/v1/genai/dalle3/images/", tags=[Tags.images], summary="Get images from GenAI")
-    async def get_images_genai(text: str) -> Dalle3Image:
+    async def get_images_genai(text: str, api_key: APIKey = Depends(get_api_key_client)) -> Dalle3Image:
         """
         Get images for a sentence from GenAI
         - **text**: the sentence for which to get image
