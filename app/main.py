@@ -39,7 +39,7 @@ if settings.dalle3.valid:
     async def get_images_genai(text: str) -> Dalle3Image:
         """
         Get images for a sentence from GenAI
-        - **text**: the sentence for which to get images
+        - **text**: the sentence for which to get image
         """
 
         dalle3_response = requests.post(
