@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6e25e480-9b62-4284-a8f6-704afbc49678" name="Changes" comment="support the en language. Any lang can be supported, need to config the config.py" />
+    <list default="true" id="6e25e480-9b62-4284-a8f6-704afbc49678" name="Changes" comment="fix typo">
+      <change beforePath="$PROJECT_DIR$/compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/compose.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="any-lang" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -165,6 +167,21 @@
               </option>
               <option name="timestamp" value="1730306280919" />
             </BranchCleanupEntry>
+            <BranchCleanupEntry>
+              <option name="deletions">
+                <list>
+                  <BranchDeletion>
+                    <option name="hash" value="13b5ce58d9d3f569b160d3e98efc013f3a44e700" />
+                    <option name="name" value="terraform-ant_lang" />
+                  </BranchDeletion>
+                  <BranchDeletion>
+                    <option name="hash" value="2ef9eea07da9d905e228f74f13701e917da5098a" />
+                    <option name="name" value="pycharm-runconfig" />
+                  </BranchDeletion>
+                </list>
+              </option>
+              <option name="timestamp" value="1730315440674" />
+            </BranchCleanupEntry>
           </list>
         </option>
       </BranchesCleanupHistory>
@@ -177,12 +194,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1730306271" />
+                    <option name="branchName" value="api-genai" />
+                    <option name="lastUsedInstant" value="1730365683" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="any-lang" />
-                    <option name="lastUsedInstant" value="1730298269" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1730306271" />
                   </RecentBranch>
                 </list>
               </option>
@@ -221,12 +238,13 @@
     "Docker.Dockerfile.executor": "Run",
     "Docker.compose.yaml.mongodb_setup: Compose Deployment.executor": "Run",
     "FastAPI.restApi.executor": "Debug",
+    "FastAPI.restApi_dalle3.executor": "Run",
     "Python.create.executor": "Run",
     "Python.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "api-genai",
     "last_opened_file_path": "C:/Users/olgbl/Desktop/Unisa/EMAD/fastAPI/restApi/terraform/mongodb_data/jsons",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -252,7 +270,30 @@
       <recent name="C:\Users\olgbl\Desktop\Unisa\EMAD\fastAPI\restApi\app" />
     </key>
   </component>
-  <component name="RunManager" selected="FastAPI.restApi">
+  <component name="RunManager" selected="FastAPI.restApi_dalle3">
+    <configuration name="restApi_dalle3" type="Python.FastAPI">
+      <option name="file" value="$PROJECT_DIR$/app/main.py" />
+      <module name="restApi" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="CORE_URL_EN" value="http://localhost:8082" />
+        <env name="CORE_URL_IT" value="http://localhost:8081" />
+        <env name="DALLE3_APIKEY" value="52JjZb1rSXcHk1rTt31oK3pdiYhb2UM8wBmWb74WhjDfdsfZ3s3tJQQJ99AJACfhMk5XJ3w3AAABACOGBgPA" />
+        <env name="DALLE3_ENDPOINT" value="https://obil-m2x4sjt0-swedencentral.openai.azure.com/openai/deployments/dall-e-3/images/generations?api-version=2024-06-01" />
+        <env name="IMAGES_URL_ROOT" value="http://localhost:9000/pictograms/pictograms" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/Scripts/python.exe" />
+      <option name="SDK_NAME" value="Python 3.12 (restApi)" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <method v="2" />
+    </configuration>
     <configuration name="Dockerfile" type="docker-deploy" factoryName="dockerfile" temporary="true" server-name="Docker">
       <deployment type="dockerfile">
         <settings>
@@ -263,7 +304,9 @@
       <method v="2" />
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
-      <deployment type="docker-compose.yml" />
+      <deployment type="docker-compose.yml">
+        <settings />
+      </deployment>
       <method v="2" />
     </configuration>
     <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
@@ -286,15 +329,15 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Docker.compose.yaml.mongodb_setup: Compose Deployment" />
       <item itemvalue="Docker.Dockerfile" />
+      <item itemvalue="Docker.compose.yaml.mongodb_setup: Compose Deployment" />
       <item itemvalue="FastAPI.restApi" />
+      <item itemvalue="FastAPI.restApi_dalle3" />
       <item itemvalue="Python.create" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Docker.compose.yaml.mongodb_setup: Compose Deployment" />
-        <item itemvalue="Python.create" />
         <item itemvalue="Docker.Dockerfile" />
         <item itemvalue="Docker.Dockerfile" />
         <item itemvalue="Docker.Dockerfile" />
@@ -337,6 +380,8 @@
       <workItem from="1729947190328" duration="1944000" />
       <workItem from="1730282878137" duration="9000" />
       <workItem from="1730298252976" duration="6850000" />
+      <workItem from="1730315424154" duration="26000" />
+      <workItem from="1730365622005" duration="4518000" />
     </task>
     <task id="LOCAL-00001" summary="get and post for images">
       <option name="closed" value="true" />
@@ -594,7 +639,23 @@
       <option name="project" value="LOCAL" />
       <updated>1730306055363</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="added endpoint for the genai with dalle3">
+      <option name="closed" value="true" />
+      <created>1730369975170</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1730369975170</updated>
+    </task>
+    <task id="LOCAL-00034" summary="fix typo">
+      <option name="closed" value="true" />
+      <created>1730370011946</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1730370011946</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -602,7 +663,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="RELOAD_CONTEXT" value="false" />
-    <MESSAGE value="fix" />
     <MESSAGE value="removed empty continuation line" />
     <MESSAGE value="fix tags" />
     <MESSAGE value="tigger push only on main" />
@@ -622,16 +682,18 @@
     <MESSAGE value="redefined the api to better fit the specs. Renamed some field." />
     <MESSAGE value="create the database, indexes and upload the data." />
     <MESSAGE value="refactored to make it work both on cloud and local. For the cloud, if there are connection issues, use a VPN. With Cloudflare Warp it works." />
-    <MESSAGE value="fix typo" />
     <MESSAGE value="added logic to connect to the core" />
     <MESSAGE value="fixed wrong description" />
     <MESSAGE value="populate the mongodb with all the available json files. Removed unused fields" />
     <MESSAGE value="support the en language. Any lang can be supported, need to config the config.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="support the en language. Any lang can be supported, need to config the config.py" />
+    <MESSAGE value="added endpoint for the genai with dalle3" />
+    <MESSAGE value="fix typo" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix typo" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/restApi$main.coverage" NAME="main Coverage Results" MODIFIED="1729178875156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/restApi$create.coverage" NAME="create Coverage Results" MODIFIED="1730301311347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/terraform/mongodb_data" />
-    <SUITE FILE_PATH="coverage/restApi$restApi.coverage" NAME="restApi Coverage Results" MODIFIED="1730305793589" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/restApi$restApi.coverage" NAME="restApi Coverage Results" MODIFIED="1730368893759" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/restApi$restApi_dalle3.coverage" NAME="restApi_dalle3 Coverage Results" MODIFIED="1730369876852" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
   </component>
 </project>

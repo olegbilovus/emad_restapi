@@ -8,6 +8,8 @@ services:
       - IMAGES_URL_ROOT=http://localhost:9000/pictograms/pictograms/
       - CORE_URL_IT=http://emad_images-it/
       - CORE_URL_EN=http://emad_images-en/
+      - DALLE3_ENDPOINT=https://example.home.arpa # change with the correct endpoint
+      - DALLE3_APIKEY= # change with the correct api key
     depends_on:
       - minio_pictograms
 
