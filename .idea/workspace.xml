@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6e25e480-9b62-4284-a8f6-704afbc49678" name="Changes" comment="fix typo">
-      <change beforePath="$PROJECT_DIR$/compose.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/compose.yaml" afterDir="false" />
-    </list>
+    <list default="true" id="6e25e480-9b62-4284-a8f6-704afbc49678" name="Changes" comment="added dalle3 envs to compose.yaml" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="api-genai" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -182,6 +180,17 @@
               </option>
               <option name="timestamp" value="1730315440674" />
             </BranchCleanupEntry>
+            <BranchCleanupEntry>
+              <option name="deletions">
+                <list>
+                  <BranchDeletion>
+                    <option name="hash" value="176c0f765e49423ea54eda5b61737bfedd27d940" />
+                    <option name="name" value="api-genai" />
+                  </BranchDeletion>
+                </list>
+              </option>
+              <option name="timestamp" value="1730370590977" />
+            </BranchCleanupEntry>
           </list>
         </option>
       </BranchesCleanupHistory>
@@ -194,12 +203,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="api-genai" />
-                    <option name="lastUsedInstant" value="1730365683" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1730370582" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1730306271" />
+                    <option name="branchName" value="api-genai" />
+                    <option name="lastUsedInstant" value="1730365683" />
                   </RecentBranch>
                 </list>
               </option>
@@ -244,7 +253,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "api-genai",
+    "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/Users/olgbl/Desktop/Unisa/EMAD/fastAPI/restApi/terraform/mongodb_data/jsons",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -381,7 +390,7 @@
       <workItem from="1730282878137" duration="9000" />
       <workItem from="1730298252976" duration="6850000" />
       <workItem from="1730315424154" duration="26000" />
-      <workItem from="1730365622005" duration="4518000" />
+      <workItem from="1730365622005" duration="4941000" />
     </task>
     <task id="LOCAL-00001" summary="get and post for images">
       <option name="closed" value="true" />
@@ -655,7 +664,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730370011946</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="added dalle3 envs to compose.yaml">
+      <option name="closed" value="true" />
+      <created>1730370323924</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1730370323924</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -663,7 +680,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="RELOAD_CONTEXT" value="false" />
-    <MESSAGE value="removed empty continuation line" />
     <MESSAGE value="fix tags" />
     <MESSAGE value="tigger push only on main" />
     <MESSAGE value="removed pull request trigger" />
@@ -688,7 +704,8 @@
     <MESSAGE value="support the en language. Any lang can be supported, need to config the config.py" />
     <MESSAGE value="added endpoint for the genai with dalle3" />
     <MESSAGE value="fix typo" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix typo" />
+    <MESSAGE value="added dalle3 envs to compose.yaml" />
+    <option name="LAST_COMMIT_MESSAGE" value="added dalle3 envs to compose.yaml" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/restApi$main.coverage" NAME="main Coverage Results" MODIFIED="1729178875156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />

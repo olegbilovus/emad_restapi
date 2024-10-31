@@ -78,3 +78,7 @@ variable "mongodb_user_core" {
 
   sensitive = true
 }
+
+variable "dalle3_location" {
+  default = "swedencentral"
+}
