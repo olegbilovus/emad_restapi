@@ -5,6 +5,7 @@ from pydantic_settings import BaseSettings
 class Dalle3GenAISettings(BaseSettings):
     dalle3_endpoint: HttpUrl = HttpUrl("https://example.home.arpa")
     dalle3_apikey: str = ""
+    client_apikey: str = ""  # This is the API key for the client
     valid: bool = False
 
 
@@ -23,4 +24,5 @@ CORE_URLS = {
 }
 
 settings.dalle3.valid = (settings.dalle3.dalle3_endpoint != "https://example.home.arpa" and
-                         settings.dalle3.dalle3_apikey != "")
+                         settings.dalle3.dalle3_apikey != "" and
+                         settings.dalle3.client_apikey != "")
