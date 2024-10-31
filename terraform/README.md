@@ -26,7 +26,10 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [azapi_resource.content_filter](https://registry.terraform.io/providers/Azure/azapi/2.0.1/docs/resources/resource) | resource |
 | [azapi_resource_action.sticky_session](https://registry.terraform.io/providers/Azure/azapi/2.0.1/docs/resources/resource_action) | resource |
+| [azurerm_cognitive_account.openai](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/cognitive_account) | resource |
+| [azurerm_cognitive_deployment.dalle3](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/cognitive_deployment) | resource |
 | [azurerm_container_app.core](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/container_app) | resource |
 | [azurerm_container_app.minio](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/container_app) | resource |
 | [azurerm_container_app.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.7.0/docs/resources/container_app) | resource |
@@ -58,6 +61,8 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_client_apikey"></a> [client\_apikey](#input\_client\_apikey) | n/a | `string` | n/a | yes |
+| <a name="input_dalle3_location"></a> [dalle3\_location](#input\_dalle3\_location) | n/a | `string` | `"swedencentral"` | no |
 | <a name="input_gh_access_token"></a> [gh\_access\_token](#input\_gh\_access\_token) | At the time of writing, ghcr does not support fine-grained tokens to. Only the classic ones | `string` | n/a | yes |
 | <a name="input_gh_core_repo"></a> [gh\_core\_repo](#input\_gh\_core\_repo) | n/a | `string` | n/a | yes |
 | <a name="input_gh_minio_repo"></a> [gh\_minio\_repo](#input\_gh\_minio\_repo) | n/a | `string` | n/a | yes |

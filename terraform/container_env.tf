@@ -217,6 +217,18 @@ resource "azurerm_container_app" "this" {
         name  = "CORE_URL_EN"
         value = "https://${azurerm_container_app.core["en"].ingress[0].fqdn}"
       }
+      env {
+        name  = "DALLE3_ENDPOINT"
+        value = "${azurerm_cognitive_account.openai.endpoint}openai/deployments/${azurerm_cognitive_deployment.dalle3.name}/images/generations?api-version=2024-06-01"
+      }
+      env {
+        name  = "DALLE3_APIKEY"
+        value = azurerm_cognitive_account.openai.primary_access_key
+      }
+      env {
+        name  = "CLIENT_APIKEY"
+        value = var.client_apikey
+      }
     }
     min_replicas = var.scale.min
     max_replicas = var.scale.max
@@ -247,6 +259,4 @@ resource "azapi_resource_action" "sticky_session" {
       }
     }
   }
-
-  depends_on = [azurerm_container_app.this]
 }
