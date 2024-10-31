@@ -10,6 +10,7 @@ services:
       - CORE_URL_EN=http://emad_images-en/
       - DALLE3_ENDPOINT=https://example.home.arpa # change with the correct endpoint
       - DALLE3_APIKEY= # change with the correct api key
+      - CLIENT_APIKEY=3352ca2b967b2ff415d5cecd978b1b25 # this is the default api key for the client
     depends_on:
       - minio_pictograms
 
