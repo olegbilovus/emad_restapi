@@ -34,7 +34,6 @@ resource "azapi_resource" "content_filter" {
     }
   }
 
-  depends_on = [azurerm_cognitive_account.openai]
   lifecycle {
     ignore_changes = [
       body
@@ -57,7 +56,5 @@ resource "azurerm_cognitive_deployment" "dalle3" {
     name     = "Standard"
     capacity = 1
   }
-
-  depends_on = [azapi_resource.content_filter]
 }
 

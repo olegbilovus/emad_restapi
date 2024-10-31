@@ -259,6 +259,4 @@ resource "azapi_resource_action" "sticky_session" {
       }
     }
   }
-
-  depends_on = [azurerm_container_app.this]
 }

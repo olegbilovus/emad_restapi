@@ -54,10 +54,7 @@ resource "mongodbatlas_database_user" "admin" {
     }
   }
 
-  depends_on = [
-    mongodbatlas_project_ip_access_list.anyone,
-    mongodbatlas_advanced_cluster.this
-  ]
+  depends_on = [mongodbatlas_project_ip_access_list.anyone]
 }
 
 resource "mongodbatlas_database_user" "core" {
@@ -76,9 +73,6 @@ resource "mongodbatlas_database_user" "core" {
     type = "CLUSTER"
   }
 
-  depends_on = [
-    mongodbatlas_project_ip_access_list.anyone,
-    mongodbatlas_advanced_cluster.this
-  ]
+  depends_on = [mongodbatlas_project_ip_access_list.anyone]
 }
 
