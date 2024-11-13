@@ -14,6 +14,7 @@ class Settings(BaseSettings):
     core_url_it: HttpUrl
     core_url_en: HttpUrl
     dalle3: Dalle3GenAISettings = Dalle3GenAISettings()
+    cors_origins: str = "*"
 
 
 settings = Settings()
