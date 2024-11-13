@@ -2,6 +2,7 @@ from typing import Annotated
 
 import requests
 from fastapi import FastAPI, Query
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.models import APIKey
 from fastapi.params import Depends
 
@@ -12,6 +13,13 @@ from app.models.genai import Dalle3Image
 from app.models.images import Sentence, ImagesResult, ContentClassification, Image
 
 app = FastAPI(docs_url="/", title="AAC API", version="1.0.0")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.cors_origins.split(","),
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 @app.get("/v1/images/", tags=[Tags.images], summary="Get images")

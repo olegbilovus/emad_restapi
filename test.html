@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Pictograms</title>
+</head>
+<body>
+<label for="url">Backend URL</label>
+<input type="url" id="url" value="http://localhost:8080/v1/images/" style="width: 100%">
+
+<label for="text">Text</label><textarea type="text" id="text" style="width: 100%"></textarea>
+<label for="language">Language </label><select id="language">
+    <option value="it" selected>Italian</option>
+    <option value="en">English</option>
+</select>
+<div>
+    <p>Filter out: </p>
+    <label for="sex">Sex</label><input type="checkbox" id="sex">
+    <label for="violence">Violence</label><input type="checkbox" id="violence">
+</div>
+<br>
+<button type="button" onclick="send()">Send</button>
+
+<div id="result"></div>
+
+<script>
+    function send() {
+        const url = document.getElementById('url').value;
+        const text = document.getElementById('text').value;
+        const language = document.getElementById('language').value;
+        const sex = document.getElementById('sex').checked;
+        const violence = document.getElementById('violence').checked;
+
+        fetch(url + '?' + new URLSearchParams({
+            text: text,
+            language: language,
+            sex: sex,
+            violence: violence
+        })).then(response => response.json()).then(data => {
+            const result = document.getElementById('result');
+            result.innerHTML = '';
+            data.images.forEach(pictogram => {
+                const div = document.createElement('div');
+                const img = document.createElement('img');
+                img.src = data.url_root + '/' + pictogram.id + '.png';
+                img.src = img.src.replace(/\/\//g, '/');
+                img.alt = pictogram.keyword;
+                img.style.display = 'block';
+                img.style.margin = 'auto';
+
+                const text = document.createElement('h3')
+                text.innerText = `${pictogram.keyword}[id: ${pictogram.id}] [sex: ${pictogram.sex}, violence: ${pictogram.violence}]`;
+                text.style.textAlign = 'center';
+                text.style.width = '100%';
+                text.style.backgroundColor = 'lightgray';
+
+                if (pictogram.id === -1) {
+                    text.style.backgroundColor = 'red';
+                }
+
+                div.appendChild(text);
+                div.appendChild(img);
+                result.appendChild(div);
+            });
+        });
+
+    }
+</script>
+</body>
+</html>
