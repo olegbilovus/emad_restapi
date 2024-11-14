@@ -35,7 +35,7 @@ jobs:
           context: .
           platforms: linux/amd64
           push: true
-          tags: ghcr.io/${{ github.repository }}:amd64
+          tags: ghcr.io/${{ github.repository }}:latest
 
       - name: Build and push arm64 image
         uses: docker/build-push-action@v6
