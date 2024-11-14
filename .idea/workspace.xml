@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83b467c2-f69f-47d3-a286-dfcbc4875cbd" name="Changes" comment="fix image tags">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/docker-publish.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/docker-publish.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="docker-arm_build" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -75,6 +75,17 @@
               </option>
               <option name="timestamp" value="1731534232529" />
             </BranchCleanupEntry>
+            <BranchCleanupEntry>
+              <option name="deletions">
+                <list>
+                  <BranchDeletion>
+                    <option name="hash" value="e10fcd0e05b604fc0099bd87691ebb4c69edca3d" />
+                    <option name="name" value="docker-arm_build" />
+                  </BranchDeletion>
+                </list>
+              </option>
+              <option name="timestamp" value="1731618920774" />
+            </BranchCleanupEntry>
           </list>
         </option>
       </BranchesCleanupHistory>
@@ -87,12 +98,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="docker-arm_build" />
-                    <option name="lastUsedInstant" value="1731617943" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1731618914" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1731534224" />
+                    <option name="branchName" value="docker-arm_build" />
+                    <option name="lastUsedInstant" value="1731617943" />
                   </RecentBranch>
                 </list>
               </option>
@@ -125,22 +136,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "FastAPI.restApi.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "docker-arm__build",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.ide.settings.uml",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;FastAPI.restApi.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.ide.settings.uml&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\olgbl\Desktop\Unisa\EMAD\fastAPI\restApi" />
@@ -211,7 +222,8 @@
       <workItem from="1730830477409" duration="8000" />
       <workItem from="1731529598959" duration="4591000" />
       <workItem from="1731593304860" duration="198000" />
-      <workItem from="1731617920756" duration="835000" />
+      <workItem from="1731617920756" duration="990000" />
+      <workItem from="1731619494421" duration="597000" />
     </task>
     <task id="LOCAL-00002" summary="added cors and a html file to test the backend and view the images">
       <option name="closed" value="true" />
@@ -237,7 +249,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731618498460</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="fix image tags">
+      <option name="closed" value="true" />
+      <created>1731618854660</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1731618854660</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
