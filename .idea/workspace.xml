@@ -4,8 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83b467c2-f69f-47d3-a286-dfcbc4875cbd" name="Changes" comment="fix image tags">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="83b467c2-f69f-47d3-a286-dfcbc4875cbd" name="Changes" comment="added ghpages for testing">
+      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="docker-arm_build" />
+        <entry key="$PROJECT_DIR$" value="ghpages" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -86,6 +86,17 @@
               </option>
               <option name="timestamp" value="1731618920774" />
             </BranchCleanupEntry>
+            <BranchCleanupEntry>
+              <option name="deletions">
+                <list>
+                  <BranchDeletion>
+                    <option name="hash" value="de9dcab6ec3b5c83c6503bb56d9027fa8e8e726d" />
+                    <option name="name" value="ghpages" />
+                  </BranchDeletion>
+                </list>
+              </option>
+              <option name="timestamp" value="1731627348805" />
+            </BranchCleanupEntry>
           </list>
         </option>
       </BranchesCleanupHistory>
@@ -99,11 +110,11 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1731618914" />
+                    <option name="lastUsedInstant" value="1731627339" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="docker-arm_build" />
-                    <option name="lastUsedInstant" value="1731617943" />
+                    <option name="branchName" value="ghpages" />
+                    <option name="lastUsedInstant" value="1731627227" />
                   </RecentBranch>
                 </list>
               </option>
@@ -154,6 +165,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\olgbl\Desktop\Unisa\EMAD\fastAPI\restApi\docs" />
       <recent name="C:\Users\olgbl\Desktop\Unisa\EMAD\fastAPI\restApi" />
     </key>
   </component>
@@ -224,6 +236,7 @@
       <workItem from="1731593304860" duration="198000" />
       <workItem from="1731617920756" duration="990000" />
       <workItem from="1731619494421" duration="597000" />
+      <workItem from="1731627193896" duration="865000" />
     </task>
     <task id="LOCAL-00002" summary="added cors and a html file to test the backend and view the images">
       <option name="closed" value="true" />
@@ -257,7 +270,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731618854660</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="added ghpages for testing">
+      <option name="closed" value="true" />
+      <created>1731627293154</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1731627293154</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,7 +291,8 @@
     <MESSAGE value="added cors and a html file to test the backend and view the images" />
     <MESSAGE value="docker build arm image" />
     <MESSAGE value="fix image tags" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix image tags" />
+    <MESSAGE value="added ghpages for testing" />
+    <option name="LAST_COMMIT_MESSAGE" value="added ghpages for testing" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/restApi$restApi.coverage" NAME="restApi Coverage Results" MODIFIED="1731531152802" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
