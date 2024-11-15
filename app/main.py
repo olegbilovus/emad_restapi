@@ -5,6 +5,7 @@ from fastapi import FastAPI, Query
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.models import APIKey
 from fastapi.params import Depends
+from starlette.staticfiles import StaticFiles
 
 from app.auth import get_api_key_client
 from app.config import settings, CORE_URLS
@@ -20,6 +21,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.mount("/test", StaticFiles(directory="../docs", html=True), name="test")
 
 
 @app.get("/v1/images/", tags=[Tags.images], summary="Get images")
