@@ -9,14 +9,14 @@ terraform {
       version = "2.0.1"
     }
 
-    github = {
-      source  = "integrations/github"
-      version = "6.3.1"
-    }
-
     mongodbatlas = {
       source  = "mongodb/mongodbatlas"
       version = "1.21.4"
+    }
+
+    cloudflare = {
+      source  = "cloudflare/cloudflare"
+      version = "4.46.0"
     }
   }
 }
@@ -30,14 +30,14 @@ provider "azurerm" {
 provider "azapi" {
 }
 
-provider "github" {
-  token = var.gh_access_token
-  owner = local.gh_username
-}
-
 provider "mongodbatlas" {
   public_key  = var.mongodb_pb_key
   private_key = var.mongodb_pv_key
+}
+
+provider "cloudflare" {
+  api_key = var.cf_api_key
+  email   = var.cf_email
 }
 
 resource "random_string" "random_suffix" {
