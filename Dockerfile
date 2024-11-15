@@ -17,6 +17,7 @@ COPY --from=install-dependencies /opt/venv /opt/venv
 WORKDIR /app
 
 COPY ./app .
+COPY ./docs /docs
 
 ENV PATH="/opt/venv/bin:$PATH"
 CMD ["fastapi", "run", "main.py", "--port", "80"]
