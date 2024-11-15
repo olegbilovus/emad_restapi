@@ -87,3 +87,22 @@ variable "client_apikey" {
   type      = string
   sensitive = true
 }
+
+variable "cf_api_key" {
+  type      = string
+  sensitive = true
+}
+
+variable "cf_email" {
+  type      = string
+  sensitive = true
+}
+
+variable "cf_zone_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "cf_domain" {
+  type = string
+}

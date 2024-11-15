@@ -3,15 +3,17 @@ output "ACR_FQDN" {
 }
 
 output "REST-API_FQDN" {
-  value = azurerm_container_app.this.ingress[0].fqdn
+  value = [
+    azurerm_container_app.this.ingress[0].fqdn,
+    azurerm_container_app_custom_domain.this["api"].name
+  ]
 }
 
 output "MINIO-PICTOGRAMS_FQDN" {
-  value = azurerm_container_app.minio.ingress[0].fqdn
-}
-
-output "GH-PAGES_URL" {
-  value = github_repository.backend_url.pages[0].html_url
+  value = [
+    azurerm_container_app.minio.ingress[0].fqdn,
+    azurerm_container_app_custom_domain.this["images"].name
+  ]
 }
 
 output "MONGO_DB-CONN_STR" {
