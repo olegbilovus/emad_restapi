@@ -5,7 +5,7 @@
 |------|---------|
 | <a name="requirement_azapi"></a> [azapi](#requirement\_azapi) | 2.0.1 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | 4.9.0 |
-| <a name="requirement_github"></a> [github](#requirement\_github) | 6.3.1 |
+| <a name="requirement_cloudflare"></a> [cloudflare](#requirement\_cloudflare) | 4.46.0 |
 | <a name="requirement_mongodbatlas"></a> [mongodbatlas](#requirement\_mongodbatlas) | 1.21.4 |
 
 ## Providers
@@ -14,8 +14,9 @@
 |------|---------|
 | <a name="provider_azapi"></a> [azapi](#provider\_azapi) | 2.0.1 |
 | <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 4.9.0 |
-| <a name="provider_github"></a> [github](#provider\_github) | 6.3.1 |
+| <a name="provider_cloudflare"></a> [cloudflare](#provider\_cloudflare) | 4.46.0 |
 | <a name="provider_mongodbatlas"></a> [mongodbatlas](#provider\_mongodbatlas) | 1.21.4 |
+| <a name="provider_null"></a> [null](#provider\_null) | n/a |
 | <a name="provider_random"></a> [random](#provider\_random) | n/a |
 
 ## Modules
@@ -33,6 +34,7 @@ No modules.
 | [azurerm_container_app.core](https://registry.terraform.io/providers/hashicorp/azurerm/4.9.0/docs/resources/container_app) | resource |
 | [azurerm_container_app.minio](https://registry.terraform.io/providers/hashicorp/azurerm/4.9.0/docs/resources/container_app) | resource |
 | [azurerm_container_app.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.9.0/docs/resources/container_app) | resource |
+| [azurerm_container_app_custom_domain.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.9.0/docs/resources/container_app_custom_domain) | resource |
 | [azurerm_container_app_environment.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.9.0/docs/resources/container_app_environment) | resource |
 | [azurerm_container_registry.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.9.0/docs/resources/container_registry) | resource |
 | [azurerm_container_registry_task.core](https://registry.terraform.io/providers/hashicorp/azurerm/4.9.0/docs/resources/container_registry_task) | resource |
@@ -48,12 +50,14 @@ No modules.
 | [azurerm_subnet.container](https://registry.terraform.io/providers/hashicorp/azurerm/4.9.0/docs/resources/subnet) | resource |
 | [azurerm_user_assigned_identity.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.9.0/docs/resources/user_assigned_identity) | resource |
 | [azurerm_virtual_network.container_env](https://registry.terraform.io/providers/hashicorp/azurerm/4.9.0/docs/resources/virtual_network) | resource |
-| [github_repository.backend_url](https://registry.terraform.io/providers/integrations/github/6.3.1/docs/resources/repository) | resource |
-| [github_repository_file.backend_url](https://registry.terraform.io/providers/integrations/github/6.3.1/docs/resources/repository_file) | resource |
+| [cloudflare_record.azure_verify_images](https://registry.terraform.io/providers/cloudflare/cloudflare/4.46.0/docs/resources/record) | resource |
+| [cloudflare_record.azure_verify_this](https://registry.terraform.io/providers/cloudflare/cloudflare/4.46.0/docs/resources/record) | resource |
+| [cloudflare_record.this](https://registry.terraform.io/providers/cloudflare/cloudflare/4.46.0/docs/resources/record) | resource |
 | [mongodbatlas_advanced_cluster.this](https://registry.terraform.io/providers/mongodb/mongodbatlas/1.21.4/docs/resources/advanced_cluster) | resource |
 | [mongodbatlas_database_user.admin](https://registry.terraform.io/providers/mongodb/mongodbatlas/1.21.4/docs/resources/database_user) | resource |
 | [mongodbatlas_database_user.core](https://registry.terraform.io/providers/mongodb/mongodbatlas/1.21.4/docs/resources/database_user) | resource |
 | [mongodbatlas_project_ip_access_list.anyone](https://registry.terraform.io/providers/mongodb/mongodbatlas/1.21.4/docs/resources/project_ip_access_list) | resource |
+| [null_resource.custom_domain_and_managed_certificate](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 | [random_string.random_suffix](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
 | [azurerm_client_config.current](https://registry.terraform.io/providers/hashicorp/azurerm/4.9.0/docs/data-sources/client_config) | data source |
 
@@ -61,6 +65,10 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_cf_api_key"></a> [cf\_api\_key](#input\_cf\_api\_key) | n/a | `string` | n/a | yes |
+| <a name="input_cf_domain"></a> [cf\_domain](#input\_cf\_domain) | n/a | `string` | n/a | yes |
+| <a name="input_cf_email"></a> [cf\_email](#input\_cf\_email) | n/a | `string` | n/a | yes |
+| <a name="input_cf_zone_id"></a> [cf\_zone\_id](#input\_cf\_zone\_id) | n/a | `string` | n/a | yes |
 | <a name="input_client_apikey"></a> [client\_apikey](#input\_client\_apikey) | n/a | `string` | n/a | yes |
 | <a name="input_dalle3_location"></a> [dalle3\_location](#input\_dalle3\_location) | n/a | `string` | `"swedencentral"` | no |
 | <a name="input_gh_access_token"></a> [gh\_access\_token](#input\_gh\_access\_token) | At the time of writing, ghcr does not support fine-grained tokens to. Only the classic ones | `string` | n/a | yes |
@@ -82,7 +90,6 @@ No modules.
 | Name | Description |
 |------|-------------|
 | <a name="output_ACR_FQDN"></a> [ACR\_FQDN](#output\_ACR\_FQDN) | n/a |
-| <a name="output_GH-PAGES_URL"></a> [GH-PAGES\_URL](#output\_GH-PAGES\_URL) | n/a |
 | <a name="output_MINIO-PICTOGRAMS_FQDN"></a> [MINIO-PICTOGRAMS\_FQDN](#output\_MINIO-PICTOGRAMS\_FQDN) | n/a |
 | <a name="output_MONGO_DB-CONN_STR"></a> [MONGO\_DB-CONN\_STR](#output\_MONGO\_DB-CONN\_STR) | n/a |
 | <a name="output_REST-API_FQDN"></a> [REST-API\_FQDN](#output\_REST-API\_FQDN) | n/a |
