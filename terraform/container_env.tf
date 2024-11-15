@@ -262,20 +262,6 @@ resource "azurerm_container_app_custom_domain" "this" {
   ]
 }
 
-# https://github.com/hashicorp/terraform-provider-azurerm/issues/27362
-resource "null_resource" "custom_domain_and_managed_certificate" {
-  for_each = {
-    images = azurerm_container_app.minio.name
-    api    = azurerm_container_app.this.name
-  }
-
-  provisioner "local-exec" {
-    command = "az containerapp hostname bind --hostname ${each.key}.${var.cf_domain} -g ${azurerm_resource_group.this.name} -n ${each.value} --environment ${azurerm_container_app_environment.this.name} --validation-method CNAME"
-  }
-  triggers   = local.cf_subdomains
-  depends_on = [azurerm_container_app_custom_domain.this]
-}
-
 # Patch Sticky sessions. This feature is still not available in the azurerm provider
 # https://github.com/hashicorp/terraform-provider-azurerm/issues/24757#issuecomment-2213170796
 resource "azapi_resource_action" "sticky_session" {
@@ -293,4 +279,21 @@ resource "azapi_resource_action" "sticky_session" {
       }
     }
   }
+}
+
+# https://github.com/hashicorp/terraform-provider-azurerm/issues/27362
+resource "null_resource" "custom_domain_and_managed_certificate" {
+  for_each = {
+    images = azurerm_container_app.minio.name
+    api    = azurerm_container_app.this.name
+  }
+
+  provisioner "local-exec" {
+    command = "az containerapp hostname bind --hostname ${each.key}.${var.cf_domain} -g ${azurerm_resource_group.this.name} -n ${each.value} --environment ${azurerm_container_app_environment.this.name} --validation-method CNAME"
+  }
+  triggers = local.cf_subdomains
+  depends_on = [
+    azurerm_container_app_custom_domain.this,
+    azapi_resource_action.sticky_session
+  ]
 }
