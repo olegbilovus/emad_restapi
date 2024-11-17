@@ -36,14 +36,20 @@
             language: language,
             sex: sex,
             violence: violence
-        })).then(response => response.json()).then(data => {
+        }), {
+            mode: 'cors',
+            'headers': {'Access-Control-Allow-Origin': '*'}
+        }).then(response => response.json()).then(data => {
             const result = document.getElementById('result');
             result.innerHTML = '';
             data.images.forEach(pictogram => {
                 const div = document.createElement('div');
                 const img = document.createElement('img');
-                img.src = data.url_root + '/' + pictogram.id + '.png';
-                img.src = img.src.replace(/\/\//g, '/');
+                img.crossOrigin = 'Anonymous';
+                if (data.url_root.slice(-1) !== '/') {
+                    data.url += '/';
+                }
+                img.src = data.url_root + pictogram.id + '.png';
                 img.alt = pictogram.keyword;
                 img.style.display = 'block';
                 img.style.margin = 'auto';
@@ -65,6 +71,7 @@
         });
 
     }
+
 </script>
 </body>
 </html>

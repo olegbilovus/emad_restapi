@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83b467c2-f69f-47d3-a286-dfcbc4875cbd" name="Changes" comment="removed testing html file from api">
-      <change beforePath="$PROJECT_DIR$/.idea/restApi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/restApi.iml" afterDir="false" />
+    <list default="true" id="83b467c2-f69f-47d3-a286-dfcbc4875cbd" name="Changes" comment="updated dalle3 because of azurerem 4.10">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/terraform/dalle3.tf" beforeDir="false" afterPath="$PROJECT_DIR$/terraform/dalle3.tf" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="remove-testing-from-api" />
+        <entry key="$PROJECT_DIR$" value="terraform-dall3_fix" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -144,6 +141,17 @@
               </option>
               <option name="timestamp" value="1731850173633" />
             </BranchCleanupEntry>
+            <BranchCleanupEntry>
+              <option name="deletions">
+                <list>
+                  <BranchDeletion>
+                    <option name="hash" value="3c250b99bd870f746fdea79e47b9b702ec8de81d" />
+                    <option name="name" value="terraform-dall3_fix" />
+                  </BranchDeletion>
+                </list>
+              </option>
+              <option name="timestamp" value="1731852850239" />
+            </BranchCleanupEntry>
           </list>
         </option>
       </BranchesCleanupHistory>
@@ -156,12 +164,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="terraform-dall3_fix" />
-                    <option name="lastUsedInstant" value="1731850192" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1731852843" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1731631467" />
+                    <option name="branchName" value="terraform-dall3_fix" />
+                    <option name="lastUsedInstant" value="1731850192" />
                   </RecentBranch>
                 </list>
               </option>
@@ -201,7 +209,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;terraform-dall3__fix&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
@@ -242,8 +250,8 @@
     <list>
       <item itemvalue="Docker.Dockerfile" />
       <item itemvalue="Docker.compose.yaml.mongodb_setup: Compose Deployment" />
-      <item itemvalue="FastAPI.restApi" />
       <item itemvalue="Python.create" />
+      <item itemvalue="FastAPI.restApi" />
     </list>
     <recent_temporary>
       <list>
@@ -286,7 +294,7 @@
       <workItem from="1731627193896" duration="1748000" />
       <workItem from="1731631269508" duration="208000" />
       <workItem from="1731849879983" duration="691000" />
-      <workItem from="1731851313711" duration="768000" />
+      <workItem from="1731851313711" duration="1518000" />
     </task>
     <task id="LOCAL-00002" summary="added cors and a html file to test the backend and view the images">
       <option name="closed" value="true" />
@@ -352,7 +360,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731631400618</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="updated dalle3 because of azurerem 4.10">
+      <option name="closed" value="true" />
+      <created>1731852782056</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1731852782056</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -369,7 +385,8 @@
     <MESSAGE value="added testing page" />
     <MESSAGE value="bug fix" />
     <MESSAGE value="removed testing html file from api" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed testing html file from api" />
+    <MESSAGE value="updated dalle3 because of azurerem 4.10" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated dalle3 because of azurerem 4.10" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/restApi$restApi.coverage" NAME="restApi Coverage Results" MODIFIED="1731629602012" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
