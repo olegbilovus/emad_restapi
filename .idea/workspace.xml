@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83b467c2-f69f-47d3-a286-dfcbc4875cbd" name="Changes" comment="removed testing html file from api" />
+    <list default="true" id="83b467c2-f69f-47d3-a286-dfcbc4875cbd" name="Changes" comment="removed testing html file from api">
+      <change beforePath="$PROJECT_DIR$/.idea/restApi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/restApi.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/terraform/dalle3.tf" beforeDir="false" afterPath="$PROJECT_DIR$/terraform/dalle3.tf" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -128,6 +133,17 @@
               </option>
               <option name="timestamp" value="1731631471600" />
             </BranchCleanupEntry>
+            <BranchCleanupEntry>
+              <option name="deletions">
+                <list>
+                  <BranchDeletion>
+                    <option name="hash" value="805b64574fd5a54d4ff09b87153283199f60d3de" />
+                    <option name="name" value="terraform-cloudflare" />
+                  </BranchDeletion>
+                </list>
+              </option>
+              <option name="timestamp" value="1731850173633" />
+            </BranchCleanupEntry>
           </list>
         </option>
       </BranchesCleanupHistory>
@@ -140,12 +156,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1731631467" />
+                    <option name="branchName" value="terraform-dall3_fix" />
+                    <option name="lastUsedInstant" value="1731850192" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="remove-testing-from-api" />
-                    <option name="lastUsedInstant" value="1731631338" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1731631467" />
                   </RecentBranch>
                 </list>
               </option>
@@ -185,7 +201,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;terraform-dall3__fix&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
@@ -269,6 +285,8 @@
       <workItem from="1731619494421" duration="597000" />
       <workItem from="1731627193896" duration="1748000" />
       <workItem from="1731631269508" duration="208000" />
+      <workItem from="1731849879983" duration="691000" />
+      <workItem from="1731851313711" duration="768000" />
     </task>
     <task id="LOCAL-00002" summary="added cors and a html file to test the backend and view the images">
       <option name="closed" value="true" />

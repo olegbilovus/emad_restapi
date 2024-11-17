@@ -5,6 +5,7 @@ resource "azurerm_cognitive_account" "openai" {
   kind                          = "OpenAI"
   sku_name                      = "S0"
   public_network_access_enabled = true
+  local_auth_enabled            = true
 }
 
 resource "azapi_resource" "content_filter" {
