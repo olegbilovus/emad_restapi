@@ -2,7 +2,7 @@ import logging
 
 
 class JSONLogger:
-    _json_format = '{{"time": "%(asctime)s", "level": "%(levelname)s", "env": "{env}", %(message)s}}'
+    _json_format = 'time="%(asctime)s" level=%(levelname)s env={env} %(message)s'
 
     def __init__(self, name: str, env: str):
         self._logger = logging.getLogger(name)
@@ -15,7 +15,7 @@ class JSONLogger:
     def _log(self, level, **kwargs):
         msg = ""
         for k, v in kwargs.items():
-            msg += f'"{k}": '
+            msg += f'{k}='
             _v = str(v)
 
             match v:
@@ -29,8 +29,8 @@ class JSONLogger:
                 case _:
                     msg += f'"{_v}"'
 
-            msg += ", "
-        msg = msg[:-2]
+            msg += " "
+        msg = msg.strip()
 
         self._logger.log(level, msg)
 
