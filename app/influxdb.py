@@ -24,7 +24,9 @@ class InfluxDB:
         self._write_api.write(self._bucket, self._org, points, write_precision=WritePrecision.NS)
 
     def send_metrics_perf(self, url_path, latency):
-        point = Point("perf").tag("path", url_path).field("latency", latency)
+        point = (Point("perf").tag("path", url_path)
+                 .field("latency", latency)
+                 .time(time.time_ns()))
 
         self._write(point)
 
