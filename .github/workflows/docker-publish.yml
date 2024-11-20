@@ -4,6 +4,12 @@ on:
   push:
     branches:
       - main
+    paths:
+      - .github/workflows/docker-publish.yml
+      - app/**
+      - Dockerfile
+      - requirements.txt
+
   workflow_dispatch:
 
 jobs:

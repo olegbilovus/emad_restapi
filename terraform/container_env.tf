@@ -44,12 +44,16 @@ resource "azurerm_container_app_environment" "this" {
 }
 
 locals {
-  gh_username = split("/", var.gh_minio_repo)[3]
+  ghcr = {
+    server               = "ghcr.io"
+    username             = split("/", var.gh_minio_repo)[3]
+    password_secret_name = "gh-access-token"
+  }
 }
 
 
 resource "azurerm_container_app" "core" {
-  for_each = azurerm_container_registry_task.core
+  for_each = toset(["it", "en"])
 
   name                         = "core${each.key}"
   container_app_environment_id = azurerm_container_app_environment.this.id
@@ -67,19 +71,20 @@ resource "azurerm_container_app" "core" {
   }
 
   registry {
-    identity = azurerm_user_assigned_identity.this[var.gh_core_repo].id
-    server   = azurerm_container_registry.this.login_server
+    server               = local.ghcr.server
+    username             = local.ghcr.username
+    password_secret_name = local.ghcr.password_secret_name
   }
 
-  identity {
-    type         = "UserAssigned"
-    identity_ids = [azurerm_user_assigned_identity.this[var.gh_core_repo].id]
+  secret {
+    name  = local.ghcr.password_secret_name
+    value = var.gh_access_token
   }
 
   template {
     container {
       name   = "core${each.key}"
-      image  = "${azurerm_container_registry.this.login_server}/${each.value.docker_step[0].image_names[0]}"
+      image  = "ghcr.io/${local.ghcr.username}/${split("/", var.gh_core_repo)[4]}:${each.key}"
       cpu    = 1
       memory = "2Gi"
 
@@ -111,10 +116,7 @@ resource "azurerm_container_app" "core" {
   workload_profile_name = local.workload_profile_name
 
   depends_on = [
-    azurerm_container_registry_task_schedule_run_now.core,
-    azurerm_role_assignment.acr_pull,
     mongodbatlas_database_user.admin,
-    mongodbatlas_database_user.core,
     mongodbatlas_project_ip_access_list.anyone,
     mongodbatlas_advanced_cluster.this
   ]
@@ -136,28 +138,21 @@ resource "azurerm_container_app" "minio" {
     }
   }
 
-  identity {
-    type         = "UserAssigned"
-    identity_ids = [azurerm_user_assigned_identity.this[var.gh_minio_repo].id]
-  }
-
-
   registry {
-    server               = "ghcr.io"
-    username             = local.gh_username
-    password_secret_name = local.secK_gh_access_token
+    server               = local.ghcr.server
+    username             = local.ghcr.username
+    password_secret_name = local.ghcr.password_secret_name
   }
 
   secret {
-    identity            = azurerm_user_assigned_identity.this[var.gh_minio_repo].id
-    name                = local.secK_gh_access_token
-    key_vault_secret_id = azurerm_key_vault_secret.this[local.secK_gh_access_token].id
+    name  = local.ghcr.password_secret_name
+    value = var.gh_access_token
   }
 
   template {
     container {
       name   = local.repos[var.gh_minio_repo]
-      image  = "ghcr.io/${local.gh_username}/${split("/", var.gh_minio_repo)[4]}:latest"
+      image  = "ghcr.io/${local.ghcr.username}/${split("/", var.gh_minio_repo)[4]}:latest"
       cpu    = 1
       memory = "2Gi"
     }
@@ -166,14 +161,10 @@ resource "azurerm_container_app" "minio" {
   }
 
   workload_profile_name = local.workload_profile_name
-
-  depends_on = [
-    azurerm_role_assignment.minio_secrets
-  ]
 }
 
 resource "azurerm_container_app" "this" {
-  name                         = var.name
+  name                         = local.repos[var.gh_repo]
   container_app_environment_id = azurerm_container_app_environment.this.id
   resource_group_name          = azurerm_resource_group.this.name
   revision_mode                = "Single"
@@ -189,19 +180,20 @@ resource "azurerm_container_app" "this" {
   }
 
   registry {
-    identity = azurerm_user_assigned_identity.this[var.gh_repo].id
-    server   = azurerm_container_registry.this.login_server
+    server               = local.ghcr.server
+    username             = local.ghcr.username
+    password_secret_name = local.ghcr.password_secret_name
   }
 
-  identity {
-    type         = "UserAssigned"
-    identity_ids = [azurerm_user_assigned_identity.this[var.gh_repo].id]
+  secret {
+    name  = local.ghcr.password_secret_name
+    value = var.gh_access_token
   }
 
   template {
     container {
-      name   = var.name
-      image  = "${azurerm_container_registry.this.login_server}/${azurerm_container_registry_task.this.docker_step[0].image_names[0]}"
+      name   = local.repos[var.gh_repo]
+      image  = "ghcr.io/${local.ghcr.username}/${split("/", var.gh_repo)[4]}:latest"
       cpu    = 1
       memory = "2Gi"
 
@@ -235,10 +227,17 @@ resource "azurerm_container_app" "this" {
   }
 
   workload_profile_name = local.workload_profile_name
+}
+
+resource "null_resource" "wait_for_dns_propagation" {
+  provisioner "local-exec" {
+    command = "sleep 60"
+  }
 
   depends_on = [
-    azurerm_container_registry_task_schedule_run_now.this,
-    azurerm_role_assignment.acr_pull,
+    cloudflare_record.azure_verify_images,
+    cloudflare_record.azure_verify_this,
+    cloudflare_record.this
   ]
 }
 
@@ -258,27 +257,9 @@ resource "azurerm_container_app_custom_domain" "this" {
 
   depends_on = [
     cloudflare_record.azure_verify_images,
-    cloudflare_record.azure_verify_this
+    cloudflare_record.azure_verify_this,
+    null_resource.wait_for_dns_propagation
   ]
-}
-
-# Patch Sticky sessions. This feature is still not available in the azurerm provider
-# https://github.com/hashicorp/terraform-provider-azurerm/issues/24757#issuecomment-2213170796
-resource "azapi_resource_action" "sticky_session" {
-  type        = "Microsoft.App/containerApps@2024-03-01"
-  resource_id = azurerm_container_app.this.id
-  method      = "PATCH"
-  body = {
-    properties = {
-      configuration = {
-        ingress = {
-          stickySessions = {
-            affinity = "sticky"
-          }
-        }
-      }
-    }
-  }
 }
 
 # https://github.com/hashicorp/terraform-provider-azurerm/issues/27362
@@ -294,6 +275,6 @@ resource "null_resource" "custom_domain_and_managed_certificate" {
   triggers = local.cf_subdomains
   depends_on = [
     azurerm_container_app_custom_domain.this,
-    azapi_resource_action.sticky_session
+    null_resource.wait_for_dns_propagation
   ]
 }
