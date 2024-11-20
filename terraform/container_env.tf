@@ -249,6 +249,16 @@ resource "azurerm_container_app_custom_domain" "this" {
   ]
 }
 
+resource "null_resource" "wait_for_deploy" {
+  provisioner "local-exec" {
+    command = "sleep 60"
+  }
+
+  depends_on = [ 
+    azurerm_container_app_custom_domain.this
+   ]
+}
+
 # https://github.com/hashicorp/terraform-provider-azurerm/issues/27362
 resource "null_resource" "custom_domain_and_managed_certificate" {
   for_each = {
@@ -262,5 +272,6 @@ resource "null_resource" "custom_domain_and_managed_certificate" {
   triggers = local.cf_subdomains
   depends_on = [
     azurerm_container_app_custom_domain.this,
+    null_resource.wait_for_deploy
   ]
 }
