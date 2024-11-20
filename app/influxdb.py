@@ -26,6 +26,7 @@ class InfluxDB:
                         .field("keyword", image.keyword)
                         .field("sex", image.sex)
                         .field("violence", image.violence)
+                        .field("found", image.id != -1)
                         .time(now_ns + i))
             points.append(point_kw)
 

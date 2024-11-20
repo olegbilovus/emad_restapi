@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83b467c2-f69f-47d3-a286-dfcbc4875cbd" name="Changes" comment="added metrics with influxdb. Added JSON logging">
+    <list default="true" id="83b467c2-f69f-47d3-a286-dfcbc4875cbd" name="Changes" comment="removed unused modules">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/influxdb.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/influxdb.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -343,7 +343,7 @@
       <workItem from="1731857082062" duration="697000" />
       <workItem from="1732027624712" duration="84000" />
       <workItem from="1732106053388" duration="609000" />
-      <workItem from="1732108187093" duration="13095000" />
+      <workItem from="1732108187093" duration="15133000" />
     </task>
     <task id="LOCAL-00002" summary="added cors and a html file to test the backend and view the images">
       <option name="closed" value="true" />
@@ -433,7 +433,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732120754316</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="removed unused modules">
+      <option name="closed" value="true" />
+      <created>1732121562258</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1732121562258</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -453,24 +461,14 @@
     <MESSAGE value="updated dalle3 because of azurerem 4.10" />
     <MESSAGE value="fix test" />
     <MESSAGE value="added metrics with influxdb. Added JSON logging" />
-    <option name="LAST_COMMIT_MESSAGE" value="added metrics with influxdb. Added JSON logging" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app/influxdb.py</url>
-          <line>39</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="removed unused modules" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed unused modules" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/restApi$restApi.coverage" NAME="restApi Coverage Results" MODIFIED="1732115768736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/restApi$create.coverage" NAME="create Coverage Results" MODIFIED="1730301311347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/terraform/mongodb_data" />
     <SUITE FILE_PATH="coverage/restApi$restApi_dalle3.coverage" NAME="restApi_dalle3 Coverage Results" MODIFIED="1730380656217" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/restApi$main.coverage" NAME="main Coverage Results" MODIFIED="1729178875156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
-    <SUITE FILE_PATH="coverage/restApi$restApi_metrics.coverage" NAME="restApi_metrics Coverage Results" MODIFIED="1732121250528" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/restApi$restApi_metrics.coverage" NAME="restApi_metrics Coverage Results" MODIFIED="1732122758532" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
   </component>
 </project>
