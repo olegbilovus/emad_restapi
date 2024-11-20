@@ -1,3 +1,4 @@
+from time import time
 from typing import Annotated
 
 import requests
@@ -7,11 +8,14 @@ from fastapi.openapi.models import APIKey
 from fastapi.params import Depends
 
 from app.auth import get_api_key_client
-from app.config import settings, CORE_URLS
+from app.config import settings, CORE_URLS, is_dalle3_valid, is_influxdb_valid
 from app.constants import Tags
+from app.influxdb import InfluxDB
 from app.models.genai import Dalle3Image
 from app.models.images import Sentence, ImagesResult, ContentClassification, Image
+from app.utils import JSONLogger
 
+logger = JSONLogger(__name__, settings.app_env)
 app = FastAPI(docs_url="/", title="AAC API", version="1.0.0")
 app.add_middleware(
     CORSMiddleware,
@@ -20,6 +24,18 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+metrics_on = is_influxdb_valid()
+logger.info(metrics_on=metrics_on)
+if metrics_on:
+    metrics: InfluxDB = InfluxDB(str(settings.influxdb.influxdb_url),
+                                 settings.influxdb.influxdb_token,
+                                 settings.influxdb.influxdb_org,
+                                 settings.influxdb.influxdb_bucket,
+                                 settings.influxdb.influxdb_verify_ssl)
+
+dalle3_on = is_dalle3_valid()
+logger.info(dalle3_on=dalle3_on)
 
 
 @app.get("/v1/images/", tags=[Tags.images], summary="Get images")
@@ -32,8 +48,13 @@ async def get_images(sentence: Annotated[Sentence, Query()]) -> ImagesResult:
     - **language**: the language of the sentence
     """
 
+    time_before = time()
     core_response = requests.get(CORE_URLS[sentence.language.name], params=sentence.model_dump(), timeout=3).json()
+    latency = round(time() - time_before, 3)
+
     images = [Image(**image) for image in core_response]
+
+    logger.info(latency=latency, language=sentence.language.name, num_kw=len(images))
 
     text_classification = ContentClassification(sex=False, violence=False)
     for image in images:
@@ -42,10 +63,13 @@ async def get_images(sentence: Annotated[Sentence, Query()]) -> ImagesResult:
         if image.violence:
             text_classification.violence = True
 
+    if metrics_on:
+        metrics.send_metrics(images, sentence.language.name, sentence.sex, sentence.violence, latency)
+
     return ImagesResult(text_classification=text_classification, url_root=settings.images_url_root, images=images)
 
 
-if settings.dalle3.valid:
+if dalle3_on:
     @app.get("/v1/genai/dalle3/images/", tags=[Tags.images], summary="Get images from GenAI")
     async def get_images_genai(text: str, api_key: APIKey = Depends(get_api_key_client)) -> Dalle3Image:
         """

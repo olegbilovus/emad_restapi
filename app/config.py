@@ -1,20 +1,31 @@
 from pydantic import HttpUrl
 from pydantic_settings import BaseSettings
 
+_EXAMPLE_URL = "https://example.home.arpa"
+
 
 class Dalle3GenAISettings(BaseSettings):
-    dalle3_endpoint: HttpUrl = HttpUrl("https://example.home.arpa")
+    dalle3_endpoint: HttpUrl = HttpUrl(_EXAMPLE_URL)
     dalle3_apikey: str = ""
     client_apikey: str = ""  # This is the API key for the client
-    valid: bool = False
+
+
+class InfluxDB(BaseSettings):
+    influxdb_org: str = ""
+    influxdb_url: HttpUrl = HttpUrl(_EXAMPLE_URL)
+    influxdb_token: str = ""
+    influxdb_bucket: str = ""
+    influxdb_verify_ssl: bool = True
 
 
 class Settings(BaseSettings):
+    app_env: str = "dev"
     images_url_root: HttpUrl
     core_url_it: HttpUrl
     core_url_en: HttpUrl
     dalle3: Dalle3GenAISettings = Dalle3GenAISettings()
     cors_origins: str = "*"
+    influxdb: InfluxDB = InfluxDB()
 
 
 settings = Settings()
@@ -24,6 +35,19 @@ CORE_URLS = {
     "en": f"{settings.core_url_en}/v1/nlp/images/",
 }
 
-settings.dalle3.valid = (settings.dalle3.dalle3_endpoint != "https://example.home.arpa" and
-                         settings.dalle3.dalle3_apikey != "" and
-                         settings.dalle3.client_apikey != "")
+
+def is_dalle3_valid():
+    return (
+            settings.dalle3.dalle3_endpoint != _EXAMPLE_URL and
+            settings.dalle3.dalle3_apikey != "" and
+            settings.dalle3.client_apikey != ""
+    )
+
+
+def is_influxdb_valid():
+    return (
+            settings.influxdb.influxdb_org != "" and
+            settings.influxdb.influxdb_url != _EXAMPLE_URL and
+            settings.influxdb.influxdb_token != "" and
+            settings.influxdb.influxdb_bucket != ""
+    )
