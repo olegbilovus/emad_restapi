@@ -229,6 +229,18 @@ resource "azurerm_container_app" "this" {
   workload_profile_name = local.workload_profile_name
 }
 
+resource "null_resource" "wait_for_dns_propagation" {
+  provisioner "local-exec" {
+    command = "sleep 60"
+  }
+
+  depends_on = [
+    cloudflare_record.azure_verify_images,
+    cloudflare_record.azure_verify_this,
+    cloudflare_record.this
+  ]
+}
+
 resource "azurerm_container_app_custom_domain" "this" {
   for_each = {
     images = azurerm_container_app.minio.id
@@ -245,17 +257,8 @@ resource "azurerm_container_app_custom_domain" "this" {
 
   depends_on = [
     cloudflare_record.azure_verify_images,
-    cloudflare_record.azure_verify_this
-  ]
-}
-
-resource "null_resource" "wait_for_deploy" {
-  provisioner "local-exec" {
-    command = "sleep 60"
-  }
-
-  depends_on = [
-    azurerm_container_app_custom_domain.this
+    cloudflare_record.azure_verify_this,
+    null_resource.wait_for_dns_propagation
   ]
 }
 
@@ -272,6 +275,6 @@ resource "null_resource" "custom_domain_and_managed_certificate" {
   triggers = local.cf_subdomains
   depends_on = [
     azurerm_container_app_custom_domain.this,
-    null_resource.wait_for_deploy
+    null_resource.wait_for_dns_propagation
   ]
 }
