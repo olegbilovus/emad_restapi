@@ -1,5 +1,4 @@
 import time
-from datetime import timedelta
 
 import requests
 from influxdb_client import InfluxDBClient, Point, WritePrecision
