@@ -254,9 +254,9 @@ resource "null_resource" "wait_for_deploy" {
     command = "sleep 60"
   }
 
-  depends_on = [ 
+  depends_on = [
     azurerm_container_app_custom_domain.this
-   ]
+  ]
 }
 
 # https://github.com/hashicorp/terraform-provider-azurerm/issues/27362
