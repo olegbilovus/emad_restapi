@@ -46,7 +46,7 @@ No modules.
 | [mongodbatlas_database_user.core](https://registry.terraform.io/providers/mongodb/mongodbatlas/1.21.4/docs/resources/database_user) | resource |
 | [mongodbatlas_project_ip_access_list.anyone](https://registry.terraform.io/providers/mongodb/mongodbatlas/1.21.4/docs/resources/project_ip_access_list) | resource |
 | [null_resource.custom_domain_and_managed_certificate](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
-| [null_resource.wait_for_deploy](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
+| [null_resource.wait_for_dns_propagation](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 | [random_string.random_suffix](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
 
 ## Inputs
