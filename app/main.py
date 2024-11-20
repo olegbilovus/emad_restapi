@@ -1,9 +1,8 @@
-import logging
-from time import time
+import time
 from typing import Annotated
 
 import requests
-from fastapi import FastAPI, Query
+from fastapi import FastAPI, Query, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.models import APIKey
 from fastapi.params import Depends
@@ -39,6 +38,17 @@ dalle3_on = is_dalle3_valid()
 logger.info(dalle3_on=dalle3_on)
 
 
+@app.middleware("http")
+async def perf(request: Request, call_next):
+    start_time = time.perf_counter()
+    response = await call_next(request)
+    process_time = time.perf_counter() - start_time
+    logger.info(uri=request.url.path, latency=process_time)
+    metrics.send_metrics_perf(request.url.path, process_time)
+
+    return response
+
+
 @app.get("/v1/images/", tags=[Tags.images], summary="Get images")
 async def get_images(sentence: Annotated[Sentence, Query()]) -> ImagesResult:
     """
@@ -49,9 +59,9 @@ async def get_images(sentence: Annotated[Sentence, Query()]) -> ImagesResult:
     - **language**: the language of the sentence
     """
 
-    time_before = time()
+    time_before = time.perf_counter()
     core_response = requests.get(CORE_URLS[sentence.language.name], params=sentence.model_dump(), timeout=3).json()
-    latency = round(time() - time_before, 3)
+    latency = round(time.perf_counter() - time_before, 3)
 
     images = [Image(**image) for image in core_response]
 
@@ -65,7 +75,7 @@ async def get_images(sentence: Annotated[Sentence, Query()]) -> ImagesResult:
             text_classification.violence = True
 
     if metrics_on:
-        metrics.send_metrics(images, sentence.language.name, sentence.sex, sentence.violence, latency)
+        metrics.send_metrics_image(images, sentence.language.name, sentence.sex, sentence.violence, latency)
 
     return ImagesResult(text_classification=text_classification, url_root=settings.images_url_root, images=images)
 
