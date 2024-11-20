@@ -3,6 +3,7 @@ name: Generate terraform docs
 on:
   pull_request:
     paths:
+      - .github/workflows/terraform-docs.yml
       - terraform/**
 
 jobs:

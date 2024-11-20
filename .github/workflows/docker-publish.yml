@@ -4,9 +4,12 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - terraform/**
-      - docs/***
+    paths:
+      - .github/workflows/docker-publish.yml
+      - app/**
+      - Dockerfile
+      - requirements.txt
+
   workflow_dispatch:
 
 jobs:
