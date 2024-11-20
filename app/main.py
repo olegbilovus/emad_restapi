@@ -44,7 +44,12 @@ async def perf(request: Request, call_next):
     response = await call_next(request)
     process_time = time.perf_counter() - start_time
     logger.info(uri=request.url.path, latency=process_time)
-    metrics.send_metrics_perf(request.url.path, process_time)
+
+    if metrics_on:
+        try:
+            metrics.send_metrics_perf(request.url.path, process_time)
+        except Exception as e:
+            logger.error(error=str(e))
 
     return response
 
@@ -75,7 +80,10 @@ async def get_images(sentence: Annotated[Sentence, Query()]) -> ImagesResult:
             text_classification.violence = True
 
     if metrics_on:
-        metrics.send_metrics_image(images, sentence.language.name, sentence.sex, sentence.violence, latency)
+        try:
+            metrics.send_metrics_image(images, sentence.language.name, sentence.sex, sentence.violence, latency)
+        except Exception as e:
+            logger.error(error=str(e))
 
     return ImagesResult(text_classification=text_classification, url_root=settings.images_url_root, images=images)
 
