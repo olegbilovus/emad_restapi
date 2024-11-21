@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83b467c2-f69f-47d3-a286-dfcbc4875cbd" name="Changes" comment="added prometheus for metrics">
+    <list default="true" id="83b467c2-f69f-47d3-a286-dfcbc4875cbd" name="Changes" comment="added more abstraction and reusable code">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/metrics.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/metrics.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -255,6 +258,7 @@
   "keyToString": {
     "DefaultHtmlFileTemplate": "HTML File",
     "FastAPI.restApi.executor": "Run",
+    "FastAPI.restApi_influxdb.executor": "Run",
     "FastAPI.restApi_metrics.executor": "Run",
     "FastAPI.restApi_metrics_grafana.executor": "Run",
     "FastAPI.restApi_prometheus.executor": "Run",
@@ -276,7 +280,7 @@
       <recent name="C:\Users\olgbl\Desktop\Unisa\EMAD\fastAPI\restApi" />
     </key>
   </component>
-  <component name="RunManager" selected="FastAPI.restApi_prometheus">
+  <component name="RunManager" selected="FastAPI.restApi_influxdb">
     <configuration name="restApi_influxdb" type="Python.FastAPI">
       <option name="file" value="$PROJECT_DIR$/app/main.py" />
       <module name="restApi" />
@@ -406,7 +410,7 @@
       <workItem from="1732126022274" duration="2985000" />
       <workItem from="1732129399588" duration="453000" />
       <workItem from="1732208328665" duration="236000" />
-      <workItem from="1732208583121" duration="7414000" />
+      <workItem from="1732208583121" duration="9843000" />
     </task>
     <task id="LOCAL-00002" summary="added cors and a html file to test the backend and view the images">
       <option name="closed" value="true" />
@@ -552,7 +556,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732215669056</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="added more abstraction and reusable code">
+      <option name="closed" value="true" />
+      <created>1732216424053</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1732216424053</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -579,15 +591,16 @@
     <MESSAGE value="added time" />
     <MESSAGE value="added app_env to metrics" />
     <MESSAGE value="added prometheus for metrics" />
-    <option name="LAST_COMMIT_MESSAGE" value="added prometheus for metrics" />
+    <MESSAGE value="added more abstraction and reusable code" />
+    <option name="LAST_COMMIT_MESSAGE" value="added more abstraction and reusable code" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/restApi$restApi.coverage" NAME="restApi Coverage Results" MODIFIED="1732209630844" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
-    <SUITE FILE_PATH="coverage/restApi$restApi_prometheus.coverage" NAME="restApi_prometheus Coverage Results" MODIFIED="1732215586688" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/restApi$restApi_prometheus.coverage" NAME="restApi_prometheus Coverage Results" MODIFIED="1732217091724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/restApi$create.coverage" NAME="create Coverage Results" MODIFIED="1730301311347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/terraform/mongodb_data" />
     <SUITE FILE_PATH="coverage/restApi$restApi_dalle3.coverage" NAME="restApi_dalle3 Coverage Results" MODIFIED="1730380656217" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/restApi$main.coverage" NAME="main Coverage Results" MODIFIED="1729178875156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
-    <SUITE FILE_PATH="coverage/restApi$restApi_metrics.coverage" NAME="restApi_metrics Coverage Results" MODIFIED="1732209646921" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/restApi$restApi_metrics.coverage" NAME="restApi_influxdb Coverage Results" MODIFIED="1732217375569" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/restApi$restApi_metrics_grafana.coverage" NAME="restApi_metrics_grafana Coverage Results" MODIFIED="1732209139728" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
   </component>
 </project>

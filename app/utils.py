@@ -27,7 +27,7 @@ class JSONLogger:
                 case float() | int():
                     msg += _v
                 case _:
-                    msg += f'"{_v}"'
+                    msg += f'"{_v.replace('"', '\\"')}"'
 
             msg += " "
         msg = msg.strip()

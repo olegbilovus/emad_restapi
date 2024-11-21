@@ -8,9 +8,9 @@ from fastapi.openapi.models import APIKey
 from fastapi.params import Depends
 
 from app.auth import get_api_key_client
-from app.config import settings, CORE_URLS, is_dalle3_valid, is_influxdb_valid, is_prometheus_valid
+from app.config import settings, CORE_URLS, is_dalle3_valid, is_influxdb_valid
 from app.constants import Tags
-from app.metrics import InfluxDB, Metrics, Prometheus
+from app.metrics import InfluxDB, Metrics
 from app.models.genai import Dalle3Image
 from app.models.images import Sentence, ImagesResult, ContentClassification, Image
 from app.utils import JSONLogger
@@ -25,23 +25,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-prometheus_on = is_prometheus_valid()
-influxdb_on = is_influxdb_valid()
-metrics_on = prometheus_on or influxdb_on
-logger.info(metrics_on=metrics_on, prometheus_on=prometheus_on, influxdb_on=influxdb_on)
+metrics_on = is_influxdb_valid()
+logger.info(metrics_on=metrics_on)
 if metrics_on:
-    if prometheus_on:
-        metrics: Metrics = Prometheus(str(settings.prometheus.prometheus_url),
-                                      settings.prometheus.prometheus_user,
-                                      settings.prometheus.prometheus_password,
-                                      env=settings.app_env)
-    else:
-        metrics: Metrics = InfluxDB(str(settings.influxdb.influxdb_url),
-                                    settings.influxdb.influxdb_token,
-                                    settings.influxdb.influxdb_org,
-                                    settings.influxdb.influxdb_bucket,
-                                    settings.influxdb.influxdb_verify_ssl,
-                                    env=settings.app_env)
+    metrics: Metrics = InfluxDB(str(settings.influxdb.influxdb_url),
+                                settings.influxdb.influxdb_token,
+                                settings.influxdb.influxdb_org,
+                                settings.influxdb.influxdb_bucket,
+                                settings.influxdb.influxdb_verify_ssl,
+                                env=settings.app_env)
 
 dalle3_on = is_dalle3_valid()
 logger.info(dalle3_on=dalle3_on)

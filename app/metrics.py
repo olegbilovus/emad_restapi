@@ -37,7 +37,7 @@ class PointGenerator:
         now_ns = time.time_ns()
         for i, image in enumerate(images, start=1):
             point_kw = (Point("keyword").tag("env", env).tag(PointGenerator._tag_language, language)
-                        .field("keyword", image.keyword)
+                        .field("word", image.keyword)
                         .field("sex", image.sex)
                         .field("violence", image.violence)
                         .field("found", image.id != -1)
@@ -71,32 +71,6 @@ class InfluxDB(Metrics):
 
     def _write(self, *points: Point):
         self._write_api.write(self._bucket, self._org, points, write_precision=WritePrecision.NS)
-
-    def send_metrics_perf(self, url_path, latency, status_code):
-        point = PointGenerator.point_perf(self._env, url_path, latency, status_code)
-        self._write(point)
-
-    def send_metrics_image(self, images: list[Image], language: str, filter_sex: bool, filter_violence: bool,
-                           latency: float):
-        points = PointGenerator.points_image(self._env, images, language, filter_sex, filter_violence, latency)
-        self._write(*points)
-
-
-class Prometheus(Metrics):
-
-    def __init__(self, url, user, password, env="dev"):
-        self._url = url
-        self._env = env
-
-        self._session = requests.Session()
-        self._session.headers.update({"Content-Type": "text/plain", "Authorization": f"Bearer {user}:{password}"})
-
-    def _write(self, *points: Point):
-        line_protocol = ""
-        for point in points:
-            line_protocol += point.to_line_protocol() + "\n"
-
-        self._session.post(self._url, data=line_protocol)
 
     def send_metrics_perf(self, url_path, latency, status_code):
         point = PointGenerator.point_perf(self._env, url_path, latency, status_code)
