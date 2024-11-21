@@ -2,7 +2,7 @@ import time
 from typing import Annotated
 
 import requests
-from fastapi import FastAPI, Query, Request
+from fastapi import FastAPI, Query, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.models import APIKey
 from fastapi.params import Depends
@@ -25,13 +25,23 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-metrics_on = is_prometheus_valid()
-logger.info(metrics_on=metrics_on)
+prometheus_on = is_prometheus_valid()
+influxdb_on = is_influxdb_valid()
+metrics_on = prometheus_on or influxdb_on
+logger.info(metrics_on=metrics_on, prometheus_on=prometheus_on, influxdb_on=influxdb_on)
 if metrics_on:
-    metrics: Metrics = Prometheus(str(settings.prometheus.prometheus_url),
-                                  settings.prometheus.prometheus_user,
-                                  settings.prometheus.prometheus_password,
-                                  env=settings.app_env)
+    if prometheus_on:
+        metrics: Metrics = Prometheus(str(settings.prometheus.prometheus_url),
+                                      settings.prometheus.prometheus_user,
+                                      settings.prometheus.prometheus_password,
+                                      env=settings.app_env)
+    else:
+        metrics: Metrics = InfluxDB(str(settings.influxdb.influxdb_url),
+                                    settings.influxdb.influxdb_token,
+                                    settings.influxdb.influxdb_org,
+                                    settings.influxdb.influxdb_bucket,
+                                    settings.influxdb.influxdb_verify_ssl,
+                                    env=settings.app_env)
 
 dalle3_on = is_dalle3_valid()
 logger.info(dalle3_on=dalle3_on)
@@ -42,11 +52,11 @@ async def perf(request: Request, call_next):
     start_time = time.perf_counter()
     response = await call_next(request)
     process_time = time.perf_counter() - start_time
-    logger.info(uri=request.url.path, latency=process_time)
+    logger.info(uri=request.url.path, latency=process_time, status_code=response.status_code)
 
     if metrics_on:
         try:
-            metrics.send_metrics_perf(request.url.path, process_time)
+            metrics.send_metrics_perf(request.url.path, process_time, response.status_code)
         except Exception as e:
             logger.error(error=str(e))
 
@@ -64,7 +74,11 @@ async def get_images(sentence: Annotated[Sentence, Query()]) -> ImagesResult:
     """
 
     time_before = time.perf_counter()
-    core_response = requests.get(CORE_URLS[sentence.language.name], params=sentence.model_dump(), timeout=3).json()
+    try:
+        core_response = requests.get(CORE_URLS[sentence.language.name], params=sentence.model_dump(), timeout=3).json()
+    except Exception as e:
+        logger.error(error=str(e))
+        raise HTTPException(status_code=500, detail="Core service is down")
     latency = round(time.perf_counter() - time_before, 3)
 
     images = [Image(**image) for image in core_response]

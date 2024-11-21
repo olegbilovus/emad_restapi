@@ -11,7 +11,7 @@ from app.models.images import Image
 class Metrics(ABC):
 
     @abstractmethod
-    def send_metrics_perf(self, url_path, latency):
+    def send_metrics_perf(self, url_path, latency, status_code):
         pass
 
     @abstractmethod
@@ -24,8 +24,11 @@ class PointGenerator:
     _tag_language = "language"
 
     @staticmethod
-    def point_perf(env, url_path, latency) -> Point:
-        return Point("perf").tag("env", env).tag("path", url_path).field("latency", latency).time(time.time_ns())
+    def point_perf(env, url_path, latency, status_code) -> Point:
+        return (Point("perf").tag("env", env).tag("path", url_path)
+                .field("latency", latency)
+                .field("status_code", status_code)
+                .time(time.time_ns()))
 
     @staticmethod
     def points_image(env, images: list[Image], language: str, filter_sex: bool, filter_violence: bool,
@@ -69,8 +72,8 @@ class InfluxDB(Metrics):
     def _write(self, *points: Point):
         self._write_api.write(self._bucket, self._org, points, write_precision=WritePrecision.NS)
 
-    def send_metrics_perf(self, url_path, latency):
-        point = PointGenerator.point_perf(self._env, url_path, latency)
+    def send_metrics_perf(self, url_path, latency, status_code):
+        point = PointGenerator.point_perf(self._env, url_path, latency, status_code)
         self._write(point)
 
     def send_metrics_image(self, images: list[Image], language: str, filter_sex: bool, filter_violence: bool,
@@ -95,8 +98,8 @@ class Prometheus(Metrics):
 
         self._session.post(self._url, data=line_protocol)
 
-    def send_metrics_perf(self, url_path, latency):
-        point = PointGenerator.point_perf(self._env, url_path, latency)
+    def send_metrics_perf(self, url_path, latency, status_code):
+        point = PointGenerator.point_perf(self._env, url_path, latency, status_code)
         self._write(point)
 
     def send_metrics_image(self, images: list[Image], language: str, filter_sex: bool, filter_violence: bool,
