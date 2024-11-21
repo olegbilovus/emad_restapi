@@ -18,6 +18,12 @@ class InfluxDB(BaseSettings):
     influxdb_verify_ssl: bool = True
 
 
+class Prometheus(BaseSettings):
+    prometheus_url: HttpUrl = HttpUrl(_EXAMPLE_URL)
+    prometheus_user: str = ""
+    prometheus_password: str = ""
+
+
 class Settings(BaseSettings):
     app_env: str = "dev"
     images_url_root: HttpUrl
@@ -26,6 +32,7 @@ class Settings(BaseSettings):
     dalle3: Dalle3GenAISettings = Dalle3GenAISettings()
     cors_origins: str = "*"
     influxdb: InfluxDB = InfluxDB()
+    prometheus: Prometheus = Prometheus()
 
 
 settings = Settings()
@@ -50,4 +57,12 @@ def is_influxdb_valid():
             settings.influxdb.influxdb_url != _EXAMPLE_URL and
             settings.influxdb.influxdb_token != "" and
             settings.influxdb.influxdb_bucket != ""
+    )
+
+
+def is_prometheus_valid():
+    return (
+            settings.prometheus.prometheus_url != _EXAMPLE_URL and
+            settings.prometheus.prometheus_user != "" and
+            settings.prometheus.prometheus_password != ""
     )
