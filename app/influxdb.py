@@ -10,7 +10,7 @@ from app.models.images import Image
 class InfluxDB:
     _tag_language = "language"
 
-    def __init__(self, url, token, org, bucket, verify_ssl=True):
+    def __init__(self, url, token, org, bucket, verify_ssl=True, env="dev"):
         self._client = InfluxDBClient(url, token, org, verify_ssl=verify_ssl)
 
         self._write_api = self._client.write_api(write_options=SYNCHRONOUS)
@@ -20,7 +20,13 @@ class InfluxDB:
         if not verify_ssl:
             requests.packages.urllib3.disable_warnings()
 
+        self._env = env
+
     def _write(self, *points: Point):
+
+        for point in points:
+            point.tag("env", self._env)
+
         self._write_api.write(self._bucket, self._org, points, write_precision=WritePrecision.NS)
 
     def send_metrics_perf(self, url_path, latency):

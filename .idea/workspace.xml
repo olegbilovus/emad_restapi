@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83b467c2-f69f-47d3-a286-dfcbc4875cbd" name="Changes" comment="added latency for all paths" />
+    <list default="true" id="83b467c2-f69f-47d3-a286-dfcbc4875cbd" name="Changes" comment="added time">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,7 +34,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="metrics-dalle3" />
+        <entry key="$PROJECT_DIR$" value="metrics-errors" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -188,6 +190,17 @@
               </option>
               <option name="timestamp" value="1732129016542" />
             </BranchCleanupEntry>
+            <BranchCleanupEntry>
+              <option name="deletions">
+                <list>
+                  <BranchDeletion>
+                    <option name="hash" value="6d6b405c3e3678042b077076e7ee52f19b44b4e8" />
+                    <option name="name" value="metrics-errors" />
+                  </BranchDeletion>
+                </list>
+              </option>
+              <option name="timestamp" value="1732129804639" />
+            </BranchCleanupEntry>
           </list>
         </option>
       </BranchesCleanupHistory>
@@ -201,11 +214,11 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1732129008" />
+                    <option name="lastUsedInstant" value="1732129796" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="metrics-dalle3" />
-                    <option name="lastUsedInstant" value="1732126541" />
+                    <option name="branchName" value="metrics-errors" />
+                    <option name="lastUsedInstant" value="1732129555" />
                   </RecentBranch>
                 </list>
               </option>
@@ -310,11 +323,11 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="FastAPI.restApi_metrics" />
       <item itemvalue="Docker.Dockerfile" />
       <item itemvalue="Docker.compose.yaml.mongodb_setup: Compose Deployment" />
-      <item itemvalue="FastAPI.restApi" />
-      <item itemvalue="FastAPI.restApi_metrics" />
       <item itemvalue="Python.create" />
+      <item itemvalue="FastAPI.restApi" />
     </list>
     <recent_temporary>
       <list>
@@ -363,6 +376,8 @@
       <workItem from="1732106053388" duration="609000" />
       <workItem from="1732108187093" duration="15482000" />
       <workItem from="1732126022274" duration="2985000" />
+      <workItem from="1732129399588" duration="453000" />
+      <workItem from="1732208328665" duration="236000" />
     </task>
     <task id="LOCAL-00002" summary="added cors and a html file to test the backend and view the images">
       <option name="closed" value="true" />
@@ -476,7 +491,23 @@
       <option name="project" value="LOCAL" />
       <updated>1732128632797</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="manage errors">
+      <option name="closed" value="true" />
+      <created>1732129572036</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1732129572036</updated>
+    </task>
+    <task id="LOCAL-00017" summary="added time">
+      <option name="closed" value="true" />
+      <created>1732129645520</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1732129645520</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -499,7 +530,9 @@
     <MESSAGE value="removed unused modules" />
     <MESSAGE value="fixed logs" />
     <MESSAGE value="added latency for all paths" />
-    <option name="LAST_COMMIT_MESSAGE" value="added latency for all paths" />
+    <MESSAGE value="manage errors" />
+    <MESSAGE value="added time" />
+    <option name="LAST_COMMIT_MESSAGE" value="added time" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/restApi$restApi.coverage" NAME="restApi Coverage Results" MODIFIED="1732115768736" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />

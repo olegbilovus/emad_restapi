@@ -32,7 +32,8 @@ if metrics_on:
                                  settings.influxdb.influxdb_token,
                                  settings.influxdb.influxdb_org,
                                  settings.influxdb.influxdb_bucket,
-                                 settings.influxdb.influxdb_verify_ssl)
+                                 verify_ssl=settings.influxdb.influxdb_verify_ssl,
+                                 env=settings.app_env)
 
 dalle3_on = is_dalle3_valid()
 logger.info(dalle3_on=dalle3_on)
