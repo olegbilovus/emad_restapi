@@ -63,6 +63,7 @@ No modules.
 | <a name="input_gh_core_repo"></a> [gh\_core\_repo](#input\_gh\_core\_repo) | n/a | `string` | n/a | yes |
 | <a name="input_gh_minio_repo"></a> [gh\_minio\_repo](#input\_gh\_minio\_repo) | n/a | `string` | n/a | yes |
 | <a name="input_gh_repo"></a> [gh\_repo](#input\_gh\_repo) | n/a | `string` | n/a | yes |
+| <a name="input_influxdb"></a> [influxdb](#input\_influxdb) | n/a | <pre>object({<br/>    url    = string<br/>    token  = string<br/>    org    = string<br/>    bucket = string<br/>  })</pre> | n/a | yes |
 | <a name="input_location"></a> [location](#input\_location) | n/a | `string` | `"westeurope"` | no |
 | <a name="input_mongodb_pb_key"></a> [mongodb\_pb\_key](#input\_mongodb\_pb\_key) | n/a | `string` | n/a | yes |
 | <a name="input_mongodb_project_id"></a> [mongodb\_project\_id](#input\_mongodb\_project\_id) | n/a | `string` | n/a | yes |
