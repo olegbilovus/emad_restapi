@@ -198,6 +198,10 @@ resource "azurerm_container_app" "this" {
       memory = "2Gi"
 
       env {
+        name  = "APP_ENV"
+        value = "azure"
+      }
+      env {
         name  = "IMAGES_URL_ROOT"
         value = "https://${azurerm_container_app.minio.ingress[0].fqdn}/pictograms/pictograms/"
       }
@@ -220,6 +224,13 @@ resource "azurerm_container_app" "this" {
       env {
         name  = "CLIENT_APIKEY"
         value = var.client_apikey
+      }
+      dynamic "env" {
+        for_each = var.influxdb
+        content {
+          name  = upper("INFLUXDB_${env.key}")
+          value = env.value
+        }
       }
     }
     min_replicas = var.scale.min

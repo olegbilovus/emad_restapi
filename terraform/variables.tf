@@ -106,3 +106,12 @@ variable "cf_zone_id" {
 variable "cf_domain" {
   type = string
 }
+
+variable "influxdb" {
+  type = object({
+    url    = string
+    token  = string
+    org    = string
+    bucket = string
+  })
+}
