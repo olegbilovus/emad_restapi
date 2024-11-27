@@ -11,7 +11,7 @@ terraform {
 
     mongodbatlas = {
       source  = "mongodb/mongodbatlas"
-      version = "1.21.4"
+      version = "1.22.0"
     }
 
     cloudflare = {
