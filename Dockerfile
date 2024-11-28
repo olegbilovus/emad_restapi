@@ -26,7 +26,7 @@ WORKDIR /app
 COPY ./app .
 
 HEALTHCHECK --interval=10s --timeout=3s \
-    CMD curl --fail http://127.0.0.1:80/health || exit 1
+    CMD curl -s --fail http://127.0.0.1:80/health || exit 1
 
 ENV PATH="/opt/venv/bin:$PATH"
 CMD ["fastapi", "run", "main.py", "--port", "80"]
