@@ -41,6 +41,9 @@ logger.info(dalle3_on=dalle3_on)
 
 @app.middleware("http")
 async def perf(request: Request, call_next):
+    if request.url.path == "/health":
+        return await call_next(request)
+
     start_time = time.perf_counter()
     response = await call_next(request)
     process_time = time.perf_counter() - start_time
@@ -53,6 +56,11 @@ async def perf(request: Request, call_next):
             logger.error(error=str(e))
 
     return response
+
+
+@app.get("/health", tags=["health"], summary="Health check", include_in_schema=False)
+async def health_check():
+    return {"status": "healthy"}
 
 
 @app.get("/v1/images/", tags=[Tags.images], summary="Get images")
