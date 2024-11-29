@@ -3,7 +3,7 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_azapi"></a> [azapi](#requirement\_azapi) | 2.0.1 |
+| <a name="requirement_azapi"></a> [azapi](#requirement\_azapi) | 2.1.0 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | 4.11.0 |
 | <a name="requirement_cloudflare"></a> [cloudflare](#requirement\_cloudflare) | 4.47.0 |
 | <a name="requirement_mongodbatlas"></a> [mongodbatlas](#requirement\_mongodbatlas) | 1.22.0 |
@@ -12,7 +12,7 @@
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azapi"></a> [azapi](#provider\_azapi) | 2.0.1 |
+| <a name="provider_azapi"></a> [azapi](#provider\_azapi) | 2.1.0 |
 | <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 4.11.0 |
 | <a name="provider_cloudflare"></a> [cloudflare](#provider\_cloudflare) | 4.47.0 |
 | <a name="provider_mongodbatlas"></a> [mongodbatlas](#provider\_mongodbatlas) | 1.22.0 |
@@ -27,7 +27,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [azapi_resource.content_filter](https://registry.terraform.io/providers/Azure/azapi/2.0.1/docs/resources/resource) | resource |
+| [azapi_resource.content_filter](https://registry.terraform.io/providers/Azure/azapi/2.1.0/docs/resources/resource) | resource |
 | [azurerm_cognitive_account.openai](https://registry.terraform.io/providers/hashicorp/azurerm/4.11.0/docs/resources/cognitive_account) | resource |
 | [azurerm_cognitive_deployment.dalle3](https://registry.terraform.io/providers/hashicorp/azurerm/4.11.0/docs/resources/cognitive_deployment) | resource |
 | [azurerm_container_app.core](https://registry.terraform.io/providers/hashicorp/azurerm/4.11.0/docs/resources/container_app) | resource |
