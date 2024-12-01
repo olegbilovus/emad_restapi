@@ -1,3 +1,4 @@
+import logging
 import time
 from typing import Annotated
 
@@ -15,6 +16,7 @@ from app.models.genai import Dalle3Image
 from app.models.images import Sentence, ImagesResult, ContentClassification, Image
 from app.utils import JSONLogger
 
+logging.getLogger("uvicorn.access").setLevel(logging.WARNING)
 logger = JSONLogger(__name__, settings.app_env)
 app = FastAPI(docs_url="/", title="AAC API", version="1.0.0")
 app.add_middleware(
