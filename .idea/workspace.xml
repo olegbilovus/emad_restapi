@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83b467c2-f69f-47d3-a286-dfcbc4875cbd" name="Changes" comment="fixed curl output">
+    <list default="true" id="83b467c2-f69f-47d3-a286-dfcbc4875cbd" name="Changes" comment="removed redundant uvicorn.access log">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +35,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="checkov-fixes" />
+        <entry key="$PROJECT_DIR$" value="api-logs" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -50,21 +51,6 @@
       <BranchesCleanupHistory>
         <option name="history">
           <list>
-            <BranchCleanupEntry>
-              <option name="deletions">
-                <list>
-                  <BranchDeletion>
-                    <option name="hash" value="d7ab704340be1ed931860817f2321a2f1b98ba0f" />
-                    <option name="name" value="api-auth_genai" />
-                  </BranchDeletion>
-                  <BranchDeletion>
-                    <option name="hash" value="689ffedb03b1f876c05174563bea9eaaff891283" />
-                    <option name="name" value="terraform-dalle3" />
-                  </BranchDeletion>
-                </list>
-              </option>
-              <option name="timestamp" value="1730386713003" />
-            </BranchCleanupEntry>
             <BranchCleanupEntry>
               <option name="deletions">
                 <list>
@@ -234,6 +220,17 @@
               </option>
               <option name="timestamp" value="1732787729893" />
             </BranchCleanupEntry>
+            <BranchCleanupEntry>
+              <option name="deletions">
+                <list>
+                  <BranchDeletion>
+                    <option name="hash" value="fe509e78689dad53fce65c628cecfed78a4c01be" />
+                    <option name="name" value="api-logs" />
+                  </BranchDeletion>
+                </list>
+              </option>
+              <option name="timestamp" value="1733050877132" />
+            </BranchCleanupEntry>
           </list>
         </option>
       </BranchesCleanupHistory>
@@ -247,7 +244,11 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1732787709" />
+                    <option name="lastUsedInstant" value="1733050870" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="api-logs" />
+                    <option name="lastUsedInstant" value="1733050670" />
                   </RecentBranch>
                 </list>
               </option>
@@ -440,7 +441,8 @@
       <workItem from="1732276270346" duration="1681000" />
       <workItem from="1732287439713" duration="8264000" />
       <workItem from="1732786029081" duration="1687000" />
-      <workItem from="1733050279510" duration="52000" />
+      <workItem from="1733050279510" duration="593000" />
+      <workItem from="1733051340548" duration="311000" />
     </task>
     <task id="LOCAL-00002" summary="added cors and a html file to test the backend and view the images">
       <option name="closed" value="true" />
@@ -618,11 +620,30 @@
       <option name="project" value="LOCAL" />
       <updated>1732787296932</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="removed redundant uvicorn.access log">
+      <option name="closed" value="true" />
+      <created>1733050700151</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1733050700151</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="RELOAD_CONTEXT" value="false" />
@@ -649,12 +670,13 @@
     <MESSAGE value="removed prometheus because it does not support strings" />
     <MESSAGE value="added grafana dashboard" />
     <MESSAGE value="fixed curl output" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed curl output" />
+    <MESSAGE value="removed redundant uvicorn.access log" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed redundant uvicorn.access log" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/restApi$restApi.coverage" NAME="restApi Coverage Results" MODIFIED="1732209630844" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/restApi$restApi_prometheus.coverage" NAME="restApi_prometheus Coverage Results" MODIFIED="1732217091724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
-    <SUITE FILE_PATH="coverage/restApi$restApi_influxdb.coverage" NAME="restApi_influxdb Coverage Results" MODIFIED="1733050301042" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/restApi$restApi_influxdb.coverage" NAME="restApi_influxdb Coverage Results" MODIFIED="1733050585446" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/restApi$create.coverage" NAME="create Coverage Results" MODIFIED="1730301311347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/terraform/mongodb_data" />
     <SUITE FILE_PATH="coverage/restApi$restApi_dalle3.coverage" NAME="restApi_dalle3 Coverage Results" MODIFIED="1730380656217" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/restApi$main.coverage" NAME="main Coverage Results" MODIFIED="1729178875156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
