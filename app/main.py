@@ -47,7 +47,7 @@ async def perf(request: Request, call_next):
     start_time = time.perf_counter()
     response = await call_next(request)
     process_time = time.perf_counter() - start_time
-    logger.info(uri=request.url.path, latency=process_time, status_code=response.status_code)
+    logger.info(uri=request.url.path, query=request.url.query, latency=process_time, status_code=response.status_code)
 
     if metrics_on:
         try:
