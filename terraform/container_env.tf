@@ -63,7 +63,7 @@ resource "azurerm_container_app" "core" {
   ingress {
     external_enabled           = false
     allow_insecure_connections = true
-    target_port                = 80
+    target_port                = 8080
     traffic_weight {
       latest_revision = true
       percentage      = 100
@@ -172,7 +172,7 @@ resource "azurerm_container_app" "this" {
   ingress {
     external_enabled           = true
     allow_insecure_connections = false
-    target_port                = 80
+    target_port                = 8080
     traffic_weight {
       latest_revision = true
       percentage      = 100
@@ -244,6 +244,8 @@ resource "null_resource" "wait_for_dns_propagation" {
   provisioner "local-exec" {
     command = "sleep 60"
   }
+
+  triggers = local.cf_subdomains
 
   depends_on = [
     cloudflare_record.azure_verify_images,
