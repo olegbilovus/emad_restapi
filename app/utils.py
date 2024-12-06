@@ -9,7 +9,7 @@ class JSONLogger:
         self._logger = logging.getLogger(name)
         self._logger.setLevel(logging.DEBUG)
 
-        stream_handler = logging.StreamHandler(sys.stderr)
+        stream_handler = logging.StreamHandler()
         stream_handler.setFormatter(logging.Formatter(self._json_format.format(env=env)))
         self._logger.addHandler(stream_handler)
 
