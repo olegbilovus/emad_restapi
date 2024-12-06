@@ -3,11 +3,11 @@ services:
     image: emad_restapi
     container_name: emad_restapi
     ports:
-      - "8080:80"
+      - "8080:8080"
     environment:
       - IMAGES_URL_ROOT=http://localhost:9000/pictograms/pictograms/
-      - CORE_URL_IT=http://emad_images-it/
-      - CORE_URL_EN=http://emad_images-en/
+      - CORE_URL_IT=http://emad_images-it:8080/
+      - CORE_URL_EN=http://emad_images-en:8080/
       - DALLE3_ENDPOINT=https://example.home.arpa # change with the correct endpoint
       - DALLE3_APIKEY= # change with the correct api key
       - CLIENT_APIKEY=3352ca2b967b2ff415d5cecd978b1b25 # this is the default api key for the client
@@ -48,7 +48,7 @@ services:
     image: emad_images-it
     container_name: emad_images-it
     ports:
-      - "8081:80"
+      - "8081:8080"
     environment:
       - MONGODB_URI=mongodb://377eb8ec01c85fa727c10c478f60c13f:25d055a16b3d1a40d7a90e46bee02ef3@mongodb:27017
       - MONGODB_DATABASE=pictograms
@@ -63,7 +63,7 @@ services:
     image: emad_images-en
     container_name: emad_images-en
     ports:
-      - "8082:80"
+      - "8082:8080"
     environment:
       - MONGODB_URI=mongodb://377eb8ec01c85fa727c10c478f60c13f:25d055a16b3d1a40d7a90e46bee02ef3@mongodb:27017
       - MONGODB_DATABASE=pictograms
