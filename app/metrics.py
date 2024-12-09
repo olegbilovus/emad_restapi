@@ -6,6 +6,7 @@ from influxdb_client import InfluxDBClient, Point, WritePrecision
 from influxdb_client.client.write_api import SYNCHRONOUS
 
 from app.models.images import Image
+from app.models.imagesv2 import KeywordImages
 
 
 class Metrics(ABC):
@@ -16,7 +17,12 @@ class Metrics(ABC):
 
     @abstractmethod
     def send_metrics_image(self, images: list[Image], language: str, filter_sex: bool, filter_violence: bool,
-                           latency: float):
+        latency: float):
+        pass
+
+    @abstractmethod
+    def send_metrics_image_v2(self, keyword_images: list[KeywordImages], language: str, filter_sex: bool,
+        filter_violence: bool, latency: float):
         pass
 
 
@@ -32,7 +38,7 @@ class PointGenerator:
 
     @staticmethod
     def points_image(env, images: list[Image], language: str, filter_sex: bool, filter_violence: bool,
-                     latency: float) -> list[Point]:
+        latency: float) -> list[Point]:
         points = []
         now_ns = time.time_ns()
         for i, image in enumerate(images, start=1):
@@ -46,6 +52,29 @@ class PointGenerator:
 
         point_stats = (Point("stats").tag("env", env).tag(PointGenerator._tag_language, language)
                        .field("num_kw", len(images))
+                       .field("latency", latency)
+                       .field("filter_sex", filter_sex)
+                       .field("filter_violence", filter_violence))
+        point_stats.time(now_ns)
+        points.append(point_stats)
+
+        return points
+
+    @staticmethod
+    def points_image_v2(env, keyword_images: list[KeywordImages], language: str, filter_sex: bool,
+        filter_violence: bool,
+        latency: float) -> list[Point]:
+        points = []
+        now_ns = time.time_ns()
+        for i, keyword in enumerate(keyword_images, start=1):
+            point_kw = (Point("keyword").tag("env", env).tag(PointGenerator._tag_language, language)
+                        .field("word", keyword.keyword)
+                        .field("found", len(keyword.images) > 0)
+                        .time(now_ns + i * 10000))
+            points.append(point_kw)
+
+        point_stats = (Point("stats").tag("env", env).tag(PointGenerator._tag_language, language)
+                       .field("num_kw", len(keyword_images))
                        .field("latency", latency)
                        .field("filter_sex", filter_sex)
                        .field("filter_violence", filter_violence))
@@ -77,6 +106,12 @@ class InfluxDB(Metrics):
         self._write(point)
 
     def send_metrics_image(self, images: list[Image], language: str, filter_sex: bool, filter_violence: bool,
-                           latency: float):
+        latency: float):
         points = PointGenerator.points_image(self._env, images, language, filter_sex, filter_violence, latency)
+        self._write(*points)
+
+    def send_metrics_image_v2(self, keyword_images: list[KeywordImages], language: str, filter_sex: bool,
+        filter_violence: bool, latency: float):
+        points = PointGenerator.points_image_v2(self._env, keyword_images, language, filter_sex, filter_violence,
+                                                latency)
         self._write(*points)

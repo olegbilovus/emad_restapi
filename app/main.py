@@ -1,5 +1,5 @@
 import time
-from typing import Annotated
+from typing import Annotated, List
 
 import requests
 from fastapi import FastAPI, Query, Request, HTTPException
@@ -13,6 +13,7 @@ from app.constants import Tags
 from app.metrics import InfluxDB, Metrics
 from app.models.genai import Dalle3Image
 from app.models.images import Sentence, ImagesResult, ContentClassification, Image
+from app.models.imagesv2 import Sentence as SentenceV2, KeywordImages
 from app.utils import JSONLogger
 
 logger = JSONLogger(__name__, settings.app_env)
@@ -81,7 +82,14 @@ async def get_images(sentence: Annotated[Sentence, Query()]) -> ImagesResult:
         raise HTTPException(status_code=500, detail="Core service is down")
     latency = round(time.perf_counter() - time_before, 3)
 
-    images = [Image(**image) for image in core_response]
+    images = []
+    for keyword in core_response:
+        if not keyword["images"]:
+            images.append(Image(keyword=keyword["keyword"], id=-1))
+        else:
+            image = keyword["images"][0]
+            images.append(
+                Image(keyword=keyword["keyword"], id=image["id"], sex=image["sex"], violence=image["violence"]))
 
     logger.info(latency=latency, language=sentence.language.name, num_kw=len(images))
 
@@ -99,6 +107,38 @@ async def get_images(sentence: Annotated[Sentence, Query()]) -> ImagesResult:
             logger.error(error=str(e))
 
     return ImagesResult(text_classification=text_classification, url_root=settings.images_url_root, images=images)
+
+
+@app.get("/v2/images/", tags=[Tags.images], summary="Get all the images for each keyword in the sentence")
+async def get_all_keyword_images(sentence: Annotated[SentenceV2, Query()]) -> List[KeywordImages]:
+    """
+    Get all the images for each  keyword in the sentence
+    - **sex**: filter out sexual content
+    - **violence**: filter out violent content
+    - **text**: the sentence for which to get images
+    - **language**: the language of the sentence
+    - **one_image**: return only one image per keyword
+    """
+
+    time_before = time.perf_counter()
+    try:
+        core_response = requests.get(CORE_URLS[sentence.language.name], params=sentence.model_dump(), timeout=3).json()
+    except Exception as e:
+        logger.error(error=str(e))
+        raise HTTPException(status_code=500, detail="Core service is down")
+    latency = round(time.perf_counter() - time_before, 3)
+
+    keyword_images = [KeywordImages(**keyword) for keyword in core_response]
+
+    logger.info(latency=latency, language=sentence.language.name, num_kw=len(keyword_images))
+
+    if metrics_on:
+        try:
+            metrics.send_metrics_image_v2(keyword_images, sentence.language.name, sentence.sex, sentence.violence, latency)
+        except Exception as e:
+            logger.error(error=str(e))
+
+    return keyword_images
 
 
 if dalle3_on:
