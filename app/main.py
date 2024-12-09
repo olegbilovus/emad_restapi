@@ -1,5 +1,5 @@
 import time
-from typing import Annotated, List
+from typing import Annotated
 
 import requests
 from fastapi import FastAPI, Query, Request, HTTPException
@@ -13,7 +13,7 @@ from app.constants import Tags
 from app.metrics import InfluxDB, Metrics
 from app.models.genai import Dalle3Image
 from app.models.images import Sentence, ImagesResult, ContentClassification, Image
-from app.models.imagesv2 import Sentence as SentenceV2, KeywordImages
+from app.models.imagesv2 import Sentence as SentenceV2, KeywordImages, KeywordImagesResult
 from app.utils import JSONLogger
 
 logger = JSONLogger(__name__, settings.app_env)
@@ -110,7 +110,7 @@ async def get_images(sentence: Annotated[Sentence, Query()]) -> ImagesResult:
 
 
 @app.get("/v2/images/", tags=[Tags.images], summary="Get all the images for each keyword in the sentence")
-async def get_all_keyword_images(sentence: Annotated[SentenceV2, Query()]) -> List[KeywordImages]:
+async def get_all_keyword_images(sentence: Annotated[SentenceV2, Query()]) -> KeywordImagesResult:
     """
     Get all the images for each  keyword in the sentence
     - **sex**: filter out sexual content
@@ -134,11 +134,12 @@ async def get_all_keyword_images(sentence: Annotated[SentenceV2, Query()]) -> Li
 
     if metrics_on:
         try:
-            metrics.send_metrics_image_v2(keyword_images, sentence.language.name, sentence.sex, sentence.violence, latency)
+            metrics.send_metrics_image_v2(keyword_images, sentence.language.name, sentence.sex, sentence.violence,
+                                          latency)
         except Exception as e:
             logger.error(error=str(e))
 
-    return keyword_images
+    return KeywordImagesResult(url_root=settings.images_url_root, keyword_images=keyword_images)
 
 
 if dalle3_on:

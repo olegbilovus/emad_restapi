@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83b467c2-f69f-47d3-a286-dfcbc4875cbd" name="Changes" comment="minor fixes">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="83b467c2-f69f-47d3-a286-dfcbc4875cbd" name="Changes" comment="return all the images available for each keyword" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,7 +32,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="fixes" />
+        <entry key="$PROJECT_DIR$" value="api-multiple_images" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -274,6 +272,21 @@
               </option>
               <option name="timestamp" value="1733493442178" />
             </BranchCleanupEntry>
+            <BranchCleanupEntry>
+              <option name="deletions">
+                <list>
+                  <BranchDeletion>
+                    <option name="hash" value="fe7e38b777934d05ff7bf6889fbf5321c20ee589" />
+                    <option name="name" value="terraform-fixes" />
+                  </BranchDeletion>
+                  <BranchDeletion>
+                    <option name="hash" value="b9bdcb8beb172bf3c02225014c8eda666ad69ec3" />
+                    <option name="name" value="api-multiple_images" />
+                  </BranchDeletion>
+                </list>
+              </option>
+              <option name="timestamp" value="1733762164373" />
+            </BranchCleanupEntry>
           </list>
         </option>
       </BranchesCleanupHistory>
@@ -287,11 +300,11 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1733493435" />
+                    <option name="lastUsedInstant" value="1733762158" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="fixes" />
-                    <option name="lastUsedInstant" value="1733493234" />
+                    <option name="branchName" value="api-multiple_images" />
+                    <option name="lastUsedInstant" value="1733761736" />
                   </RecentBranch>
                 </list>
               </option>
@@ -493,7 +506,7 @@
       <workItem from="1733648138209" duration="19000" />
       <workItem from="1733753418087" duration="38000" />
       <workItem from="1733753465522" duration="71000" />
-      <workItem from="1733753555295" duration="904000" />
+      <workItem from="1733753555295" duration="4162000" />
     </task>
     <task id="LOCAL-00002" summary="added cors and a html file to test the backend and view the images">
       <option name="closed" value="true" />
@@ -719,7 +732,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733493338917</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="return all the images available for each keyword">
+      <option name="closed" value="true" />
+      <created>1733761756860</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1733761756860</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -738,7 +759,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="RELOAD_CONTEXT" value="false" />
-    <MESSAGE value="fix image tags" />
     <MESSAGE value="added ghpages for testing" />
     <MESSAGE value="added testing page" />
     <MESSAGE value="bug fix" />
@@ -763,12 +783,13 @@
     <MESSAGE value="log query from uri" />
     <MESSAGE value="fix port" />
     <MESSAGE value="minor fixes" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor fixes" />
+    <MESSAGE value="return all the images available for each keyword" />
+    <option name="LAST_COMMIT_MESSAGE" value="return all the images available for each keyword" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/restApi$restApi.coverage" NAME="restApi Coverage Results" MODIFIED="1732209630844" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/restApi$restApi_prometheus.coverage" NAME="restApi_prometheus Coverage Results" MODIFIED="1732217091724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
-    <SUITE FILE_PATH="coverage/restApi$restApi_influxdb.coverage" NAME="restApi_influxdb Coverage Results" MODIFIED="1733753847455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/restApi$restApi_influxdb.coverage" NAME="restApi_influxdb Coverage Results" MODIFIED="1733761702441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/restApi$create.coverage" NAME="create Coverage Results" MODIFIED="1730301311347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/terraform/mongodb_data" />
     <SUITE FILE_PATH="coverage/restApi$restApi_dalle3.coverage" NAME="restApi_dalle3 Coverage Results" MODIFIED="1730380656217" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/restApi$main.coverage" NAME="main Coverage Results" MODIFIED="1729178875156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
