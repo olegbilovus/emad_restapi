@@ -16,7 +16,7 @@ from app.models.images import Sentence, ImagesResult, ContentClassification, Ima
 from app.models.imagesv2 import Sentence as SentenceV2, KeywordImages, KeywordImagesResult
 from app.utils import JSONLogger
 
-logger = JSONLogger(__name__, settings.app_env)
+logger = JSONLogger(settings.app_env)
 app = FastAPI(docs_url="/", title="AAC API", version="1.0.0")
 app.add_middleware(
     CORSMiddleware,

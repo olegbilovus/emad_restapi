@@ -1,16 +1,12 @@
-import logging
+import sys
+from datetime import datetime
 
 
 class JSONLogger:
     _json_format = 'time="%(asctime)s" level=%(levelname)s env={env} %(message)s'
 
-    def __init__(self, name: str, env: str):
-        self._logger = logging.getLogger(name)
-        self._logger.setLevel(logging.DEBUG)
-
-        stream_handler = logging.StreamHandler()
-        stream_handler.setFormatter(logging.Formatter(self._json_format.format(env=env)))
-        self._logger.addHandler(stream_handler)
+    def __init__(self, env: str):
+        self._env = env
 
     def _log(self, level, **kwargs):
         msg = ""
@@ -32,19 +28,19 @@ class JSONLogger:
             msg += " "
         msg = msg.strip()
 
-        self._logger.log(level, msg)
+        print(f'time="{datetime.now().isoformat()}" level={level} env={self._env} {msg}')
 
     def info(self, **kwargs):
-        self._log(logging.INFO, **kwargs)
+        self._log("INFO", **kwargs)
 
     def debug(self, **kwargs):
-        self._log(logging.DEBUG, **kwargs)
+        self._log("DEBUG", **kwargs)
 
     def warn(self, **kwargs):
-        self._log(logging.WARN, **kwargs)
+        self._log("WARN", **kwargs)
 
     def error(self, **kwargs):
-        self._log(logging.ERROR, **kwargs)
+        self._log("ERROR", **kwargs)
 
     def critical(self, **kwargs):
-        self._log(logging.CRITICAL, **kwargs)
+        self._log("CRITICAL", **kwargs)

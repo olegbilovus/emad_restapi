@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83b467c2-f69f-47d3-a286-dfcbc4875cbd" name="Changes" comment="return all the images available for each keyword" />
+    <list default="true" id="83b467c2-f69f-47d3-a286-dfcbc4875cbd" name="Changes" comment="added url root to response">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,7 +37,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="api-multiple_images" />
+        <entry key="$PROJECT_DIR$" value="api-fixes" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -287,6 +292,17 @@
               </option>
               <option name="timestamp" value="1733762164373" />
             </BranchCleanupEntry>
+            <BranchCleanupEntry>
+              <option name="deletions">
+                <list>
+                  <BranchDeletion>
+                    <option name="hash" value="695b35729bdcde05db88b5d3b7bfc7ed42ae1457" />
+                    <option name="name" value="api-fixes" />
+                  </BranchDeletion>
+                </list>
+              </option>
+              <option name="timestamp" value="1733763293265" />
+            </BranchCleanupEntry>
           </list>
         </option>
       </BranchesCleanupHistory>
@@ -300,11 +316,11 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1733762158" />
+                    <option name="lastUsedInstant" value="1733763284" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="api-multiple_images" />
-                    <option name="lastUsedInstant" value="1733761736" />
+                    <option name="branchName" value="api-fixes" />
+                    <option name="lastUsedInstant" value="1733763092" />
                   </RecentBranch>
                 </list>
               </option>
@@ -337,33 +353,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;FastAPI.restApi.executor&quot;: &quot;Run&quot;,
-    &quot;FastAPI.restApi_influxdb.executor&quot;: &quot;Run&quot;,
-    &quot;FastAPI.restApi_metrics.executor&quot;: &quot;Run&quot;,
-    &quot;FastAPI.restApi_metrics_grafana.executor&quot;: &quot;Run&quot;,
-    &quot;FastAPI.restApi_prometheus.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "FastAPI.restApi.executor": "Run",
+    "FastAPI.restApi_influxdb.executor": "Debug",
+    "FastAPI.restApi_metrics.executor": "Run",
+    "FastAPI.restApi_metrics_grafana.executor": "Run",
+    "FastAPI.restApi_prometheus.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/olgbl/Desktop/Unisa/crontab_tasks/influxdb",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\olgbl\Desktop\Unisa\EMAD\fastAPI\restApi" />
       <recent name="C:\Users\olgbl\Desktop\Unisa\EMAD\fastAPI\restApi\docs" />
     </key>
   </component>
-  <component name="RunManager" selected="FastAPI.restApi_influxdb">
+  <component name="RunManager" selected="FastAPI.restApi">
     <configuration name="restApi_influxdb" type="Python.FastAPI">
       <option name="file" value="$PROJECT_DIR$/app/main.py" />
       <module name="restApi" />
@@ -454,8 +471,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-e768b9ed790e-JavaScript-PY-243.21565.199" />
-        <option value="bundled-python-sdk-cab1f2013843-4ae2d6a61b08-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.21565.199" />
+        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-PY-243.22562.180" />
+        <option value="bundled-python-sdk-85c76a3b01b3-9a18a617cbe4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.22562.180" />
       </set>
     </attachedChunks>
   </component>
@@ -507,6 +524,9 @@
       <workItem from="1733753418087" duration="38000" />
       <workItem from="1733753465522" duration="71000" />
       <workItem from="1733753555295" duration="4162000" />
+      <workItem from="1733762808654" duration="508000" />
+      <workItem from="1734189152198" duration="269000" />
+      <workItem from="1734189435117" duration="2482000" />
     </task>
     <task id="LOCAL-00002" summary="added cors and a html file to test the backend and view the images">
       <option name="closed" value="true" />
@@ -740,7 +760,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733761756860</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="added url root to response">
+      <option name="closed" value="true" />
+      <created>1733763107057</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1733763107057</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -759,7 +787,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="RELOAD_CONTEXT" value="false" />
-    <MESSAGE value="added ghpages for testing" />
     <MESSAGE value="added testing page" />
     <MESSAGE value="bug fix" />
     <MESSAGE value="removed testing html file from api" />
@@ -784,12 +811,13 @@
     <MESSAGE value="fix port" />
     <MESSAGE value="minor fixes" />
     <MESSAGE value="return all the images available for each keyword" />
-    <option name="LAST_COMMIT_MESSAGE" value="return all the images available for each keyword" />
+    <MESSAGE value="added url root to response" />
+    <option name="LAST_COMMIT_MESSAGE" value="added url root to response" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/restApi$restApi.coverage" NAME="restApi Coverage Results" MODIFIED="1732209630844" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/restApi$restApi_prometheus.coverage" NAME="restApi_prometheus Coverage Results" MODIFIED="1732217091724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
-    <SUITE FILE_PATH="coverage/restApi$restApi_influxdb.coverage" NAME="restApi_influxdb Coverage Results" MODIFIED="1733761702441" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/restApi$restApi_influxdb.coverage" NAME="restApi_influxdb Coverage Results" MODIFIED="1734190639293" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/restApi$create.coverage" NAME="create Coverage Results" MODIFIED="1730301311347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/terraform/mongodb_data" />
     <SUITE FILE_PATH="coverage/restApi$restApi_dalle3.coverage" NAME="restApi_dalle3 Coverage Results" MODIFIED="1730380656217" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/restApi$main.coverage" NAME="main Coverage Results" MODIFIED="1729178875156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
