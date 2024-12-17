@@ -6,7 +6,7 @@
 | <a name="requirement_azapi"></a> [azapi](#requirement\_azapi) | 2.1.0 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | 4.14.0 |
 | <a name="requirement_cloudflare"></a> [cloudflare](#requirement\_cloudflare) | 4.48.0 |
-| <a name="requirement_mongodbatlas"></a> [mongodbatlas](#requirement\_mongodbatlas) | 1.22.0 |
+| <a name="requirement_mongodbatlas"></a> [mongodbatlas](#requirement\_mongodbatlas) | 1.23.0 |
 
 ## Providers
 
@@ -15,7 +15,7 @@
 | <a name="provider_azapi"></a> [azapi](#provider\_azapi) | 2.1.0 |
 | <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 4.14.0 |
 | <a name="provider_cloudflare"></a> [cloudflare](#provider\_cloudflare) | 4.48.0 |
-| <a name="provider_mongodbatlas"></a> [mongodbatlas](#provider\_mongodbatlas) | 1.22.0 |
+| <a name="provider_mongodbatlas"></a> [mongodbatlas](#provider\_mongodbatlas) | 1.23.0 |
 | <a name="provider_null"></a> [null](#provider\_null) | n/a |
 | <a name="provider_random"></a> [random](#provider\_random) | n/a |
 
@@ -41,10 +41,10 @@ No modules.
 | [cloudflare_record.azure_verify_images](https://registry.terraform.io/providers/cloudflare/cloudflare/4.48.0/docs/resources/record) | resource |
 | [cloudflare_record.azure_verify_this](https://registry.terraform.io/providers/cloudflare/cloudflare/4.48.0/docs/resources/record) | resource |
 | [cloudflare_record.this](https://registry.terraform.io/providers/cloudflare/cloudflare/4.48.0/docs/resources/record) | resource |
-| [mongodbatlas_advanced_cluster.this](https://registry.terraform.io/providers/mongodb/mongodbatlas/1.22.0/docs/resources/advanced_cluster) | resource |
-| [mongodbatlas_database_user.admin](https://registry.terraform.io/providers/mongodb/mongodbatlas/1.22.0/docs/resources/database_user) | resource |
-| [mongodbatlas_database_user.core](https://registry.terraform.io/providers/mongodb/mongodbatlas/1.22.0/docs/resources/database_user) | resource |
-| [mongodbatlas_project_ip_access_list.anyone](https://registry.terraform.io/providers/mongodb/mongodbatlas/1.22.0/docs/resources/project_ip_access_list) | resource |
+| [mongodbatlas_advanced_cluster.this](https://registry.terraform.io/providers/mongodb/mongodbatlas/1.23.0/docs/resources/advanced_cluster) | resource |
+| [mongodbatlas_database_user.admin](https://registry.terraform.io/providers/mongodb/mongodbatlas/1.23.0/docs/resources/database_user) | resource |
+| [mongodbatlas_database_user.core](https://registry.terraform.io/providers/mongodb/mongodbatlas/1.23.0/docs/resources/database_user) | resource |
+| [mongodbatlas_project_ip_access_list.anyone](https://registry.terraform.io/providers/mongodb/mongodbatlas/1.23.0/docs/resources/project_ip_access_list) | resource |
 | [null_resource.custom_domain_and_managed_certificate](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 | [null_resource.wait_for_dns_propagation](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) | resource |
 | [random_string.random_suffix](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
