@@ -8,44 +8,42 @@ resource "azurerm_cognitive_account" "openai" {
   local_auth_enabled            = true
 }
 
-resource "azapi_resource" "content_filter" {
-  type      = "Microsoft.CognitiveServices/accounts/raiPolicies@2024-10-01"
-  name      = "noblock"
-  parent_id = azurerm_cognitive_account.openai.id
+resource "azurerm_cognitive_account_rai_policy" "noblock" {
+  name                 = "noblock"
+  cognitive_account_id = azurerm_cognitive_account.openai.id
+  base_policy_name     = "Microsoft.Default"
+  mode                 = "Default"
 
-  schema_validation_enabled = false
+  dynamic "content_filter" {
+    for_each = toset(["hate", "sexual", "selfharm", "violence", "jailbreak"])
 
-  body = {
-    properties = {
-      mode           = "Default",
-      basePolicyName = "Microsoft.Default",
-      contentFilters = [
-        { name = "hate", blocking = true, enabled = true, severityThreshold = "High", source = "Prompt" },
-        { name = "sexual", blocking = true, enabled = true, severityThreshold = "High", source = "Prompt" },
-        { name = "selfharm", blocking = true, enabled = true, severityThreshold = "High", source = "Prompt" },
-        { name = "violence", blocking = true, enabled = true, severityThreshold = "High", source = "Prompt" },
-        { name = "hate", blocking = true, enabled = true, severityThreshold = "High", source = "Completion" },
-        { name = "sexual", blocking = true, enabled = true, severityThreshold = "High", source = "Completion" },
-        { name = "selfharm", blocking = true, enabled = true, severityThreshold = "High", source = "Completion" },
-        { name = "violence", blocking = true, enabled = true, severityThreshold = "High", source = "Completion" },
-        { name = "jailbreak", blocking = true, enabled = true, source = "Prompt" },
-        { name = "protected_material_text", blocking = true, enabled = true, source = "Completion" },
-        { name = "protected_material_code", blocking = true, enabled = true, source = "Completion" }
-      ]
+    content {
+      name               = content_filter.key
+      filter_enabled     = true
+      block_enabled      = true
+      severity_threshold = "High"
+      source             = "Prompt"
     }
   }
 
-  lifecycle {
-    ignore_changes = [
-      body
-    ]
+  dynamic "content_filter" {
+    for_each = toset(["hate", "sexual", "selfharm", "violence", "protected_material_text", "protected_material_code"])
+
+    content {
+      name               = content_filter.key
+      filter_enabled     = true
+      block_enabled      = true
+      severity_threshold = "High"
+      source             = "Completion"
+    }
   }
+
 }
 
 resource "azurerm_cognitive_deployment" "dalle3" {
   name                 = azurerm_cognitive_account.openai.name
   cognitive_account_id = azurerm_cognitive_account.openai.id
-  rai_policy_name      = azapi_resource.content_filter.name
+  rai_policy_name      = azurerm_cognitive_account_rai_policy.noblock.name
 
   model {
     format  = "OpenAI"

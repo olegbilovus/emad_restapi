@@ -4,10 +4,6 @@ terraform {
       source  = "hashicorp/azurerm"
       version = "4.17.0"
     }
-    azapi = {
-      source  = "Azure/azapi"
-      version = "2.2.0"
-    }
 
     mongodbatlas = {
       source  = "mongodb/mongodbatlas"
@@ -25,9 +21,6 @@ provider "azurerm" {
   subscription_id = var.sub_id
   features {
   }
-}
-
-provider "azapi" {
 }
 
 provider "mongodbatlas" {
