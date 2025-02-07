@@ -3,7 +3,7 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | 4.17.0 |
+| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | 4.18.0 |
 | <a name="requirement_cloudflare"></a> [cloudflare](#requirement\_cloudflare) | 4.52.0 |
 | <a name="requirement_mongodbatlas"></a> [mongodbatlas](#requirement\_mongodbatlas) | 1.26.1 |
 
@@ -11,7 +11,7 @@
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 4.17.0 |
+| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 4.18.0 |
 | <a name="provider_cloudflare"></a> [cloudflare](#provider\_cloudflare) | 4.52.0 |
 | <a name="provider_mongodbatlas"></a> [mongodbatlas](#provider\_mongodbatlas) | 1.26.1 |
 | <a name="provider_null"></a> [null](#provider\_null) | n/a |
@@ -25,17 +25,17 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [azurerm_cognitive_account.openai](https://registry.terraform.io/providers/hashicorp/azurerm/4.17.0/docs/resources/cognitive_account) | resource |
-| [azurerm_cognitive_account_rai_policy.noblock](https://registry.terraform.io/providers/hashicorp/azurerm/4.17.0/docs/resources/cognitive_account_rai_policy) | resource |
-| [azurerm_cognitive_deployment.dalle3](https://registry.terraform.io/providers/hashicorp/azurerm/4.17.0/docs/resources/cognitive_deployment) | resource |
-| [azurerm_container_app.core](https://registry.terraform.io/providers/hashicorp/azurerm/4.17.0/docs/resources/container_app) | resource |
-| [azurerm_container_app.minio](https://registry.terraform.io/providers/hashicorp/azurerm/4.17.0/docs/resources/container_app) | resource |
-| [azurerm_container_app.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.17.0/docs/resources/container_app) | resource |
-| [azurerm_container_app_custom_domain.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.17.0/docs/resources/container_app_custom_domain) | resource |
-| [azurerm_container_app_environment.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.17.0/docs/resources/container_app_environment) | resource |
-| [azurerm_resource_group.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.17.0/docs/resources/resource_group) | resource |
-| [azurerm_subnet.container](https://registry.terraform.io/providers/hashicorp/azurerm/4.17.0/docs/resources/subnet) | resource |
-| [azurerm_virtual_network.container_env](https://registry.terraform.io/providers/hashicorp/azurerm/4.17.0/docs/resources/virtual_network) | resource |
+| [azurerm_cognitive_account.openai](https://registry.terraform.io/providers/hashicorp/azurerm/4.18.0/docs/resources/cognitive_account) | resource |
+| [azurerm_cognitive_account_rai_policy.noblock](https://registry.terraform.io/providers/hashicorp/azurerm/4.18.0/docs/resources/cognitive_account_rai_policy) | resource |
+| [azurerm_cognitive_deployment.dalle3](https://registry.terraform.io/providers/hashicorp/azurerm/4.18.0/docs/resources/cognitive_deployment) | resource |
+| [azurerm_container_app.core](https://registry.terraform.io/providers/hashicorp/azurerm/4.18.0/docs/resources/container_app) | resource |
+| [azurerm_container_app.minio](https://registry.terraform.io/providers/hashicorp/azurerm/4.18.0/docs/resources/container_app) | resource |
+| [azurerm_container_app.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.18.0/docs/resources/container_app) | resource |
+| [azurerm_container_app_custom_domain.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.18.0/docs/resources/container_app_custom_domain) | resource |
+| [azurerm_container_app_environment.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.18.0/docs/resources/container_app_environment) | resource |
+| [azurerm_resource_group.this](https://registry.terraform.io/providers/hashicorp/azurerm/4.18.0/docs/resources/resource_group) | resource |
+| [azurerm_subnet.container](https://registry.terraform.io/providers/hashicorp/azurerm/4.18.0/docs/resources/subnet) | resource |
+| [azurerm_virtual_network.container_env](https://registry.terraform.io/providers/hashicorp/azurerm/4.18.0/docs/resources/virtual_network) | resource |
 | [cloudflare_record.azure_verify_images](https://registry.terraform.io/providers/cloudflare/cloudflare/4.52.0/docs/resources/record) | resource |
 | [cloudflare_record.azure_verify_this](https://registry.terraform.io/providers/cloudflare/cloudflare/4.52.0/docs/resources/record) | resource |
 | [cloudflare_record.this](https://registry.terraform.io/providers/cloudflare/cloudflare/4.52.0/docs/resources/record) | resource |
