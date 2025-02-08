@@ -69,6 +69,7 @@ No modules.
 | <a name="input_mongodb_user_admin"></a> [mongodb\_user\_admin](#input\_mongodb\_user\_admin) | n/a | <pre>object({<br/>    username = string<br/>    password = string<br/>  })</pre> | n/a | yes |
 | <a name="input_mongodb_user_core"></a> [mongodb\_user\_core](#input\_mongodb\_user\_core) | n/a | <pre>object({<br/>    username = string<br/>    password = string<br/>  })</pre> | n/a | yes |
 | <a name="input_name"></a> [name](#input\_name) | n/a | `string` | `"emadrestapi"` | no |
+| <a name="input_openai"></a> [openai](#input\_openai) | n/a | <pre>object({<br/>    base_url           = string<br/>    api_key            = string<br/>    model              = string<br/>    force_fix_sentence = bool<br/>  })</pre> | n/a | yes |
 | <a name="input_scale"></a> [scale](#input\_scale) | n/a | <pre>object({<br/>    min = number,<br/>    max = number<br/>  })</pre> | <pre>{<br/>  "max": 1,<br/>  "min": 1<br/>}</pre> | no |
 | <a name="input_sub_id"></a> [sub\_id](#input\_sub\_id) | n/a | `string` | n/a | yes |
 
