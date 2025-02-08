@@ -86,7 +86,7 @@ async def get_images(sentence: Annotated[Sentence, Query()]) -> ImagesResult:
 
     time_before = time.perf_counter()
 
-    if openai_on and sentence.fix_sentence:
+    if openai_on and (sentence.fix_sentence or settings.force_fix_sentence):
         try:
             sentence.text = fix_sentence.fix(sentence.text, sentence.language)
         except Exception as e:
@@ -125,7 +125,7 @@ async def get_images(sentence: Annotated[Sentence, Query()]) -> ImagesResult:
             logger.error(error=str(e))
 
     return ImagesResult(text_classification=text_classification,
-                        fixed_text=sentence.text if sentence.fix_sentence else None,
+                        fixed_text=sentence.text if (sentence.fix_sentence or settings.force_fix_sentence) else None,
                         url_root=settings.images_url_root, images=images)
 
 

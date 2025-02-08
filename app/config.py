@@ -40,6 +40,7 @@ class Settings(BaseSettings):
     influxdb: InfluxDB = InfluxDB()
     prometheus: Prometheus = Prometheus()
     openai: OpenAI = OpenAI()
+    force_fix_sentence: bool = False
 
 
 settings = Settings()
