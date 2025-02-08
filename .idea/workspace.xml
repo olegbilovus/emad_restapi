@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83b467c2-f69f-47d3-a286-dfcbc4875cbd" name="Changes" comment="added url root to response">
-      <change afterPath="$PROJECT_DIR$/app/OpenAI.py" afterDir="false" />
+    <list default="true" id="83b467c2-f69f-47d3-a286-dfcbc4875cbd" name="Changes" comment="Add OpenAI integration for sentence correction and update dependencies">
       <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/restApi.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/restApi.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/models/images.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/images.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +143,7 @@
       <recent name="C:\Users\olgbl\Desktop\Unisa\EMAD\fastAPI\restApi\docs" />
     </key>
   </component>
-  <component name="RunManager" selected="FastAPI.restApi">
+  <component name="RunManager" selected="FastAPI.restApi_openai">
     <configuration name="restApi_influxdb" type="Python.FastAPI">
       <option name="file" value="$PROJECT_DIR$/app/main.py" />
       <module name="restApi" />
@@ -164,6 +159,30 @@
         <env name="INFLUXDB_TOKEN" value="4C2uD4h2fs_UQ8GWuTsm5cyC4zm9FXze3RrT5_o_EOV8wOm66bEadtQ5dQA0DJnTis2x-9D7v4zRkvyZ_ppmYg==" />
         <env name="INFLUXDB_URL" value="https://eu-central-1-1.aws.cloud2.influxdata.com" />
         <env name="OPENAI_API_KEY" value="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" />
+        <env name="OPENAI_BASE_URL" value="https://openrouter.ai/api/v1" />
+        <env name="OPENAI_MODEL" value="google/gemini-2.0-pro-exp-02-05:free" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/Scripts/python.exe" />
+      <option name="SDK_NAME" value="Python 3.12 (restApi)" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="restApi_openai" type="Python.FastAPI">
+      <option name="file" value="$PROJECT_DIR$/app/main.py" />
+      <module name="restApi" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="CORE_URL_EN" value="http://localhost:8882" />
+        <env name="CORE_URL_IT" value="http://localhost:8881" />
+        <env name="IMAGES_URL_ROOT" value="http://localhost:9000/pictograms/pictograms" />
+        <env name="OPENAI_API_KEY" value="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" />
         <env name="OPENAI_BASE_URL" value="https://openrouter.ai/api/v1" />
         <env name="OPENAI_MODEL" value="google/gemini-2.0-pro-exp-02-05:free" />
       </envs>
@@ -230,6 +249,7 @@
       <item itemvalue="FastAPI.restApi_influxdb" />
       <item itemvalue="FastAPI.restApi_prometheus" />
       <item itemvalue="FastAPI.restApi" />
+      <item itemvalue="FastAPI.restApi_openai" />
     </list>
     <recent_temporary>
       <list>
@@ -297,7 +317,7 @@
       <workItem from="1733762808654" duration="508000" />
       <workItem from="1734189152198" duration="269000" />
       <workItem from="1734189435117" duration="2482000" />
-      <workItem from="1739005861681" duration="2942000" />
+      <workItem from="1739005861681" duration="3191000" />
     </task>
     <task id="LOCAL-00002" summary="added cors and a html file to test the backend and view the images">
       <option name="closed" value="true" />
@@ -539,7 +559,15 @@
       <option name="project" value="LOCAL" />
       <updated>1733763107057</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Add OpenAI integration for sentence correction and update dependencies">
+      <option name="closed" value="true" />
+      <created>1739009012039</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1739009012039</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -558,7 +586,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="RELOAD_CONTEXT" value="false" />
-    <MESSAGE value="added testing page" />
     <MESSAGE value="bug fix" />
     <MESSAGE value="removed testing html file from api" />
     <MESSAGE value="updated dalle3 because of azurerem 4.10" />
@@ -583,10 +610,11 @@
     <MESSAGE value="minor fixes" />
     <MESSAGE value="return all the images available for each keyword" />
     <MESSAGE value="added url root to response" />
-    <option name="LAST_COMMIT_MESSAGE" value="added url root to response" />
+    <MESSAGE value="Add OpenAI integration for sentence correction and update dependencies" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add OpenAI integration for sentence correction and update dependencies" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/restApi$restApi.coverage" NAME="restApi Coverage Results" MODIFIED="1739008834651" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/restApi$restApi.coverage" NAME="restApi Coverage Results" MODIFIED="1739008912845" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/restApi$restApi_prometheus.coverage" NAME="restApi_prometheus Coverage Results" MODIFIED="1732217091724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/restApi$restApi_influxdb.coverage" NAME="restApi_influxdb Coverage Results" MODIFIED="1734190639293" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/restApi$create.coverage" NAME="create Coverage Results" MODIFIED="1730301311347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/terraform/mongodb_data" />
