@@ -6,9 +6,12 @@
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
     <envs>
-      <env name="CORE_URL_EN" value="http://localhost:8082" />
-      <env name="CORE_URL_IT" value="http://localhost:8081" />
+      <env name="CORE_URL_EN" value="http://localhost:8882" />
+      <env name="CORE_URL_IT" value="http://localhost:8881" />
       <env name="IMAGES_URL_ROOT" value="http://localhost:9000/pictograms/pictograms" />
+      <env name="OPENAI_API_KEY" value="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" />
+      <env name="OPENAI_BASE_URL" value="https://openrouter.ai/api/v1" />
+      <env name="OPENAI_MODEL" value="google/gemini-2.0-pro-exp-02-05:free" />
     </envs>
     <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/Scripts/python.exe" />
     <option name="SDK_NAME" value="Python 3.12 (restApi)" />

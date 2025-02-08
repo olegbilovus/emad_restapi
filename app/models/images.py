@@ -1,5 +1,5 @@
 from enum import Enum
-from typing import List
+from typing import List, Optional, Annotated
 
 from pydantic import BaseModel, Field, HttpUrl
 
@@ -17,6 +17,7 @@ class ContentClassification(BaseModel):
 class Sentence(ContentClassification):
     text: str
     language: Language
+    fix_sentence: bool = Field(False, description="Fix the sentence using AI")
 
 
 class Image(ContentClassification):
@@ -26,5 +27,6 @@ class Image(ContentClassification):
 
 class ImagesResult(BaseModel):
     text_classification: ContentClassification
+    fixed_text: Annotated[Optional[str], Field(None)]
     url_root: HttpUrl
     images: List[Image]

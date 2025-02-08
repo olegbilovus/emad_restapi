@@ -7,8 +7,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.models import APIKey
 from fastapi.params import Depends
 
+from app.OpenAI import FixSentence
 from app.auth import get_api_key_client
-from app.config import settings, CORE_URLS, is_dalle3_valid, is_influxdb_valid
+from app.config import settings, CORE_URLS, is_dalle3_valid, is_influxdb_valid, is_openai_valid
 from app.constants import Tags
 from app.metrics import InfluxDB, Metrics
 from app.models.genai import Dalle3Image
@@ -39,6 +40,13 @@ if metrics_on:
 dalle3_on = is_dalle3_valid()
 logger.info(dalle3_on=dalle3_on)
 
+openai_on = is_openai_valid()
+logger.info(openai_on=openai_on)
+fix_sentence = None
+if openai_on:
+    fix_sentence = FixSentence(settings.openai.openai_base_url, settings.openai.openai_api_key,
+                               settings.openai.openai_model)
+
 
 @app.middleware("http")
 async def perf(request: Request, call_next):
@@ -64,6 +72,7 @@ async def health_check():
     return {"status": "healthy"}
 
 
+# noinspection t
 @app.get("/v1/images/", tags=[Tags.images], summary="Get images")
 async def get_images(sentence: Annotated[Sentence, Query()]) -> ImagesResult:
     """
@@ -72,9 +81,18 @@ async def get_images(sentence: Annotated[Sentence, Query()]) -> ImagesResult:
     - **violence**: filter out violent content
     - **text**: the sentence for which to get images
     - **language**: the language of the sentence
+    - **fix_sentence**: fix the sentence using AI
     """
 
     time_before = time.perf_counter()
+
+    if openai_on and sentence.fix_sentence:
+        try:
+            sentence.text = fix_sentence.fix(sentence.text, sentence.language)
+        except Exception as e:
+            logger.error(error=str(e))
+            raise HTTPException(status_code=500, detail="AI service to fix sentence is down")
+
     try:
         core_response = requests.get(CORE_URLS[sentence.language.name], params=sentence.model_dump(), timeout=3).json()
     except Exception as e:
@@ -106,7 +124,9 @@ async def get_images(sentence: Annotated[Sentence, Query()]) -> ImagesResult:
         except Exception as e:
             logger.error(error=str(e))
 
-    return ImagesResult(text_classification=text_classification, url_root=settings.images_url_root, images=images)
+    return ImagesResult(text_classification=text_classification,
+                        fixed_text=sentence.text if sentence.fix_sentence else None,
+                        url_root=settings.images_url_root, images=images)
 
 
 @app.get("/v2/images/", tags=[Tags.images], summary="Get all the images for each keyword in the sentence")
