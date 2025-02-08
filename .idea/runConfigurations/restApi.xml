@@ -6,8 +6,8 @@
     <option name="INTERPRETER_OPTIONS" value="" />
     <option name="PARENT_ENVS" value="true" />
     <envs>
-      <env name="CORE_URL_EN" value="http://localhost:8082" />
-      <env name="CORE_URL_IT" value="http://localhost:8081" />
+      <env name="CORE_URL_EN" value="http://localhost:8882" />
+      <env name="CORE_URL_IT" value="http://localhost:8881" />
       <env name="IMAGES_URL_ROOT" value="http://localhost:9000/pictograms/pictograms" />
     </envs>
     <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/Scripts/python.exe" />

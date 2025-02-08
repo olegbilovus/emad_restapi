@@ -24,6 +24,12 @@ class Prometheus(BaseSettings):
     prometheus_password: str = ""
 
 
+class OpenAI(BaseSettings):
+    openai_base_url: str = _EXAMPLE_URL
+    openai_api_key: str = ""
+    openai_model: str = ""
+
+
 class Settings(BaseSettings):
     app_env: str = "dev"
     images_url_root: HttpUrl
@@ -33,6 +39,8 @@ class Settings(BaseSettings):
     cors_origins: str = "*"
     influxdb: InfluxDB = InfluxDB()
     prometheus: Prometheus = Prometheus()
+    openai: OpenAI = OpenAI()
+    force_fix_sentence: bool = False
 
 
 settings = Settings()
@@ -45,24 +53,32 @@ CORE_URLS = {
 
 def is_dalle3_valid():
     return (
-            settings.dalle3.dalle3_endpoint != _EXAMPLE_URL and
-            settings.dalle3.dalle3_apikey != "" and
-            settings.dalle3.client_apikey != ""
+        settings.dalle3.dalle3_endpoint != _EXAMPLE_URL and
+        settings.dalle3.dalle3_apikey != "" and
+        settings.dalle3.client_apikey != ""
     )
 
 
 def is_influxdb_valid():
     return (
-            settings.influxdb.influxdb_org != "" and
-            settings.influxdb.influxdb_url != _EXAMPLE_URL and
-            settings.influxdb.influxdb_token != "" and
-            settings.influxdb.influxdb_bucket != ""
+        settings.influxdb.influxdb_org != "" and
+        settings.influxdb.influxdb_url != _EXAMPLE_URL and
+        settings.influxdb.influxdb_token != "" and
+        settings.influxdb.influxdb_bucket != ""
     )
 
 
 def is_prometheus_valid():
     return (
-            settings.prometheus.prometheus_url != _EXAMPLE_URL and
-            settings.prometheus.prometheus_user != "" and
-            settings.prometheus.prometheus_password != ""
+        settings.prometheus.prometheus_url != _EXAMPLE_URL and
+        settings.prometheus.prometheus_user != "" and
+        settings.prometheus.prometheus_password != ""
+    )
+
+
+def is_openai_valid():
+    return (
+        settings.openai.openai_base_url != _EXAMPLE_URL and
+        settings.openai.openai_api_key != "" and
+        settings.openai.openai_model != ""
     )

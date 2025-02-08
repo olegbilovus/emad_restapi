@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83b467c2-f69f-47d3-a286-dfcbc4875cbd" name="Changes" comment="added url root to response">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/utils.py" afterDir="false" />
-    </list>
+    <list default="true" id="83b467c2-f69f-47d3-a286-dfcbc4875cbd" name="Changes" comment="Update sentence correction logic to use configurable force_fix_sentence setting" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,7 +32,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="api-fixes" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -57,251 +52,16 @@
               <option name="deletions">
                 <list>
                   <BranchDeletion>
-                    <option name="hash" value="2e22d6378d5cf534e80ea08cd2aea043a40e6a7c" />
-                    <option name="name" value="api-cors" />
+                    <option name="hash" value="47187416b3f4b2a55d6f1d00e2dc2724ceb21d19" />
+                    <option name="name" value="terraform-dalle3-rai_policy" />
+                  </BranchDeletion>
+                  <BranchDeletion>
+                    <option name="hash" value="397c8dd2587897401a27d8c7ca4e6a7c49763381" />
+                    <option name="name" value="dependecies-update" />
                   </BranchDeletion>
                 </list>
               </option>
-              <option name="timestamp" value="1731534232529" />
-            </BranchCleanupEntry>
-            <BranchCleanupEntry>
-              <option name="deletions">
-                <list>
-                  <BranchDeletion>
-                    <option name="hash" value="e10fcd0e05b604fc0099bd87691ebb4c69edca3d" />
-                    <option name="name" value="docker-arm_build" />
-                  </BranchDeletion>
-                </list>
-              </option>
-              <option name="timestamp" value="1731618920774" />
-            </BranchCleanupEntry>
-            <BranchCleanupEntry>
-              <option name="deletions">
-                <list>
-                  <BranchDeletion>
-                    <option name="hash" value="de9dcab6ec3b5c83c6503bb56d9027fa8e8e726d" />
-                    <option name="name" value="ghpages" />
-                  </BranchDeletion>
-                </list>
-              </option>
-              <option name="timestamp" value="1731627348805" />
-            </BranchCleanupEntry>
-            <BranchCleanupEntry>
-              <option name="deletions">
-                <list>
-                  <BranchDeletion>
-                    <option name="hash" value="76a3ece943fdf92347cb834e9ce93843dd6c6545" />
-                    <option name="name" value="test" />
-                  </BranchDeletion>
-                </list>
-              </option>
-              <option name="timestamp" value="1731629823473" />
-            </BranchCleanupEntry>
-            <BranchCleanupEntry>
-              <option name="deletions">
-                <list>
-                  <BranchDeletion>
-                    <option name="hash" value="57fdc36acc92fec4247a1b6602c6ddeb10592678" />
-                    <option name="name" value="docker-fix" />
-                  </BranchDeletion>
-                </list>
-              </option>
-              <option name="timestamp" value="1731630474854" />
-            </BranchCleanupEntry>
-            <BranchCleanupEntry>
-              <option name="deletions">
-                <list>
-                  <BranchDeletion>
-                    <option name="hash" value="a58e02350063cc5946fb717b24055bfe128ba8c0" />
-                    <option name="name" value="remove-testing-from-api" />
-                  </BranchDeletion>
-                </list>
-              </option>
-              <option name="timestamp" value="1731631471600" />
-            </BranchCleanupEntry>
-            <BranchCleanupEntry>
-              <option name="deletions">
-                <list>
-                  <BranchDeletion>
-                    <option name="hash" value="805b64574fd5a54d4ff09b87153283199f60d3de" />
-                    <option name="name" value="terraform-cloudflare" />
-                  </BranchDeletion>
-                </list>
-              </option>
-              <option name="timestamp" value="1731850173633" />
-            </BranchCleanupEntry>
-            <BranchCleanupEntry>
-              <option name="deletions">
-                <list>
-                  <BranchDeletion>
-                    <option name="hash" value="3c250b99bd870f746fdea79e47b9b702ec8de81d" />
-                    <option name="name" value="terraform-dall3_fix" />
-                  </BranchDeletion>
-                </list>
-              </option>
-              <option name="timestamp" value="1731852850239" />
-            </BranchCleanupEntry>
-            <BranchCleanupEntry>
-              <option name="deletions">
-                <list>
-                  <BranchDeletion>
-                    <option name="hash" value="ced2a85a6a9d2a1c5102e1199adb46e00d4513df" />
-                    <option name="name" value="terraform-gpt" />
-                  </BranchDeletion>
-                  <BranchDeletion>
-                    <option name="hash" value="138130115e0cb80575098ec9437dfef65f2ac019" />
-                    <option name="name" value="terraform-unused_services" />
-                  </BranchDeletion>
-                </list>
-              </option>
-              <option name="timestamp" value="1732107976995" />
-            </BranchCleanupEntry>
-            <BranchCleanupEntry>
-              <option name="deletions">
-                <list>
-                  <BranchDeletion>
-                    <option name="hash" value="1191fc8ea7f555338bb4598858f10cb756f9ebd6" />
-                    <option name="name" value="influxdb" />
-                  </BranchDeletion>
-                </list>
-              </option>
-              <option name="timestamp" value="1732124884386" />
-            </BranchCleanupEntry>
-            <BranchCleanupEntry>
-              <option name="deletions">
-                <list>
-                  <BranchDeletion>
-                    <option name="hash" value="6d0c4820c691071d25475627a8a7ed957efc350e" />
-                    <option name="name" value="metrics-dalle3" />
-                  </BranchDeletion>
-                </list>
-              </option>
-              <option name="timestamp" value="1732129016542" />
-            </BranchCleanupEntry>
-            <BranchCleanupEntry>
-              <option name="deletions">
-                <list>
-                  <BranchDeletion>
-                    <option name="hash" value="6d6b405c3e3678042b077076e7ee52f19b44b4e8" />
-                    <option name="name" value="metrics-errors" />
-                  </BranchDeletion>
-                </list>
-              </option>
-              <option name="timestamp" value="1732129804639" />
-            </BranchCleanupEntry>
-            <BranchCleanupEntry>
-              <option name="deletions">
-                <list>
-                  <BranchDeletion>
-                    <option name="hash" value="43f9b824c0ed1306185f2e749cd6d10261af7692" />
-                    <option name="name" value="metrics-app_env-dalle3" />
-                  </BranchDeletion>
-                </list>
-              </option>
-              <option name="timestamp" value="1732220319097" />
-            </BranchCleanupEntry>
-            <BranchCleanupEntry>
-              <option name="deletions">
-                <list>
-                  <BranchDeletion>
-                    <option name="hash" value="2664bb7bd7753a45dbea778032ea4979d5372efc" />
-                    <option name="name" value="metrics-grafana" />
-                  </BranchDeletion>
-                </list>
-              </option>
-              <option name="timestamp" value="1732298573877" />
-            </BranchCleanupEntry>
-            <BranchCleanupEntry>
-              <option name="deletions">
-                <list>
-                  <BranchDeletion>
-                    <option name="hash" value="69ce95fd759deb5cf49ccb962badbd89636eef8f" />
-                    <option name="name" value="checkov-fixes" />
-                  </BranchDeletion>
-                </list>
-              </option>
-              <option name="timestamp" value="1732787729893" />
-            </BranchCleanupEntry>
-            <BranchCleanupEntry>
-              <option name="deletions">
-                <list>
-                  <BranchDeletion>
-                    <option name="hash" value="fe509e78689dad53fce65c628cecfed78a4c01be" />
-                    <option name="name" value="api-logs" />
-                  </BranchDeletion>
-                </list>
-              </option>
-              <option name="timestamp" value="1733050877132" />
-            </BranchCleanupEntry>
-            <BranchCleanupEntry>
-              <option name="deletions">
-                <list>
-                  <BranchDeletion>
-                    <option name="hash" value="cc1f946a8650cfe5c8bb8beef09c5c962ced4536" />
-                    <option name="name" value="logs" />
-                  </BranchDeletion>
-                </list>
-              </option>
-              <option name="timestamp" value="1733051957486" />
-            </BranchCleanupEntry>
-            <BranchCleanupEntry>
-              <option name="deletions">
-                <list>
-                  <BranchDeletion>
-                    <option name="hash" value="1526e24d107ade5d6f283e588f1bcfdfc8618853" />
-                    <option name="name" value="logs-query" />
-                  </BranchDeletion>
-                </list>
-              </option>
-              <option name="timestamp" value="1733053668225" />
-            </BranchCleanupEntry>
-            <BranchCleanupEntry>
-              <option name="deletions">
-                <list>
-                  <BranchDeletion>
-                    <option name="hash" value="cc9cbf0fa3369714db655d12db4826bbc3eda79b" />
-                    <option name="name" value="docker-fixes" />
-                  </BranchDeletion>
-                </list>
-              </option>
-              <option name="timestamp" value="1733491189276" />
-            </BranchCleanupEntry>
-            <BranchCleanupEntry>
-              <option name="deletions">
-                <list>
-                  <BranchDeletion>
-                    <option name="hash" value="eaebce5d952cb301b772e25dfc1c856f5b020397" />
-                    <option name="name" value="fixes" />
-                  </BranchDeletion>
-                </list>
-              </option>
-              <option name="timestamp" value="1733493442178" />
-            </BranchCleanupEntry>
-            <BranchCleanupEntry>
-              <option name="deletions">
-                <list>
-                  <BranchDeletion>
-                    <option name="hash" value="fe7e38b777934d05ff7bf6889fbf5321c20ee589" />
-                    <option name="name" value="terraform-fixes" />
-                  </BranchDeletion>
-                  <BranchDeletion>
-                    <option name="hash" value="b9bdcb8beb172bf3c02225014c8eda666ad69ec3" />
-                    <option name="name" value="api-multiple_images" />
-                  </BranchDeletion>
-                </list>
-              </option>
-              <option name="timestamp" value="1733762164373" />
-            </BranchCleanupEntry>
-            <BranchCleanupEntry>
-              <option name="deletions">
-                <list>
-                  <BranchDeletion>
-                    <option name="hash" value="695b35729bdcde05db88b5d3b7bfc7ed42ae1457" />
-                    <option name="name" value="api-fixes" />
-                  </BranchDeletion>
-                </list>
-              </option>
-              <option name="timestamp" value="1733763293265" />
+              <option name="timestamp" value="1739005943416" />
             </BranchCleanupEntry>
           </list>
         </option>
@@ -315,12 +75,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1733763284" />
+                    <option name="branchName" value="ai_fix-sentence" />
+                    <option name="lastUsedInstant" value="1739005967" />
                   </RecentBranch>
                   <RecentBranch>
-                    <option name="branchName" value="api-fixes" />
-                    <option name="lastUsedInstant" value="1733763092" />
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1733763284" />
                   </RecentBranch>
                 </list>
               </option>
@@ -360,11 +120,12 @@
     "FastAPI.restApi_influxdb.executor": "Debug",
     "FastAPI.restApi_metrics.executor": "Run",
     "FastAPI.restApi_metrics_grafana.executor": "Run",
+    "FastAPI.restApi_openai.executor": "Run",
     "FastAPI.restApi_prometheus.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "ai__fix-sentence",
     "last_opened_file_path": "C:/Users/olgbl/Desktop/Unisa/crontab_tasks/influxdb",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -380,7 +141,7 @@
       <recent name="C:\Users\olgbl\Desktop\Unisa\EMAD\fastAPI\restApi\docs" />
     </key>
   </component>
-  <component name="RunManager" selected="FastAPI.restApi">
+  <component name="RunManager" selected="FastAPI.restApi_openai">
     <configuration name="restApi_influxdb" type="Python.FastAPI">
       <option name="file" value="$PROJECT_DIR$/app/main.py" />
       <module name="restApi" />
@@ -388,13 +149,41 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
-        <env name="CORE_URL_EN" value="http://localhost:8082" />
-        <env name="CORE_URL_IT" value="http://localhost:8081" />
+        <env name="CORE_URL_EN" value="http://localhost:8882" />
+        <env name="CORE_URL_IT" value="http://localhost:8881" />
         <env name="IMAGES_URL_ROOT" value="http://localhost:9000/pictograms/pictograms" />
         <env name="INFLUXDB_BUCKET" value="emad" />
         <env name="INFLUXDB_ORG" value="emad" />
         <env name="INFLUXDB_TOKEN" value="4C2uD4h2fs_UQ8GWuTsm5cyC4zm9FXze3RrT5_o_EOV8wOm66bEadtQ5dQA0DJnTis2x-9D7v4zRkvyZ_ppmYg==" />
         <env name="INFLUXDB_URL" value="https://eu-central-1-1.aws.cloud2.influxdata.com" />
+        <env name="OPENAI_API_KEY" value="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" />
+        <env name="OPENAI_BASE_URL" value="https://openrouter.ai/api/v1" />
+        <env name="OPENAI_MODEL" value="google/gemini-2.0-pro-exp-02-05:free" />
+      </envs>
+      <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/Scripts/python.exe" />
+      <option name="SDK_NAME" value="Python 3.12 (restApi)" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/app" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration name="restApi_openai" type="Python.FastAPI">
+      <option name="file" value="$PROJECT_DIR$/app/main.py" />
+      <module name="restApi" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="CORE_URL_EN" value="http://localhost:8882" />
+        <env name="CORE_URL_IT" value="http://localhost:8881" />
+        <env name="IMAGES_URL_ROOT" value="http://localhost:9000/pictograms/pictograms" />
+        <env name="OPENAI_API_KEY" value="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" />
+        <env name="OPENAI_BASE_URL" value="https://openrouter.ai/api/v1" />
+        <env name="OPENAI_MODEL" value="google/gemini-2.0-pro-exp-02-05:free" />
+        <env name="FORCE_FIX_SENTENCE" value="true" />
       </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/Scripts/python.exe" />
       <option name="SDK_NAME" value="Python 3.12 (restApi)" />
@@ -459,7 +248,7 @@
       <item itemvalue="FastAPI.restApi_influxdb" />
       <item itemvalue="FastAPI.restApi_prometheus" />
       <item itemvalue="FastAPI.restApi" />
-      <item itemvalue="Python.create" />
+      <item itemvalue="FastAPI.restApi_openai" />
     </list>
     <recent_temporary>
       <list>
@@ -471,8 +260,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-PY-243.22562.180" />
-        <option value="bundled-python-sdk-85c76a3b01b3-9a18a617cbe4-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.22562.180" />
+        <option value="bundled-js-predefined-d6986cc7102b-822845ee3bb5-JavaScript-PY-243.23654.177" />
+        <option value="bundled-python-sdk-91d3a02ef49d-43b77aa2d136-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-243.23654.177" />
       </set>
     </attachedChunks>
   </component>
@@ -527,6 +316,7 @@
       <workItem from="1733762808654" duration="508000" />
       <workItem from="1734189152198" duration="269000" />
       <workItem from="1734189435117" duration="2482000" />
+      <workItem from="1739005861681" duration="4687000" />
     </task>
     <task id="LOCAL-00002" summary="added cors and a html file to test the backend and view the images">
       <option name="closed" value="true" />
@@ -768,7 +558,31 @@
       <option name="project" value="LOCAL" />
       <updated>1733763107057</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Add OpenAI integration for sentence correction and update dependencies">
+      <option name="closed" value="true" />
+      <created>1739009012039</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1739009012039</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Add OpenAI integration for sentence correction and update dependencies">
+      <option name="closed" value="true" />
+      <created>1739009096144</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1739009096144</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Update sentence correction logic to use configurable force_fix_sentence setting">
+      <option name="closed" value="true" />
+      <created>1739011202529</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1739011202529</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -787,8 +601,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="RELOAD_CONTEXT" value="false" />
-    <MESSAGE value="added testing page" />
-    <MESSAGE value="bug fix" />
     <MESSAGE value="removed testing html file from api" />
     <MESSAGE value="updated dalle3 because of azurerem 4.10" />
     <MESSAGE value="fix test" />
@@ -812,10 +624,13 @@
     <MESSAGE value="minor fixes" />
     <MESSAGE value="return all the images available for each keyword" />
     <MESSAGE value="added url root to response" />
-    <option name="LAST_COMMIT_MESSAGE" value="added url root to response" />
+    <MESSAGE value="Add OpenAI integration for sentence correction and update dependencies" />
+    <MESSAGE value="Update sentence correction logic to use configurable force_fix_sentence setting" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update sentence correction logic to use configurable force_fix_sentence setting" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/restApi$restApi.coverage" NAME="restApi Coverage Results" MODIFIED="1732209630844" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/restApi$restApi.coverage" NAME="restApi Coverage Results" MODIFIED="1739008912845" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/restApi$restApi_openai.coverage" NAME="restApi_openai Coverage Results" MODIFIED="1739011140110" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/restApi$restApi_prometheus.coverage" NAME="restApi_prometheus Coverage Results" MODIFIED="1732217091724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/restApi$restApi_influxdb.coverage" NAME="restApi_influxdb Coverage Results" MODIFIED="1734190639293" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/restApi$create.coverage" NAME="create Coverage Results" MODIFIED="1730301311347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/terraform/mongodb_data" />
