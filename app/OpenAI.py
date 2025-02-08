@@ -17,7 +17,7 @@ class FixSentence:
         prefix = self.it_prefix if language == Language.it else self.en_prefix
         completion = self.client.chat.completions.create(
             model=self.model,
-            messages=[{"role": "user", "content": prefix + sentence}]
+            messages=[{"role": "user", "content": prefix + sentence.capitalize()}]
         )
 
         return completion.choices[0].message.content.rstrip().rstrip(string.punctuation)
