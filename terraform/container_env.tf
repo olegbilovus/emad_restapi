@@ -229,7 +229,14 @@ resource "azurerm_container_app" "this" {
         for_each = var.influxdb
         content {
           name  = upper("INFLUXDB_${env.key}")
-          value = env.value
+          value = sensitive(env.value)
+        }
+      }
+      dynamic "env" {
+        for_each = var.openai
+        content {
+          name  = upper("OPENAI_${env.key}")
+          value = sensitive(env.value)
         }
       }
     }

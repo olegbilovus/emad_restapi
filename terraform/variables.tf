@@ -115,3 +115,12 @@ variable "influxdb" {
     bucket = string
   })
 }
+
+variable "openai" {
+  type = object({
+    base_url           = string
+    api_key            = string
+    model              = string
+    force_fix_sentence = bool
+  })
+}
