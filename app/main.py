@@ -7,7 +7,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.models import APIKey
 from fastapi.params import Depends
 
-from app.OpenAI import FixSentence
+from app.fix_sentence import FixSentence
 from app.auth import get_api_key_client
 from app.config import settings, CORE_URLS, is_dalle3_valid, is_influxdb_valid, is_openai_valid
 from app.constants import Tags
