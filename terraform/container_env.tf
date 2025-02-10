@@ -239,6 +239,13 @@ resource "azurerm_container_app" "this" {
           value = sensitive(env.value)
         }
       }
+      dynamic "env" {
+        for_each = var.googleai
+        content {
+          name  = upper("GOOGLEAI_${env.key}")
+          value = sensitive(env.value)
+        }
+      }
     }
     min_replicas = var.scale.min
     max_replicas = var.scale.max
