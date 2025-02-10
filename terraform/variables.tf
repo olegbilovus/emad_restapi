@@ -124,3 +124,10 @@ variable "openai" {
     force_fix_sentence = bool
   })
 }
+
+variable "googleai" {
+  type = object({
+    api_key = string
+    model   = string
+  })
+}
