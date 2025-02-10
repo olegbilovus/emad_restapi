@@ -7,10 +7,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.openapi.models import APIKey
 from fastapi.params import Depends
 
-from app.fix_sentence import FixSentence
 from app.auth import get_api_key_client
-from app.config import settings, CORE_URLS, is_dalle3_valid, is_influxdb_valid, is_openai_valid
+from app.config import settings, CORE_URLS, is_dalle3_valid, is_influxdb_valid, is_openai_valid, is_googleai_valid
 from app.constants import Tags
+from app.fix_sentence import FixSentenceOpenAI, FixSentence, FixSentenceGoogle
 from app.metrics import InfluxDB, Metrics
 from app.models.genai import Dalle3Image
 from app.models.images import Sentence, ImagesResult, ContentClassification, Image
@@ -41,11 +41,21 @@ dalle3_on = is_dalle3_valid()
 logger.info(dalle3_on=dalle3_on)
 
 openai_on = is_openai_valid()
+googleai_on = is_googleai_valid()
 logger.info(openai_on=openai_on)
-fix_sentence = None
+logger.info(googleai_on=googleai_on)
+global fix_sentence
+openai_fix_sentence: FixSentenceOpenAI = None
+google_fix_sentence: FixSentenceGoogle = None
+
 if openai_on:
-    fix_sentence = FixSentence(settings.openai.openai_base_url, settings.openai.openai_api_key,
-                               settings.openai.openai_model)
+    openai_fix_sentence = FixSentenceOpenAI(settings.openai.openai_base_url, settings.openai.openai_api_key,
+                                            settings.openai.openai_model)
+if googleai_on:
+    google_fix_sentence = FixSentenceGoogle(settings.googleai.googleai_api_key, settings.googleai.googleai_model)
+
+fix_sentence = google_fix_sentence if googleai_on else openai_fix_sentence
+logger.info(fix_sentence=fix_sentence.__class__.__name__.removeprefix(FixSentence.__name__))
 
 
 @app.middleware("http")
@@ -86,12 +96,24 @@ async def get_images(sentence: Annotated[Sentence, Query()]) -> ImagesResult:
 
     time_before = time.perf_counter()
 
-    if openai_on and (sentence.fix_sentence or settings.force_fix_sentence):
+    global fix_sentence
+    if fix_sentence and (sentence.fix_sentence or settings.force_fix_sentence):
         try:
             sentence.text = fix_sentence.fix(sentence.text, sentence.language)
         except Exception as e:
             logger.error(error=str(e))
-            raise HTTPException(status_code=500, detail="AI service to fix sentence is down")
+            if isinstance(fix_sentence, FixSentenceOpenAI):
+                fix_sentence = google_fix_sentence
+            else:
+                fix_sentence = openai_fix_sentence
+            logger.warn(msg="Changed AI engine",
+                        fix_sentence=fix_sentence.__class__.__name__.removeprefix(FixSentence.__name__))
+
+            try:
+                sentence.text = fix_sentence.fix(sentence.text, sentence.language)
+            except Exception as e:
+                logger.error(error=str(e))
+                raise HTTPException(status_code=500, detail="AI service to fix sentence is down")
 
     try:
         core_response = requests.get(CORE_URLS[sentence.language.name], params=sentence.model_dump(), timeout=3).json()

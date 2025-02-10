@@ -30,6 +30,11 @@ class OpenAI(BaseSettings):
     openai_model: str = ""
 
 
+class GoogleAI(BaseSettings):
+    googleai_api_key: str = ""
+    googleai_model: str = ""
+
+
 class Settings(BaseSettings):
     app_env: str = "dev"
     images_url_root: HttpUrl
@@ -40,6 +45,7 @@ class Settings(BaseSettings):
     influxdb: InfluxDB = InfluxDB()
     prometheus: Prometheus = Prometheus()
     openai: OpenAI = OpenAI()
+    googleai: GoogleAI = GoogleAI()
     force_fix_sentence: bool = False
 
 
@@ -81,4 +87,11 @@ def is_openai_valid():
         settings.openai.openai_base_url != _EXAMPLE_URL and
         settings.openai.openai_api_key != "" and
         settings.openai.openai_model != ""
+    )
+
+
+def is_googleai_valid():
+    return (
+        settings.googleai.googleai_api_key != "" and
+        settings.googleai.googleai_model != ""
     )
