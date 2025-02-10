@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83b467c2-f69f-47d3-a286-dfcbc4875cbd" name="Changes" comment="Update dependencies for FastAPI, Pydantic, and Starlette">
+    <list default="true" id="83b467c2-f69f-47d3-a286-dfcbc4875cbd" name="Changes" comment="Update dependencies and rename OpenAI module to fix_sentence">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/OpenAI.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/fix_sentence.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/fix_sentence.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/fix_sentence.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
@@ -90,6 +91,21 @@
               </option>
               <option name="timestamp" value="1739017335830" />
             </BranchCleanupEntry>
+            <BranchCleanupEntry>
+              <option name="deletions">
+                <list>
+                  <BranchDeletion>
+                    <option name="hash" value="baabf8b5aeaaefd2937282d1a073c6cafb81e50c" />
+                    <option name="name" value="dependencies-update" />
+                  </BranchDeletion>
+                  <BranchDeletion>
+                    <option name="hash" value="47134bf3f3bbef814273ed48e37968eb72127b18" />
+                    <option name="name" value="terraform-text_correction" />
+                  </BranchDeletion>
+                </list>
+              </option>
+              <option name="timestamp" value="1739137762358" />
+            </BranchCleanupEntry>
           </list>
         </option>
       </BranchesCleanupHistory>
@@ -102,12 +118,12 @@
               <option name="branches">
                 <list>
                   <RecentBranch>
-                    <option name="branchName" value="dependencies-update" />
-                    <option name="lastUsedInstant" value="1739137199" />
+                    <option name="branchName" value="text-correct_fallback_gemini" />
+                    <option name="lastUsedInstant" value="1739206437" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1739017330" />
+                    <option name="lastUsedInstant" value="1739137752" />
                   </RecentBranch>
                 </list>
               </option>
@@ -152,7 +168,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "false",
-    "git-widget-placeholder": "dependencies-update",
+    "git-widget-placeholder": "text-correct__fallback__gemini",
     "last_opened_file_path": "C:/Users/olgbl/Desktop/Unisa/crontab_tasks/influxdb",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -206,11 +222,13 @@
       <envs>
         <env name="CORE_URL_EN" value="http://localhost:8882" />
         <env name="CORE_URL_IT" value="http://localhost:8881" />
+        <env name="FORCE_FIX_SENTENCE" value="false" />
+        <env name="GOOGLEAI_API_KEY" value="AIzaSyDczSpKDFQa2VB4sNNgJ1kaADZMbPqXqhc" />
+        <env name="GOOGLEAI_MODEL" value="gemini-2.0-pro-exp-02-05" />
         <env name="IMAGES_URL_ROOT" value="http://localhost:9000/pictograms/pictograms" />
-        <env name="OPENAI_API_KEY" value="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" />
+        <env name="OPENAI_API_KEY" value="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" />
         <env name="OPENAI_BASE_URL" value="https://openrouter.ai/api/v1" />
         <env name="OPENAI_MODEL" value="google/gemini-2.0-pro-exp-02-05:free" />
-        <env name="FORCE_FIX_SENTENCE" value="true" />
       </envs>
       <option name="SDK_HOME" value="$PROJECT_DIR$/.venv/Scripts/python.exe" />
       <option name="SDK_NAME" value="Python 3.12 (restApi)" />
@@ -346,7 +364,8 @@
       <workItem from="1739005861681" duration="6684000" />
       <workItem from="1739016843044" duration="404000" />
       <workItem from="1739017271935" duration="66000" />
-      <workItem from="1739136353059" duration="922000" />
+      <workItem from="1739136353059" duration="1813000" />
+      <workItem from="1739204404561" duration="3053000" />
     </task>
     <task id="LOCAL-00002" summary="added cors and a html file to test the backend and view the images">
       <option name="closed" value="true" />
@@ -628,7 +647,15 @@
       <option name="project" value="LOCAL" />
       <updated>1739017292257</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Update dependencies and rename OpenAI module to fix_sentence">
+      <option name="closed" value="true" />
+      <created>1739137505028</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1739137505028</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -648,7 +675,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_NEW_TODO" value="false" />
     <option name="RELOAD_CONTEXT" value="false" />
-    <MESSAGE value="fix test" />
     <MESSAGE value="added metrics with influxdb. Added JSON logging" />
     <MESSAGE value="removed unused modules" />
     <MESSAGE value="fixed logs" />
@@ -673,11 +699,12 @@
     <MESSAGE value="Update sentence correction logic to use configurable force_fix_sentence setting" />
     <MESSAGE value="Capitalize sentence in OpenAI chat completion request" />
     <MESSAGE value="Update dependencies for FastAPI, Pydantic, and Starlette" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update dependencies for FastAPI, Pydantic, and Starlette" />
+    <MESSAGE value="Update dependencies and rename OpenAI module to fix_sentence" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update dependencies and rename OpenAI module to fix_sentence" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/restApi$restApi.coverage" NAME="restApi Coverage Results" MODIFIED="1739008912845" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
-    <SUITE FILE_PATH="coverage/restApi$restApi_openai.coverage" NAME="restApi_openai Coverage Results" MODIFIED="1739137274853" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
+    <SUITE FILE_PATH="coverage/restApi$restApi_openai.coverage" NAME="restApi_openai Coverage Results" MODIFIED="1739206969470" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/restApi$restApi_prometheus.coverage" NAME="restApi_prometheus Coverage Results" MODIFIED="1732217091724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/restApi$restApi_influxdb.coverage" NAME="restApi_influxdb Coverage Results" MODIFIED="1734190639293" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app" />
     <SUITE FILE_PATH="coverage/restApi$create.coverage" NAME="create Coverage Results" MODIFIED="1730301311347" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/terraform/mongodb_data" />
