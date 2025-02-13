@@ -98,6 +98,10 @@ async def get_images(sentence: Annotated[Sentence, Query()]) -> ImagesResult:
 
     global fix_sentence
     if fix_sentence and (sentence.fix_sentence or settings.force_fix_sentence):
+        removed_interrogative = False
+        if sentence.text[-1] == "?":
+            sentence.text = sentence.text[:-1]
+            removed_interrogative = True
         try:
             sentence.text = fix_sentence.fix(sentence.text, sentence.language)
         except Exception as e:
@@ -114,6 +118,8 @@ async def get_images(sentence: Annotated[Sentence, Query()]) -> ImagesResult:
             except Exception as e:
                 logger.error(error=str(e))
                 raise HTTPException(status_code=500, detail="AI service to fix sentence is down")
+        if removed_interrogative:
+            sentence.text += "?"
 
     try:
         core_response = requests.get(CORE_URLS[sentence.language.name], params=sentence.model_dump(), timeout=3).json()
